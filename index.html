@@ -7,6 +7,17 @@
   <meta name="description" content="БО МБФ «Дім Добрих Справ» — офіційно зареєстрований благодійний фонд. Допомагаємо дітям, літнім людям, захисникам України та сім'ям у скрутному становищі." />
   <meta name="keywords" content="благодійний фонд, волонтери, допомога дітям, допомога літнім, захисники України, благодійність, донат, Дім Добрих Справ" />
   <meta name="robots" content="index, follow" />
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com;
+    img-src 'self' https://dimdsprav.pp.ua data:;
+    media-src 'self';
+    connect-src 'none';
+    frame-src 'none';
+    object-src 'none';
+  " />
   <link rel="canonical" href="https://dimdsprav.pp.ua/" />
   <!-- Open Graph (для соцмереж) -->
   <meta property="og:type" content="website" />
@@ -267,7 +278,7 @@
           <button class="lang-btn active" data-lang="uk" onclick="switchLang('uk')">UA</button>
           <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
         </div>
-        <a href="https://dimdsprav.pp.ua/docs/schet.jpg" target="_blank" rel="noopener" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold px-5 py-2.5 rounded-xl transition-all shadow-md hover:shadow-lg" data-i18n="nav.support">
+        <a href="https://dimdsprav.pp.ua/docs/schet.jpg" target="_blank" rel="noopener noreferrer" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold px-5 py-2.5 rounded-xl transition-all shadow-md hover:shadow-lg" data-i18n="nav.support">
           Підтримати
         </a>
       </nav>
@@ -290,7 +301,7 @@
       <a href="#documents" onclick="toggleMenu()" class="text-gray-700 font-medium py-2 hover:text-primary-600 transition-colors" data-i18n="nav.documents">Документи</a>
       <a href="#contact"   onclick="toggleMenu()" class="text-gray-700 font-medium py-2 hover:text-primary-600 transition-colors" data-i18n="nav.contact">Зв'язок</a>
       <div class="flex items-center gap-3">
-        <a href="https://dimdsprav.pp.ua/docs/schet.jpg" target="_blank" rel="noopener" onclick="toggleMenu()" class="bg-primary-600 text-white font-semibold px-5 py-3 rounded-xl text-center flex-1" data-i18n="nav.support">Підтримати</a>
+        <a href="https://dimdsprav.pp.ua/docs/schet.jpg" target="_blank" rel="noopener noreferrer" onclick="toggleMenu()" class="bg-primary-600 text-white font-semibold px-5 py-3 rounded-xl text-center flex-1" data-i18n="nav.support">Підтримати</a>
         <div class="lang-switcher">
           <button class="lang-btn active" data-lang="uk" onclick="switchLang('uk')">UA</button>
           <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
@@ -326,7 +337,7 @@
       </p>
 
       <div class="fade-in-delay-2 flex flex-col sm:flex-row gap-4">
-        <a href="https://dimdsprav.pp.ua/docs/schet.jpg" target="_blank" rel="noopener" class="bg-white text-primary-700 hover:bg-primary-50 font-bold px-8 py-4 rounded-2xl text-lg shadow-xl hover:shadow-2xl transition-all text-center" data-i18n="hero.btn1">
+        <a href="https://dimdsprav.pp.ua/docs/schet.jpg" target="_blank" rel="noopener noreferrer" class="bg-white text-primary-700 hover:bg-primary-50 font-bold px-8 py-4 rounded-2xl text-lg shadow-xl hover:shadow-2xl transition-all text-center" data-i18n="hero.btn1">
           Задонатити зараз
         </a>
         <a href="#about" class="border-2 border-white/40 hover:border-white text-white font-semibold px-8 py-4 rounded-2xl text-lg transition-all text-center hover:bg-white/10" data-i18n="hero.btn2">
@@ -555,9 +566,9 @@
         <div class="text-4xl font-extrabold text-gray-900 mb-1">100 ₴</div>
         <div class="text-gray-500 mb-4 text-sm" data-i18n="donate.o1.period">разова допомога</div>
         <p class="text-gray-600 text-sm mb-6" data-i18n="donate.o1.text">Продуктовий набір для однієї людини на тиждень</p>
-        <button onclick="window.open('https://dimdsprav.pp.ua/docs/schet.jpg','_blank')" class="w-full border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-semibold py-2.5 rounded-xl transition-all" data-i18n="donate.o1.btn">
+        <a href="https://dimdsprav.pp.ua/docs/schet.jpg" target="_blank" rel="noopener noreferrer" class="block w-full border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-semibold py-2.5 rounded-xl transition-all text-center" data-i18n="donate.o1.btn">
           Підтримати
-        </button>
+        </a>
       </div>
       <!-- Option 2 (Featured) -->
       <div class="bg-primary-600 rounded-2xl p-7 text-center shadow-2xl scale-105 card-hover cursor-pointer">
@@ -565,18 +576,18 @@
         <div class="text-4xl font-extrabold text-white mb-1">500 ₴</div>
         <div class="text-primary-200 mb-4 text-sm" data-i18n="donate.o2.period">щомісячно</div>
         <p class="text-white/80 text-sm mb-6" data-i18n="donate.o2.text">Стабільна підтримка програм розвитку для дітей</p>
-        <button onclick="window.open('https://dimdsprav.pp.ua/docs/schet.jpg','_blank')" class="w-full bg-white text-primary-700 hover:bg-primary-50 font-bold py-2.5 rounded-xl transition-all shadow-md" data-i18n="donate.o2.btn">
+        <a href="https://dimdsprav.pp.ua/docs/schet.jpg" target="_blank" rel="noopener noreferrer" class="block w-full bg-white text-primary-700 hover:bg-primary-50 font-bold py-2.5 rounded-xl transition-all shadow-md text-center" data-i18n="donate.o2.btn">
           Підтримати
-        </button>
+        </a>
       </div>
       <!-- Option 3 -->
       <div class="border-2 border-gray-200 hover:border-primary-400 rounded-2xl p-7 text-center transition-all card-hover cursor-pointer">
         <div class="text-4xl font-extrabold text-gray-900 mb-1" data-i18n="donate.o3.amount">Своя</div>
         <div class="text-gray-500 mb-4 text-sm" data-i18n="donate.o3.period">сума</div>
         <p class="text-gray-600 text-sm mb-6" data-i18n="donate.o3.text">Будь-який розмір внеску є важливим і цінним для нас</p>
-        <button onclick="window.open('https://dimdsprav.pp.ua/docs/schet.jpg','_blank')" class="w-full border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-semibold py-2.5 rounded-xl transition-all" data-i18n="donate.o3.btn">
+        <a href="https://dimdsprav.pp.ua/docs/schet.jpg" target="_blank" rel="noopener noreferrer" class="block w-full border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-semibold py-2.5 rounded-xl transition-all text-center" data-i18n="donate.o3.btn">
           Написати нам
-        </button>
+        </a>
       </div>
     </div>
 
@@ -794,7 +805,7 @@
     </div>
 
     <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-      <a href="https://dimdsprav.pp.ua/docs/Statut.pdf" target="_blank" rel="noopener"
+      <a href="https://dimdsprav.pp.ua/docs/Statut.pdf" target="_blank" rel="noopener noreferrer"
          class="bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100 text-center block group scroll-reveal">
         <div class="w-14 h-14 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-200 transition-colors">
           <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -811,7 +822,7 @@
         </span>
       </a>
 
-      <a href="https://dimdsprav.pp.ua/docs/Vipiska.pdf" target="_blank" rel="noopener"
+      <a href="https://dimdsprav.pp.ua/docs/Vipiska.pdf" target="_blank" rel="noopener noreferrer"
          class="bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100 text-center block group scroll-reveal">
         <div class="w-14 h-14 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-200 transition-colors">
           <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -828,7 +839,7 @@
         </span>
       </a>
 
-      <a href="https://dimdsprav.pp.ua/docs/Vityag.pdf" target="_blank" rel="noopener"
+      <a href="https://dimdsprav.pp.ua/docs/Vityag.pdf" target="_blank" rel="noopener noreferrer"
          class="bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100 text-center block group scroll-reveal">
         <div class="w-14 h-14 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-200 transition-colors">
           <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -895,7 +906,7 @@
           </a>
 
           <!-- Facebook -->
-          <a href="https://www.facebook.com/profile.php?id=100090045076590" target="_blank" rel="noopener" class="flex items-center gap-4 group">
+          <a href="https://www.facebook.com/profile.php?id=100090045076590" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 group">
             <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center group-hover:bg-blue-200 transition-colors">
               <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -1281,6 +1292,31 @@
     }
   };
 
+  function sanitizeHTML(html) {
+    const ALLOWED = ['BR', 'SPAN', 'A'];
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    function walk(node) {
+      if (node.nodeType === Node.TEXT_NODE) return node.cloneNode();
+      if (node.nodeType !== Node.ELEMENT_NODE) return null;
+      if (!ALLOWED.includes(node.tagName)) return document.createTextNode(node.textContent);
+      const el = document.createElement(node.tagName);
+      if (node.tagName === 'SPAN') {
+        const cls = node.getAttribute('class');
+        if (cls && /^[a-z0-9\s\-\/]+$/i.test(cls)) el.className = cls;
+      }
+      if (node.tagName === 'A') {
+        const href = node.getAttribute('href');
+        if (href && /^#[\w-]+$/.test(href)) el.setAttribute('href', href);
+        el.className = node.className;
+      }
+      node.childNodes.forEach(c => { const s = walk(c); if (s) el.appendChild(s); });
+      return el;
+    }
+    const frag = document.createElement('div');
+    doc.body.childNodes.forEach(c => { const s = walk(c); if (s) frag.appendChild(s); });
+    return frag.innerHTML;
+  }
+
   function switchLang(lang) {
     localStorage.setItem('lang', lang);
     document.documentElement.lang = lang;
@@ -1290,7 +1326,7 @@
     });
     document.querySelectorAll('[data-i18n-html]').forEach(el => {
       const v = translations[lang]?.[el.dataset.i18nHtml];
-      if (v !== undefined) el.innerHTML = v;
+      if (v !== undefined) el.innerHTML = sanitizeHTML(v);
     });
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
       const v = translations[lang]?.[el.dataset.i18nPlaceholder];
