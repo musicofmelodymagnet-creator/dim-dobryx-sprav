@@ -34,29 +34,58 @@
             }
           },
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
+            sans: ['Nunito', 'sans-serif'],
+            serif: ['Cormorant Garamond', 'serif'],
           }
         }
       }
     }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700;800&family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    html { scroll-behavior: smooth; }
-    .hero-gradient {
-      background: linear-gradient(135deg, #14532d 0%, #166534 40%, #15803d 70%, #16a34a 100%);
+    :root {
+      --green-dark:   #14532d;
+      --green-mid:    #166534;
+      --green-main:   #16a34a;
+      --green-light:  #4ade80;
+      --gold:         #c8a84b;
+      --gold-light:   #f0d98b;
     }
+
+    html { scroll-behavior: smooth; }
+
+    .hero-gradient {
+      background: linear-gradient(145deg, #0f3d20 0%, #14532d 35%, #1a6b3c 65%, #16a34a 100%);
+      position: relative;
+    }
+    .hero-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(200,168,75,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(74,222,128,0.07) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero-gradient::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
     .card-hover {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .card-hover:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(21,128,61,0.15);
+      transform: translateY(-5px);
+      box-shadow: 0 24px 48px rgba(21,128,61,0.13);
     }
-    .nav-link {
-      position: relative;
-    }
+
+    .nav-link { position: relative; }
     .nav-link::after {
       content: '';
       position: absolute;
@@ -64,22 +93,147 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: #16a34a;
+      background: var(--green-main);
       transition: width 0.3s ease;
     }
     .nav-link:hover::after { width: 100%; }
-    .mobile-menu { display: none; }
-    .mobile-menu.open { display: block; }
+
+    /* Mobile menu — slide animation */
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .mobile-menu.open { max-height: 420px; }
+
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
+      from { opacity: 0; transform: translateY(32px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    .fade-in { animation: fadeInUp 0.8s ease forwards; }
-    .fade-in-delay { animation: fadeInUp 0.8s ease 0.2s forwards; opacity: 0; }
-    .fade-in-delay-2 { animation: fadeInUp 0.8s ease 0.4s forwards; opacity: 0; }
+    .fade-in { animation: fadeInUp 0.9s ease forwards; }
+    .fade-in-delay  { animation: fadeInUp 0.9s ease 0.2s forwards; opacity: 0; }
+    .fade-in-delay-2{ animation: fadeInUp 0.9s ease 0.4s forwards; opacity: 0; }
+
+    /* Scroll-reveal */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+    .scroll-reveal:nth-child(2) { transition-delay: 0.1s; }
+    .scroll-reveal:nth-child(3) { transition-delay: 0.2s; }
+    .scroll-reveal:nth-child(4) { transition-delay: 0.3s; }
+
+    /* Stat counters glow on animate */
+    .stat-number { display: inline-block; }
+    .stat-done .stat-number {
+      animation: statPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+    @keyframes statPop {
+      0%   { transform: scale(0.85); }
+      60%  { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
     .lang-switcher { display: flex; gap: 3px; align-items: center; background: #f3f4f6; border-radius: 8px; padding: 3px; }
     .lang-btn { padding: 3px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; background: transparent; color: #6b7280; transition: all 0.2s; line-height: 1.6; }
-    .lang-btn.active { background: #16a34a; color: white; }
+    .lang-btn.active { background: var(--green-main); color: white; }
+
+    /* Gold accent divider under section headings */
+    .section-heading { position: relative; }
+    .section-heading::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      border-radius: 2px;
+      margin: 10px 0 0;
+    }
+    .section-heading-center::after { margin-left: auto; margin-right: auto; }
+
+    /* Gallery item label */
+    .gallery-item::after { display: none; }
+
+    /* ── Video Scroll Reveal ── */
+    .video-reveal-wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .video-reveal-container {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      transform: scale(0.88);
+      opacity: 0.7;
+      transition: transform 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  border-radius 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  opacity 0.9s ease;
+      will-change: transform;
+      aspect-ratio: 16 / 9;
+      background: #0f3d20;
+      box-shadow: 0 40px 100px rgba(21,128,61,0.18);
+    }
+    .video-reveal-container.revealed {
+      transform: scale(1);
+      border-radius: 16px;
+      opacity: 1;
+    }
+    .video-el {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(10, 40, 20, 0.72) 0%,
+        rgba(10, 40, 20, 0.15) 50%,
+        transparent 100%
+      );
+      display: flex;
+      align-items: flex-end;
+      padding: 2.5rem 3rem;
+    }
+    .video-overlay-content {
+      transform: translateY(16px);
+      opacity: 0;
+      transition: transform 0.8s ease 0.5s, opacity 0.8s ease 0.5s;
+    }
+    .video-reveal-container.revealed .video-overlay-content {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .video-badge {
+      display: inline-block;
+      background: rgba(200,168,75,0.22);
+      border: 1px solid rgba(200,168,75,0.5);
+      color: #f0d98b;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 10px;
+    }
+    .video-overlay-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.6rem);
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.25;
+      margin: 0;
+    }
+    @media (max-width: 640px) {
+      .video-overlay { padding: 1.5rem; }
+      .video-reveal-container { border-radius: 16px; }
+      .video-reveal-container.revealed { border-radius: 10px; }
+    }
   </style>
 </head>
 <body class="font-sans text-gray-800 antialiased">
@@ -161,7 +315,7 @@
         <span data-i18n="hero.badge">Незалежний волонтерський фонд</span>
       </div>
 
-      <h1 class="fade-in text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6" data-i18n-html="hero.title">
+      <h1 class="fade-in font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6" data-i18n-html="hero.title">
         Дім<br/>
         <span class="text-green-300">Добрих</span><br/>
         Справ
@@ -193,21 +347,21 @@
 <!-- ─── STATS ─── -->
 <section class="bg-gray-50 py-16">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-      <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover">
-        <div class="text-4xl font-extrabold text-primary-600 mb-1">∞</div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6" id="stats-grid">
+      <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover scroll-reveal">
+        <div class="font-serif text-4xl font-bold text-primary-600 mb-1 stat-number" data-target="∞">∞</div>
         <div class="text-gray-500 text-sm font-medium" data-i18n="stats.s1">Допомоги без меж</div>
       </div>
-      <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover">
-        <div class="text-4xl font-extrabold text-primary-600 mb-1">100%</div>
+      <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover scroll-reveal">
+        <div class="font-serif text-4xl font-bold text-primary-600 mb-1 stat-number" data-target="100">100%</div>
         <div class="text-gray-500 text-sm font-medium" data-i18n="stats.s2">Прозорість</div>
       </div>
-      <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover">
-        <div class="text-4xl font-extrabold text-primary-600 mb-1">0</div>
+      <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover scroll-reveal">
+        <div class="font-serif text-4xl font-bold text-primary-600 mb-1 stat-number" data-target="0">0</div>
         <div class="text-gray-500 text-sm font-medium" data-i18n="stats.s3">Прихованих витрат</div>
       </div>
-      <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover">
-        <div class="text-4xl font-extrabold text-primary-600 mb-1">4</div>
+      <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover scroll-reveal">
+        <div class="font-serif text-4xl font-bold text-primary-600 mb-1 stat-number" data-target="4">4</div>
         <div class="text-gray-500 text-sm font-medium" data-i18n="stats.s4">Напрямки допомоги</div>
       </div>
     </div>
@@ -221,7 +375,7 @@
       <!-- Text -->
       <div>
         <span class="inline-block text-primary-600 font-semibold text-sm uppercase tracking-wider mb-3" data-i18n="about.label">Про організацію</span>
-        <h2 class="text-4xl font-extrabold text-gray-900 mb-6 leading-tight" data-i18n-html="about.title">
+        <h2 class="font-serif section-heading text-4xl font-bold text-gray-900 mb-6 leading-tight" data-i18n-html="about.title">
           Ми — волонтери,<br/>яким не байдуже
         </h2>
         <p class="text-gray-600 text-lg leading-relaxed mb-6" data-i18n="about.p1">
@@ -286,12 +440,32 @@
   </div>
 </section>
 
+<!-- ─── VIDEO REVEAL ─── -->
+<section class="video-section py-10 sm:py-16 bg-white overflow-hidden">
+  <div class="video-reveal-wrap px-4 sm:px-8 lg:px-16">
+    <div class="video-reveal-container">
+      <video
+        src="media/358565357_1214281875913463_1163352374473208281_n.mp4"
+        autoplay muted loop playsinline
+        class="video-el"
+      ></video>
+      <!-- Overlay -->
+      <div class="video-overlay">
+        <div class="video-overlay-content">
+          <div class="video-badge" data-i18n="video.badge">Наша робота у дії</div>
+          <p class="video-overlay-text" data-i18n="video.text">Кожен день — нова історія турботи</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── SERVICES ─── -->
 <section id="services" class="py-24 bg-gray-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
       <span class="inline-block text-primary-600 font-semibold text-sm uppercase tracking-wider mb-3" data-i18n="services.label">Наша діяльність</span>
-      <h2 class="text-4xl font-extrabold text-gray-900 mb-4" data-i18n="services.title">Кому ми допомагаємо</h2>
+      <h2 class="font-serif section-heading section-heading-center text-4xl font-bold text-gray-900 mb-4" data-i18n="services.title">Кому ми допомагаємо</h2>
       <p class="text-gray-500 text-lg max-w-2xl mx-auto" data-i18n="services.desc">
         Чотири ключові напрямки, де наша команда щодня робить різницю
       </p>
@@ -299,7 +473,7 @@
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
       <!-- Card 1 -->
-      <div class="bg-white rounded-2xl p-7 shadow-sm card-hover border border-gray-100">
+      <div class="bg-white rounded-2xl p-7 shadow-sm card-hover border border-gray-100 scroll-reveal">
         <div class="w-14 h-14 bg-primary-100 rounded-2xl flex items-center justify-center mb-5 text-2xl">👶</div>
         <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="services.c1.title">Діти</h3>
         <p class="text-gray-500 leading-relaxed text-sm" data-i18n="services.c1.text">
@@ -307,7 +481,7 @@
         </p>
       </div>
       <!-- Card 2 -->
-      <div class="bg-white rounded-2xl p-7 shadow-sm card-hover border border-gray-100">
+      <div class="bg-white rounded-2xl p-7 shadow-sm card-hover border border-gray-100 scroll-reveal">
         <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center mb-5 text-2xl">👴</div>
         <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="services.c2.title">Літні люди</h3>
         <p class="text-gray-500 leading-relaxed text-sm" data-i18n="services.c2.text">
@@ -315,7 +489,7 @@
         </p>
       </div>
       <!-- Card 3 -->
-      <div class="bg-white rounded-2xl p-7 shadow-sm card-hover border border-gray-100">
+      <div class="bg-white rounded-2xl p-7 shadow-sm card-hover border border-gray-100 scroll-reveal">
         <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-5 text-2xl">🛡️</div>
         <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="services.c3.title">Захисники</h3>
         <p class="text-gray-500 leading-relaxed text-sm" data-i18n="services.c3.text">
@@ -323,7 +497,7 @@
         </p>
       </div>
       <!-- Card 4 -->
-      <div class="bg-white rounded-2xl p-7 shadow-sm card-hover border border-gray-100">
+      <div class="bg-white rounded-2xl p-7 shadow-sm card-hover border border-gray-100 scroll-reveal">
         <div class="w-14 h-14 bg-rose-100 rounded-2xl flex items-center justify-center mb-5 text-2xl">❤️</div>
         <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="services.c4.title">Сім'ї</h3>
         <p class="text-gray-500 leading-relaxed text-sm" data-i18n="services.c4.text">
@@ -369,7 +543,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
       <span class="inline-block text-primary-600 font-semibold text-sm uppercase tracking-wider mb-3" data-i18n="donate.label">Підтримайте нас</span>
-      <h2 class="text-4xl font-extrabold text-gray-900 mb-4" data-i18n="donate.title">Кожна гривня рятує</h2>
+      <h2 class="font-serif section-heading section-heading-center text-4xl font-bold text-gray-900 mb-4" data-i18n="donate.title">Кожна гривня рятує</h2>
       <p class="text-gray-500 text-lg max-w-2xl mx-auto" data-i18n="donate.desc">
         Малий щоденний внесок дозволяє нам забезпечувати програми допомоги для сотень людей
       </p>
@@ -425,7 +599,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
       <span class="inline-block text-primary-600 font-semibold text-sm uppercase tracking-wider mb-3" data-i18n="gallery.label">Наша діяльність</span>
-      <h2 class="text-4xl font-extrabold text-gray-900 mb-4" data-i18n="gallery.title">Фотогалерея</h2>
+      <h2 class="font-serif section-heading section-heading-center text-4xl font-bold text-gray-900 mb-4" data-i18n="gallery.title">Фотогалерея</h2>
       <p class="text-gray-500 text-lg max-w-2xl mx-auto" data-i18n="gallery.desc">Реальні моменти нашої роботи — допомога, турбота та щира підтримка</p>
     </div>
 
@@ -613,7 +787,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
       <span class="inline-block text-primary-600 font-semibold text-sm uppercase tracking-wider mb-3" data-i18n="docs.label">Юридичний статус</span>
-      <h2 class="text-4xl font-extrabold text-gray-900 mb-4" data-i18n="docs.title">Документи</h2>
+      <h2 class="font-serif section-heading section-heading-center text-4xl font-bold text-gray-900 mb-4" data-i18n="docs.title">Документи</h2>
       <p class="text-gray-500 text-lg max-w-2xl mx-auto" data-i18n="docs.desc">
         Ми офіційно зареєстровані та діємо відповідно до законодавства України
       </p>
@@ -621,7 +795,7 @@
 
     <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
       <a href="https://dimdsprav.pp.ua/docs/Statut.pdf" target="_blank" rel="noopener"
-         class="bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100 text-center block group">
+         class="bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100 text-center block group scroll-reveal">
         <div class="w-14 h-14 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-200 transition-colors">
           <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
@@ -638,7 +812,7 @@
       </a>
 
       <a href="https://dimdsprav.pp.ua/docs/Vipiska.pdf" target="_blank" rel="noopener"
-         class="bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100 text-center block group">
+         class="bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100 text-center block group scroll-reveal">
         <div class="w-14 h-14 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-200 transition-colors">
           <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
@@ -655,7 +829,7 @@
       </a>
 
       <a href="https://dimdsprav.pp.ua/docs/Vityag.pdf" target="_blank" rel="noopener"
-         class="bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100 text-center block group">
+         class="bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100 text-center block group scroll-reveal">
         <div class="w-14 h-14 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-200 transition-colors">
           <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
@@ -686,7 +860,7 @@
       <!-- Info -->
       <div>
         <span class="inline-block text-primary-600 font-semibold text-sm uppercase tracking-wider mb-3" data-i18n="contact.label">Зв'яжіться з нами</span>
-        <h2 class="text-4xl font-extrabold text-gray-900 mb-6 leading-tight" data-i18n-html="contact.title">
+        <h2 class="font-serif section-heading text-4xl font-bold text-gray-900 mb-6 leading-tight" data-i18n-html="contact.title">
           Маєте питання<br/>або хочете допомогти?
         </h2>
         <p class="text-gray-600 text-lg mb-10" data-i18n="contact.desc">
@@ -896,7 +1070,9 @@
   // Mobile menu toggle
   function toggleMenu() {
     const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('open');
+    const isOpen = menu.classList.toggle('open');
+    const burger = document.getElementById('burger');
+    burger.setAttribute('aria-expanded', isOpen);
   }
 
   // Navbar scroll effect
@@ -908,6 +1084,69 @@
       header.classList.remove('shadow-md');
     }
   });
+
+  // Scroll-reveal observer
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
+
+  // Stat counter animation
+  function animateCounter(el) {
+    const raw = el.dataset.target;
+    if (!raw || raw === '∞') return;
+    const end = parseFloat(raw);
+    const isSuffix = el.textContent.includes('%');
+    let current = 0;
+    const duration = 1400;
+    const fps = 60;
+    const steps = Math.round(duration / (1000 / fps));
+    let step = 0;
+    const timer = setInterval(() => {
+      step++;
+      const progress = step / steps;
+      const eased = 1 - Math.pow(1 - progress, 3);
+      current = Math.round(eased * end);
+      el.textContent = current + (isSuffix ? '%' : '');
+      if (step >= steps) {
+        clearInterval(timer);
+        el.textContent = end + (isSuffix ? '%' : '');
+        el.closest('.card-hover').classList.add('stat-done');
+      }
+    }, 1000 / fps);
+  }
+
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.stat-number').forEach(animateCounter);
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const statsGrid = document.getElementById('stats-grid');
+  if (statsGrid) statsObserver.observe(statsGrid);
+
+  // Video scroll reveal
+  const videoContainer = document.querySelector('.video-reveal-container');
+  if (videoContainer) {
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          videoObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    videoObserver.observe(videoContainer);
+  }
 
   // Form submit (placeholder)
   function submitForm(e) {
@@ -952,6 +1191,8 @@
       'partners.title': 'Станьте нашим партнером',
       'partners.desc': 'Шукаємо партнерів для фінансової та організаційної підтримки дітей, постраждалих під час війни. Разом ми зможемо зробити більше.',
       'partners.btn': 'Обговорити партнерство',
+      'video.badge': 'Наша робота у дії',
+      'video.text': 'Кожен день — нова історія турботи',
       'gallery.label': 'Наша діяльність', 'gallery.title': 'Фотогалерея',
       'gallery.desc': 'Реальні моменти нашої роботи — допомога, турбота та щира підтримка',
       'docs.label': 'Юридичний статус', 'docs.title': 'Документи',
@@ -1011,6 +1252,8 @@
       'partners.title': 'Become our partner',
       'partners.desc': 'We are looking for partners for financial and organizational support of children affected by the war. Together we can do more.',
       'partners.btn': 'Discuss partnership',
+      'video.badge': 'Our work in action',
+      'video.text': 'Every day — a new story of care',
       'gallery.label': 'Our activities', 'gallery.title': 'Photo Gallery',
       'gallery.desc': 'Real moments of our work — help, care and sincere support',
       'docs.label': 'Legal status', 'docs.title': 'Documents',
