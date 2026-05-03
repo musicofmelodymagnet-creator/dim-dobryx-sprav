@@ -168,6 +168,50 @@
     /* Gallery item label */
     .gallery-item::after { display: none; }
 
+    /* ── Expandable gallery ── */
+    .gallery-expand-wrap {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .gallery-expand-wrap.open { max-height: 99999px; }
+
+    .gallery-all-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      padding-top: 6px;
+    }
+    @media (min-width: 640px)  { .gallery-all-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (min-width: 1024px) { .gallery-all-grid { grid-template-columns: repeat(5, 1fr); } }
+
+    .gallery-all-item {
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 10px;
+      cursor: pointer;
+      position: relative;
+    }
+    .gallery-all-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+    .gallery-all-item:hover img { transform: scale(1.07); }
+    .gallery-all-item::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0);
+      transition: background 0.3s;
+    }
+    .gallery-all-item:hover::after { background: rgba(0,0,0,0.15); }
+
+    #gallery-toggle-btn svg {
+      transition: transform 0.35s ease;
+    }
+    #gallery-toggle-btn.open svg { transform: rotate(180deg); }
+
     /* ── Video Scroll Reveal ── */
     .video-reveal-wrap {
       max-width: 1400px;
@@ -761,6 +805,21 @@
         </div>
       </div>
     </div>
+
+    <!-- Expand all photos -->
+    <div class="mt-8 text-center">
+      <button id="gallery-toggle-btn" onclick="toggleGallery()"
+        class="inline-flex items-center gap-2.5 bg-primary-50 hover:bg-primary-100 text-primary-700 font-semibold px-7 py-3.5 rounded-2xl transition-all border border-primary-200 hover:border-primary-400 hover:shadow-md">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+        <span id="gallery-toggle-text" data-i18n="gallery.showAll">Ще 150 фотографій</span>
+      </button>
+    </div>
+
+    <div class="gallery-expand-wrap" id="gallery-expand-wrap">
+      <div class="gallery-all-grid" id="gallery-all-grid"></div>
+    </div>
   </div>
 </section>
 
@@ -1027,20 +1086,170 @@
 </footer>
 
 <script>
-  // Lightbox
+  // Lightbox — all 162 photos for navigation
   const galleryPhotos = [
     'media/gallery/photo_2023-07-13_15-52-37.jpg',
+    'media/gallery/333563987_484135883765580_403843703642133389_n.jpg',
+    'media/gallery/333572058_720415806193456_4610843417327524527_n.jpg',
+    'media/gallery/333915440_740057644244033_6180319652026306114_n.jpg',
+    'media/gallery/333944498_3280355022214049_7567279446730231584_n.jpg',
+    'media/gallery/333944522_207486045191809_2318795013585286922_n.jpg',
+    'media/gallery/333950005_1830934220608163_2280439147571644455_n.jpg',
+    'media/gallery/333967538_1755371161571285_4402928034921131218_n.jpg',
+    'media/gallery/333990254_1338448706998753_7397152828396906069_n.jpg',
+    'media/gallery/333991639_212917721312052_5556968064598854318_n.jpg',
+    'media/gallery/333992383_6376116785752611_9185374632827299123_n.jpg',
+    'media/gallery/334020236_891899928692112_1896085884905796270_n.jpg',
+    'media/gallery/334047056_146867808279813_2326325396919014416_n.jpg',
+    'media/gallery/334057098_562534455824511_932970419584498110_n.jpg',
+    'media/gallery/334059032_240178305236638_3074480007419188249_n.jpg',
+    'media/gallery/334131138_215902887628272_4943496676090725480_n.jpg',
+    'media/gallery/334150947_187368763988547_2242859986377296850_n.jpg',
+    'media/gallery/334170818_547435107482342_5083268280906501167_n.jpg',
+    'media/gallery/334254400_3338181923071042_7692058013550615942_n.jpg',
+    'media/gallery/334755634_669452741612916_5327033331451954547_n.jpg',
+    'media/gallery/334756888_605213684954457_838987928912880752_n.jpg',
+    'media/gallery/334763297_1058286785573999_8903594964843869695_n.jpg',
+    'media/gallery/334953896_754948872667778_5177427359728077275_n.jpg',
+    'media/gallery/334955050_717382313210503_4202707853854400304_n.jpg',
+    'media/gallery/335077031_742540503941057_8517194181382273439_n.jpg',
+    'media/gallery/335295045_935357624286328_5985552105805976766_n.jpg',
+    'media/gallery/335505010_224342800121573_84768330733905360_n.jpg',
+    'media/gallery/335644722_132253273121749_7667529240912395904_n.jpg',
+    'media/gallery/337375580_237853648605582_7300268904755464363_n.jpg',
+    'media/gallery/338240318_3378529882365131_4471776533725325564_n.jpg',
+    'media/gallery/338387131_783724589427241_6621435660410469317_n.jpg',
+    'media/gallery/338443166_936348334389383_3070945902691133926_n.jpg',
+    'media/gallery/338503573_739638227823479_468991004362962944_n.jpg',
+    'media/gallery/338951716_1146593013408066_5723334549510535621_n.jpg',
+    'media/gallery/338960141_786318919152281_1359278459139654086_n.jpg',
+    'media/gallery/338992108_106964465694684_6387237574783046110_n.jpg',
+    'media/gallery/339988024_235474545664825_7379309831011954437_n.jpg',
+    'media/gallery/340125268_1262109728018361_6421295081800029967_n.jpg',
+    'media/gallery/340154321_610447684312473_5880892050910796437_n.jpg',
+    'media/gallery/340478175_885725749198994_2934052047644555219_n.jpg',
+    'media/gallery/340496247_525149452922960_230856115509934946_n.jpg',
+    'media/gallery/340505188_906977907231304_8947236421329553939_n.jpg',
+    'media/gallery/340538639_922862542360630_1753781893645793547_n.jpg',
+    'media/gallery/340575077_952607876157934_7374350575316042747_n.jpg',
+    'media/gallery/340919840_768817437936257_958785143597007193_n.jpg',
+    'media/gallery/340992191_736115994677750_5614804573393279837_n.jpg',
+    'media/gallery/341844800_191085380429875_1047406497491274793_n.jpg',
+    'media/gallery/342167102_160639949975237_5103104170547947893_n.jpg',
+    'media/gallery/342211906_908935603512027_559161812181531334_n.jpg',
+    'media/gallery/342644250_9230099460394569_5920527238355631144_n.jpg',
+    'media/gallery/343003238_1512263349302717_5663981944719884467_n.jpg',
+    'media/gallery/343057089_1270067637224892_4021180946339401663_n.jpg',
+    'media/gallery/343064898_1404585420184410_1476975342286089223_n.jpg',
+    'media/gallery/343104843_599620648767426_4344136417498216875_n.jpg',
+    'media/gallery/343107301_466541775661183_1734212248496251635_n.jpg',
+    'media/gallery/343133246_1401330197291004_6877766250333751222_n.jpg',
+    'media/gallery/343137809_1422808278487947_2125528787408332907_n.jpg',
+    'media/gallery/343164709_1565393187279699_8758815012492171972_n.jpg',
+    'media/gallery/343304116_1241225030113842_1733739137744932024_n.jpg',
+    'media/gallery/343307416_261150822935155_2870778972147248410_n.jpg',
+    'media/gallery/343349161_257462490177699_8684334435875065718_n.jpg',
+    'media/gallery/343437979_1302167427041923_4592618492325426060_n.jpg',
+    'media/gallery/344090020_1944152122616236_2765587208770437486_n.jpg',
+    'media/gallery/344833833_987392845583597_3904842834575038076_n.jpg',
+    'media/gallery/344866607_241762755151472_3087309505228047405_n.jpg',
+    'media/gallery/344919511_783051829760662_7727307162216101198_n.jpg',
+    'media/gallery/345041454_103822692713512_8861321399514273415_n.jpg',
+    'media/gallery/345054059_757273656041115_7070107196319572909_n.jpg',
+    'media/gallery/345069006_1997463327312514_7234309583084164090_n.jpg',
+    'media/gallery/345175818_265634146022914_5631732590629959503_n.jpg',
+    'media/gallery/345213191_957144771984644_1638201953235199533_n.jpg',
+    'media/gallery/345228801_626668535647914_1855876140919918535_n.jpg',
+    'media/gallery/345236692_541253941542792_4914345624326141021_n.jpg',
+    'media/gallery/345253901_782812706750489_6051513752982037103_n.jpg',
+    'media/gallery/345284287_1878636139179609_4689854632059557225_n.jpg',
+    'media/gallery/345294531_6077862532280881_1806030446446752319_n.jpg',
+    'media/gallery/345335836_1545601859299559_3872120959882193867_n.jpg',
+    'media/gallery/345425621_988815542111156_7719570453859054467_n.jpg',
+    'media/gallery/345451064_949885779469889_4933416601372489046_n.jpg',
+    'media/gallery/345451925_979711546544924_575981413657625667_n.jpg',
+    'media/gallery/345910251_2215797558608550_5689342009742912294_n.jpg',
+    'media/gallery/346034704_1384138739042774_3594522735310480361_n.jpg',
+    'media/gallery/346089246_1295694091037694_1047787552607849183_n.jpg',
+    'media/gallery/346825304_632740788335845_4028670699929351107_n.jpg',
+    'media/gallery/346853559_585500766713846_6539495199911882031_n.jpg',
+    'media/gallery/346876533_952292005908872_742900284734807926_n.jpg',
+    'media/gallery/346891736_1163115721752870_6176820149193283671_n.jpg',
+    'media/gallery/346955266_918730626016907_105065766104230068_n.jpg',
+    'media/gallery/346956736_268449775773896_1538686638317794532_n.jpg',
+    'media/gallery/346958475_125999527116705_574779803459196034_n.jpg',
+    'media/gallery/346958833_1663780170725996_7400386954533978010_n.jpg',
+    'media/gallery/347236353_192881030390065_3404346459976607348_n.jpg',
+    'media/gallery/347258930_1439470916592646_1537996105934801002_n.jpg',
+    'media/gallery/347551289_205342999013540_8887140145514507772_n.jpg',
+    'media/gallery/347584312_1018035372938560_7505632926093679927_n.jpg',
+    'media/gallery/347592855_584783540423436_9049356103939879611_n.jpg',
+    'media/gallery/347625267_1266314300959224_2942113432347762595_n.jpg',
+    'media/gallery/347627297_232361499417923_6777261920046253918_n.jpg',
+    'media/gallery/347651960_3495882093988231_7312470524049870524_n.jpg',
+    'media/gallery/347654950_736052378267291_1776322422044547586_n.jpg',
+    'media/gallery/347812713_219432660815168_8679624174143384964_n.jpg',
+    'media/gallery/347817878_114472688311044_8998177254968994355_n.jpg',
+    'media/gallery/347853376_277314564723438_3697378470720422071_n.jpg',
+    'media/gallery/348266462_1438557670303503_5475392096409852116_n.jpg',
+    'media/gallery/348439390_6200018180075681_3093517304447496341_n.jpg',
+    'media/gallery/348464643_6303748469674739_4204666295527995440_n.jpg',
+    'media/gallery/348566809_989868312185202_5378484020771573852_n.jpg',
+    'media/gallery/348574701_813751333799801_4177624414942718009_n.jpg',
+    'media/gallery/348578534_938497520589461_6679218118805552033_n.jpg',
+    'media/gallery/348628396_230103186412936_7204535474177517024_n.jpg',
+    'media/gallery/348637125_201981595998554_6407031594274341004_n.jpg',
+    'media/gallery/348644276_199529173027296_6796689185219661153_n.jpg',
+    'media/gallery/348843924_245859454706749_247751447852670948_n.jpg',
+    'media/gallery/349061260_555147163467929_8849220963521261176_n.jpg',
+    'media/gallery/349954659_243028345004635_71249476606081037_n.jpg',
+    'media/gallery/349982341_2502861853224180_4137828576182953314_n.jpg',
+    'media/gallery/349984186_674905487739767_481659672367373431_n.jpg',
+    'media/gallery/350103948_267722859149732_1368407433162666803_n.jpg',
+    'media/gallery/350105523_249070234376406_980336414824071859_n.jpg',
+    'media/gallery/350122337_1598008997276725_915697318935827634_n.jpg',
+    'media/gallery/350129506_779088507139865_4702335929991873815_n.jpg',
+    'media/gallery/350249377_580548470867530_6498451935259677506_n.jpg',
+    'media/gallery/350505305_781450413690067_7024403167577224266_n.jpg',
+    'media/gallery/350688813_215639594687496_2434116678100929137_n.jpg',
+    'media/gallery/350826939_757078982817701_2385609026383880937_n.jpg',
+    'media/gallery/351478833_192864100391758_2675387756513557134_n.jpg',
+    'media/gallery/351484761_192884907056344_2645853829347980680_n.jpg',
     'media/gallery/351504221_196037950074373_6618243503005526610_n.jpg',
     'media/gallery/351537149_192853390392829_3710335561566961680_n.jpg',
+    'media/gallery/351552016_192885427056292_5451089049737866046_n.jpg',
+    'media/gallery/351604771_192870010391167_4485984550830658788_n.jpg',
+    'media/gallery/351836293_192870110391157_7536480987707284417_n.jpg',
+    'media/gallery/351939405_192870073724494_704804602734159486_n.jpg',
+    'media/gallery/352092074_192870247057810_1308313556299505305_n.jpg',
     'media/gallery/352093425_196037896741045_4538652577295449496_n.jpg',
+    'media/gallery/352164754_192876280390540_851980039878066024_n.jpg',
+    'media/gallery/352300937_192853433726158_867725401097427415_n.jpg',
+    'media/gallery/352401533_192870157057819_6956980767888929315_n.jpg',
+    'media/gallery/352509740_196019410076227_7839468165203893146_n.jpg',
+    'media/gallery/352579768_192864263725075_2983954310032551271_n.jpg',
+    'media/gallery/352654023_192864147058420_4401273486975787133_n.jpg',
     'media/gallery/352682786_192864070391761_7916648548456386436_n.jpg',
+    'media/gallery/352687088_192864227058412_8179340683735602037_n.jpg',
     'media/gallery/352690044_192863360391832_4720255488610132407_n.jpg',
+    'media/gallery/352700143_192864200391748_7026150372632815673_n.jpg',
+    'media/gallery/353413061_196019453409556_3720905858432046832_n.jpg',
+    'media/gallery/353643658_196019603409541_3176351429261850977_n.jpg',
     'media/gallery/353849623_196038030074365_2698936529247807963_n.jpg',
+    'media/gallery/354044056_198242263187275_2565726021888776185_n.jpg',
+    'media/gallery/354072449_198242219853946_800147767114681595_n.jpg',
+    'media/gallery/354207365_198242166520618_6139039091250864062_n.jpg',
     'media/gallery/354210934_198232066521628_6127241452408256161_n.jpg',
+    'media/gallery/354233674_198242306520604_8313034540195118711_n.jpg',
     'media/gallery/354262338_198242353187266_1108444128404986259_n.jpg',
+    'media/gallery/354427393_198242403187261_9169260719676916061_n.jpg',
+    'media/gallery/354435890_198242459853922_5556473697233263300_n.jpg',
+    'media/gallery/354458330_198242493187252_7258640534305352168_n.jpg',
     'media/gallery/354652830_198253586519476_5824370469187053897_n.jpg',
     'media/gallery/358409016_214319411579560_4318920271489602448_n.jpg',
     'media/gallery/358467263_214319291579572_8613533900586299362_n.jpg',
+    'media/gallery/358603290_214319361579565_7016806239886907031_n.jpg',
+    'media/gallery/cropped-photo_2023-07-13_15-52-37.jpg',
   ];
   let currentIndex = 0;
 
@@ -1096,6 +1305,56 @@
       header.classList.remove('shadow-md');
     }
   });
+
+  // Expandable gallery
+  const _shownInGrid = new Set([
+    'media/gallery/photo_2023-07-13_15-52-37.jpg',
+    'media/gallery/351504221_196037950074373_6618243503005526610_n.jpg',
+    'media/gallery/351537149_192853390392829_3710335561566961680_n.jpg',
+    'media/gallery/352093425_196037896741045_4538652577295449496_n.jpg',
+    'media/gallery/352682786_192864070391761_7916648548456386436_n.jpg',
+    'media/gallery/352690044_192863360391832_4720255488610132407_n.jpg',
+    'media/gallery/353849623_196038030074365_2698936529247807963_n.jpg',
+    'media/gallery/354210934_198232066521628_6127241452408256161_n.jpg',
+    'media/gallery/354262338_198242353187266_1108444128404986259_n.jpg',
+    'media/gallery/354652830_198253586519476_5824370469187053897_n.jpg',
+    'media/gallery/358409016_214319411579560_4318920271489602448_n.jpg',
+    'media/gallery/358467263_214319291579572_8613533900586299362_n.jpg',
+  ]);
+  const _extraPhotos = galleryPhotos.filter(p => !_shownInGrid.has(p));
+  let _galleryRendered = false;
+
+  function toggleGallery() {
+    const wrap = document.getElementById('gallery-expand-wrap');
+    const btn  = document.getElementById('gallery-toggle-btn');
+    const txt  = document.getElementById('gallery-toggle-text');
+    const isOpen = wrap.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+
+    if (isOpen && !_galleryRendered) {
+      _galleryRendered = true;
+      const grid = document.getElementById('gallery-all-grid');
+      const frag = document.createDocumentFragment();
+      _extraPhotos.forEach(src => {
+        const div = document.createElement('div');
+        div.className = 'gallery-all-item scroll-reveal';
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = '';
+        img.loading = 'lazy';
+        img.addEventListener('click', () => openLightbox(src));
+        div.appendChild(img);
+        frag.appendChild(div);
+      });
+      grid.appendChild(frag);
+      grid.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
+    }
+
+    const lang = localStorage.getItem('lang') || 'uk';
+    txt.textContent = isOpen
+      ? (lang === 'en' ? 'Collapse' : 'Сховати')
+      : (lang === 'en' ? `Show all ${_extraPhotos.length} photos` : `Ще ${_extraPhotos.length} фотографій`);
+  }
 
   // Scroll-reveal observer
   const revealObserver = new IntersectionObserver((entries) => {
@@ -1203,6 +1462,7 @@
       'partners.title': 'Станьте нашим партнером',
       'partners.desc': 'Шукаємо партнерів для фінансової та організаційної підтримки дітей, постраждалих під час війни. Разом ми зможемо зробити більше.',
       'partners.btn': 'Обговорити партнерство',
+      'gallery.showAll': 'Ще 150 фотографій',
       'video.badge': 'Наша робота у дії',
       'video.text': 'Кожен день — нова історія турботи',
       'gallery.label': 'Наша діяльність', 'gallery.title': 'Фотогалерея',
@@ -1264,6 +1524,7 @@
       'partners.title': 'Become our partner',
       'partners.desc': 'We are looking for partners for financial and organizational support of children affected by the war. Together we can do more.',
       'partners.btn': 'Discuss partnership',
+      'gallery.showAll': 'Show all 150 photos',
       'video.badge': 'Our work in action',
       'video.text': 'Every day — a new story of care',
       'gallery.label': 'Our activities', 'gallery.title': 'Photo Gallery',
