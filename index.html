@@ -1305,7 +1305,8 @@
         img.src = src;
         img.alt = '';
         img.loading = 'lazy';
-        img.addEventListener('click', () => openLightbox(src));
+        div.style.cursor = 'pointer';
+        div.addEventListener('click', () => openLightbox(src));
         div.appendChild(img);
         frag.appendChild(div);
       });
