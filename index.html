@@ -616,7 +616,7 @@
           </div>
           <div>
             <div class="font-bold text-gray-900 text-xl">Ощадбанк</div>
-            <div class="text-gray-400 text-sm">Банківський переказ</div>
+            <div class="text-gray-400 text-sm" data-i18n="donate.oschadbank.sub">Банківський переказ</div>
           </div>
         </div>
 
@@ -625,7 +625,7 @@
           <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">IBAN</div>
           <div class="flex items-center gap-2 bg-gray-50 rounded-2xl px-4 py-3 border border-gray-100">
             <code id="iban-text" class="text-gray-800 font-mono text-sm flex-1 select-all leading-relaxed">UA28 3226 6900 0002 6003 3008 4391 2</code>
-            <button onclick="copyIBAN()" id="copy-btn" title="Скопіювати IBAN"
+            <button onclick="copyIBAN()" id="copy-btn" data-i18n-title="donate.copy.title" title="Скопіювати IBAN"
               class="flex-shrink-0 w-9 h-9 rounded-xl bg-white border border-gray-200 hover:border-green-400 hover:bg-green-50 flex items-center justify-center transition-all group">
               <svg id="copy-icon" class="w-4 h-4 text-gray-400 group-hover:text-green-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -636,19 +636,19 @@
               </svg>
             </button>
           </div>
-          <p id="copy-toast" class="text-green-600 text-xs mt-1.5 ml-1 h-4 transition-opacity opacity-0">Скопійовано!</p>
+          <p id="copy-toast" class="text-green-600 text-xs mt-1.5 ml-1 h-4 transition-opacity opacity-0" data-i18n="donate.copied">Скопійовано!</p>
         </div>
 
         <!-- QR code -->
         <div class="mb-6">
-          <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">QR-код для переказу</div>
+          <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2" data-i18n="donate.qr.label">QR-код для переказу</div>
           <button onclick="openOschadQR()" class="w-full flex items-center gap-4 bg-gray-50 rounded-2xl px-4 py-3 border border-gray-100 hover:border-green-300 hover:bg-green-50 transition-all group cursor-zoom-in">
             <div class="bg-white rounded-xl p-1.5 shadow-sm flex-shrink-0">
               <img src="docs/oschadbank-qr.png?v=2" alt="QR-код Ощадбанк" class="w-16 h-16 object-contain block">
             </div>
             <div class="text-left">
-              <div class="text-gray-700 text-sm font-medium group-hover:text-green-700 transition-colors">Відскануйте камерою</div>
-              <div class="text-gray-400 text-xs mt-0.5">Натисніть щоб збільшити</div>
+              <div class="text-gray-700 text-sm font-medium group-hover:text-green-700 transition-colors" data-i18n="donate.qr.scan">Відскануйте камерою</div>
+              <div class="text-gray-400 text-xs mt-0.5" data-i18n="donate.qr.zoom">Натисніть щоб збільшити</div>
             </div>
             <svg class="w-5 h-5 text-gray-300 group-hover:text-green-400 ml-auto transition-colors flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
@@ -658,14 +658,14 @@
 
         <!-- Documents -->
         <div class="mt-auto">
-          <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Документи</div>
+          <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3" data-i18n="donate.docs.label">Документи</div>
           <div class="space-y-2">
             <a href="docs/oschadbank-rekv.pdf" target="_blank" rel="noopener noreferrer"
               class="flex items-center gap-3 px-4 py-3 rounded-xl border border-gray-100 hover:border-green-300 hover:bg-green-50 transition-all group">
               <svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM9.5 17.5v-1h5v1h-5zm0-2.5v-1h5v1h-5zm0-2.5v-1h5v1h-5z"/>
               </svg>
-              <span class="text-gray-700 text-sm group-hover:text-green-700 font-medium transition-colors">Реквізити рахунку</span>
+              <span class="text-gray-700 text-sm group-hover:text-green-700 font-medium transition-colors" data-i18n="donate.docs.rekv">Реквізити рахунку</span>
               <svg class="w-4 h-4 text-gray-300 group-hover:text-green-400 ml-auto transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
               </svg>
@@ -675,7 +675,7 @@
               <svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM9.5 17.5v-1h5v1h-5zm0-2.5v-1h5v1h-5zm0-2.5v-1h5v1h-5z"/>
               </svg>
-              <span class="text-gray-700 text-sm group-hover:text-green-700 font-medium transition-colors">Довідка про рахунок</span>
+              <span class="text-gray-700 text-sm group-hover:text-green-700 font-medium transition-colors" data-i18n="donate.docs.cert">Довідка про рахунок</span>
               <svg class="w-4 h-4 text-gray-300 group-hover:text-green-400 ml-auto transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
               </svg>
@@ -685,7 +685,7 @@
               <svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM9.5 17.5v-1h5v1h-5zm0-2.5v-1h5v1h-5zm0-2.5v-1h5v1h-5z"/>
               </svg>
-              <span class="text-gray-700 text-sm group-hover:text-green-700 font-medium transition-colors">Додаткові документи</span>
+              <span class="text-gray-700 text-sm group-hover:text-green-700 font-medium transition-colors" data-i18n="donate.docs.other">Додаткові документи</span>
               <svg class="w-4 h-4 text-gray-300 group-hover:text-green-400 ml-auto transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
               </svg>
@@ -697,7 +697,7 @@
             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
             </svg>
-            Відкрити в додатку
+            <span data-i18n="donate.open_app">Відкрити в додатку</span>
           </a>
         </div>
       </div>
@@ -711,7 +711,7 @@
           </div>
           <div>
             <div class="font-bold text-white text-xl">Монобанк</div>
-            <div class="text-gray-400 text-sm">Швидкий переказ за QR</div>
+            <div class="text-gray-400 text-sm" data-i18n="donate.mono.sub">Швидкий переказ за QR</div>
           </div>
         </div>
 
@@ -729,7 +729,7 @@
             </div>
           </button>
           <p class="text-gray-400 text-sm text-center leading-relaxed max-w-xs">
-            Натисніть на QR-код або наведіть камеру телефону для швидкого переказу
+            <span data-i18n="donate.mono.tip">Натисніть на QR-код або наведіть камеру телефону для швидкого переказу</span>
           </p>
         </div>
 
@@ -746,7 +746,7 @@
           <svg class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
           </svg>
-          <span class="text-gray-400 text-xs">Працює з Монобанком, Приват24 та іншими</span>
+          <span class="text-gray-400 text-xs" data-i18n="donate.mono.works">Працює з Монобанком, Приват24 та іншими</span>
         </div>
       </div>
 
@@ -949,7 +949,7 @@
     </button>
     <div class="text-center mb-4">
       <div class="font-bold text-gray-900 text-lg">Ощадбанк</div>
-      <div class="text-gray-400 text-sm">Наведіть камеру на QR-код</div>
+      <div class="text-gray-400 text-sm" data-i18n="donate.modal.camera">Наведіть камеру на QR-код</div>
     </div>
     <img src="docs/oschadbank-qr.png?v=2" alt="QR-код Ощадбанк" class="w-full rounded-2xl mb-4">
     <a href="https://bank.gov.ua/qr/QkNECjAwMgoyClVDVAoKwc4gIszB1CAixLLMIMTOwdDI1SDRz9DAwiIKVUEyODMyMjY2OTAwMDAwMjYwMDMzMDA4NDM5MTIKCjQ1MDI1MTU2CgoKCg"
@@ -973,7 +973,7 @@
     </button>
     <div class="text-center mb-4">
       <div class="font-bold text-gray-900 text-lg">Монобанк</div>
-      <div class="text-gray-400 text-sm">Наведіть камеру на QR-код</div>
+      <div class="text-gray-400 text-sm" data-i18n="donate.modal.camera">Наведіть камеру на QR-код</div>
     </div>
     <img src="docs/monobank-qr.jpg" alt="QR-код Монобанк" class="w-full rounded-2xl mb-4">
     <a href="https://bank.gov.ua/qr/QkNECjAwMgoxClVDVAoK0JHQniAi0JzQkdCkICLQlNCG0Jwg0JTQntCR0KDQmNClINCh0J_QoNCQ0JIiClVBNTIzMjIwMDEwMDAwMDI2MDAwNzAwMDE3MDE5Cgo0NTAyNTE1NgoKCgoK"
@@ -1625,6 +1625,12 @@
       'transp.b1': 'Щомісячні звіти', 'transp.b2': 'Фотозвітність', 'transp.b3': 'Особиста участь', 'transp.b4': 'Офіційна реєстрація',
       'donate.label': 'Підтримайте нас', 'donate.title': 'Кожна гривня рятує',
       'donate.desc': 'Малий щоденний внесок дозволяє нам забезпечувати програми допомоги для сотень людей',
+      'donate.oschadbank.sub': 'Банківський переказ', 'donate.mono.sub': 'Швидкий переказ за QR',
+      'donate.qr.label': 'QR-код для переказу', 'donate.qr.scan': 'Відскануйте камерою', 'donate.qr.zoom': 'Натисніть щоб збільшити',
+      'donate.docs.label': 'Документи', 'donate.docs.rekv': 'Реквізити рахунку', 'donate.docs.cert': 'Довідка про рахунок', 'donate.docs.other': 'Додаткові документи',
+      'donate.open_app': 'Відкрити в додатку', 'donate.copy.title': 'Скопіювати IBAN', 'donate.copied': 'Скопійовано!',
+      'donate.mono.tip': 'Натисніть на QR-код або наведіть камеру телефону для швидкого переказу',
+      'donate.mono.works': 'Працює з Монобанком, Приват24 та іншими', 'donate.modal.camera': 'Наведіть камеру на QR-код',
       'donate.o1.period': 'разова допомога', 'donate.o1.text': 'Продуктовий набір для однієї людини на тиждень', 'donate.o1.btn': 'Підтримати',
       'donate.o2.badge': 'Популярне', 'donate.o2.period': 'щомісячно', 'donate.o2.text': 'Стабільна підтримка програм розвитку для дітей', 'donate.o2.btn': 'Підтримати',
       'donate.o3.amount': 'Своя', 'donate.o3.period': 'сума', 'donate.o3.text': 'Будь-який розмір внеску є важливим і цінним для нас', 'donate.o3.btn': 'Написати нам',
@@ -1687,6 +1693,12 @@
       'transp.b1': 'Monthly reports', 'transp.b2': 'Photo reporting', 'transp.b3': 'Personal participation', 'transp.b4': 'Official registration',
       'donate.label': 'Support us', 'donate.title': 'Every hryvnia saves',
       'donate.desc': 'A small daily contribution allows us to provide assistance programs for hundreds of people',
+      'donate.oschadbank.sub': 'Bank transfer', 'donate.mono.sub': 'Quick transfer by QR',
+      'donate.qr.label': 'QR code for transfer', 'donate.qr.scan': 'Scan with camera', 'donate.qr.zoom': 'Click to enlarge',
+      'donate.docs.label': 'Documents', 'donate.docs.rekv': 'Account details', 'donate.docs.cert': 'Account certificate', 'donate.docs.other': 'Additional documents',
+      'donate.open_app': 'Open in app', 'donate.copy.title': 'Copy IBAN', 'donate.copied': 'Copied!',
+      'donate.mono.tip': 'Tap the QR code or point your phone camera for a quick transfer',
+      'donate.mono.works': 'Works with Monobank, Privat24 and others', 'donate.modal.camera': 'Point your camera at the QR code',
       'donate.o1.period': 'one-time help', 'donate.o1.text': 'A food package for one person for a week', 'donate.o1.btn': 'Support',
       'donate.o2.badge': 'Popular', 'donate.o2.period': 'monthly', 'donate.o2.text': "Stable support for children's development programs", 'donate.o2.btn': 'Support',
       'donate.o3.amount': 'Custom', 'donate.o3.period': 'amount', 'donate.o3.text': 'Any size contribution is important and valuable to us', 'donate.o3.btn': 'Contact us',
@@ -1762,6 +1774,10 @@
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
       const v = translations[lang]?.[el.dataset.i18nPlaceholder];
       if (v !== undefined) el.placeholder = v;
+    });
+    document.querySelectorAll('[data-i18n-title]').forEach(el => {
+      const v = translations[lang]?.[el.dataset.i18nTitle];
+      if (v !== undefined) el.title = v;
     });
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.lang === lang);
