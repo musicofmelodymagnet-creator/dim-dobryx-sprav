@@ -696,12 +696,19 @@
 
         <!-- QR code -->
         <div class="flex-1 flex flex-col items-center justify-center">
-          <div class="bg-white rounded-2xl p-4 shadow-inner mb-5 inline-block">
+          <button onclick="openQR()" class="bg-white rounded-2xl p-4 shadow-inner mb-5 inline-block cursor-zoom-in hover:shadow-lg transition-shadow group relative">
             <img src="docs/monobank-qr.jpg" alt="QR-код для переказу на Монобанк"
               class="w-52 h-52 object-contain block">
-          </div>
+            <div class="absolute inset-0 rounded-2xl bg-black/0 group-hover:bg-black/10 transition-all flex items-center justify-center">
+              <div class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 rounded-full p-2">
+                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                </svg>
+              </div>
+            </div>
+          </button>
           <p class="text-gray-400 text-sm text-center leading-relaxed max-w-xs">
-            Наведіть камеру телефону на QR-код — і переказ відбудеться автоматично
+            Натисніть на QR-код або наведіть камеру телефону для швидкого переказу
           </p>
         </div>
 
@@ -902,6 +909,22 @@
     </div>
   </div>
 </section>
+
+<!-- ─── QR MODAL ─── -->
+<div id="qr-modal" class="fixed inset-0 z-[999] bg-black/80 hidden items-center justify-center p-6" onclick="closeQR()">
+  <div class="relative bg-white rounded-3xl p-6 shadow-2xl max-w-sm w-full" onclick="event.stopPropagation()">
+    <button onclick="closeQR()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 transition-colors">
+      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <div class="text-center mb-4">
+      <div class="font-bold text-gray-900 text-lg">Монобанк</div>
+      <div class="text-gray-400 text-sm">Наведіть камеру на QR-код</div>
+    </div>
+    <img src="docs/monobank-qr.jpg" alt="QR-код Монобанк" class="w-full rounded-2xl">
+  </div>
+</div>
 
 <!-- ─── LIGHTBOX ─── -->
 <div id="lightbox" class="fixed inset-0 z-[999] bg-black/90 hidden items-center justify-center p-4" onclick="closeLightbox(event)">
@@ -1296,6 +1319,17 @@
   ];
   let currentIndex = 0;
 
+  function openQR() {
+    const modal = document.getElementById('qr-modal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
+  function closeQR() {
+    const modal = document.getElementById('qr-modal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+
   function copyIBAN() {
     const iban = 'UA283226690000026003300843912';
     navigator.clipboard.writeText(iban).then(() => {
@@ -1343,6 +1377,9 @@
   }
 
   document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !document.getElementById('qr-modal').classList.contains('hidden')) {
+      closeQR(); return;
+    }
     const lb = document.getElementById('lightbox');
     if (lb.classList.contains('hidden')) return;
     if (e.key === 'Escape')     closeLightbox({ target: lb });
