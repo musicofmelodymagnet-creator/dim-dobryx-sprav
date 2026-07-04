@@ -9,7 +9,7 @@
   <meta name="robots" content="index, follow" />
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com;
+    script-src 'self' 'unsafe-inline';
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
     img-src 'self' data:;
@@ -25,14 +25,16 @@
   <meta property="og:url" content="https://dimdsprav.pp.ua/" />
   <meta property="og:title" content="БО МБФ «Дім Добрих Справ» — Волонтерський фонд" />
   <meta property="og:description" content="Допомагаємо дітям, літнім людям, захисникам України та сім'ям у скрутному становищі. Офіційно зареєстрований неприбутковий фонд." />
-  <meta property="og:image" content="https://musicofmelodymagnet-creator.github.io/dim-dobryx-sprav/media/gallery/photo_2023-07-13_15-52-37.jpg" />
+  <meta property="og:image" content="https://dimdsprav.pp.ua/media/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="uk_UA" />
   <meta property="og:site_name" content="Дім Добрих Справ" />
   <!-- Twitter / X Cards -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="БО МБФ «Дім Добрих Справ» — Волонтерський фонд" />
   <meta name="twitter:description" content="Допомагаємо дітям, літнім людям, захисникам України та сім'ям у скрутному становищі. Офіційно зареєстрований неприбутковий фонд." />
-  <meta name="twitter:image" content="https://musicofmelodymagnet-creator.github.io/dim-dobryx-sprav/media/gallery/photo_2023-07-13_15-52-37.jpg" />
+  <meta name="twitter:image" content="https://dimdsprav.pp.ua/media/og-image.jpg" />
   <!-- hreflang -->
   <link rel="alternate" hreflang="uk" href="https://dimdsprav.pp.ua/" />
   <link rel="alternate" hreflang="en" href="https://dimdsprav.pp.ua/" />
@@ -45,7 +47,7 @@
     "name": "БО МБФ «Дім Добрих Справ»",
     "alternateName": "House of Good Deeds Charitable Fund",
     "url": "https://dimdsprav.pp.ua",
-    "image": "https://musicofmelodymagnet-creator.github.io/dim-dobryx-sprav/media/gallery/photo_2023-07-13_15-52-37.jpg",
+    "image": "https://dimdsprav.pp.ua/media/og-image.jpg",
     "description": "Офіційно зареєстрований благодійний фонд. Допомагаємо дітям, літнім людям, захисникам України та сім'ям у скрутному становищі.",
     "taxID": "45025156",
     "address": {
@@ -67,33 +69,7 @@
     }
   }
   </script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: {
-              50:  '#f0fdf4',
-              100: '#dcfce7',
-              200: '#bbf7d0',
-              300: '#86efac',
-              400: '#4ade80',
-              500: '#22c55e',
-              600: '#16a34a',
-              700: '#15803d',
-              800: '#166534',
-              900: '#14532d',
-            }
-          },
-          fontFamily: {
-            sans: ['Nunito', 'sans-serif'],
-            serif: ['Cormorant Garamond', 'serif'],
-          }
-        }
-      }
-    }
-  </script>
+  <link rel="stylesheet" href="assets/tailwind.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700;800&family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -348,7 +324,7 @@
           </svg>
         </div>
         <div class="hidden sm:block">
-          <div class="text-sm font-800 text-primary-800 leading-tight font-bold">Дім Добрих Справ</div>
+          <div class="text-sm text-primary-800 leading-tight font-bold">Дім Добрих Справ</div>
           <div class="text-xs text-gray-500">БО МБФ</div>
         </div>
       </a>
@@ -404,31 +380,52 @@
   <div class="absolute bottom-10 left-0 w-96 h-96 bg-black/10 rounded-full blur-3xl"></div>
   <div class="absolute top-1/2 left-1/3 w-48 h-48 bg-primary-400/20 rounded-full blur-2xl"></div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-    <div class="max-w-3xl">
-      <!-- Бейдж -->
-      <div class="fade-in inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium px-4 py-2 rounded-full mb-6">
-        <span class="w-2 h-2 bg-green-300 rounded-full animate-pulse"></span>
-        <span data-i18n="hero.badge">Незалежний волонтерський фонд</span>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
+    <div class="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-16 items-center">
+      <div class="max-w-3xl">
+        <!-- Бейдж -->
+        <div class="fade-in inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium px-4 py-2 rounded-full mb-6">
+          <span class="w-2 h-2 bg-green-300 rounded-full animate-pulse"></span>
+          <span data-i18n="hero.badge">Незалежний волонтерський фонд</span>
+        </div>
+
+        <h1 class="fade-in font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6" data-i18n-html="hero.title">
+          Дім<br/>
+          <span class="text-green-300">Добрих</span><br/>
+          Справ
+        </h1>
+
+        <p class="fade-in-delay text-xl text-white/80 leading-relaxed mb-10 max-w-xl" data-i18n="hero.desc">
+          Покращуємо якість життя тих, хто опинився в скрутному становищі. Діти, літні люди, захисники України — разом до перемоги.
+        </p>
+
+        <div class="fade-in-delay-2 flex flex-col sm:flex-row gap-4">
+          <a href="#donate" class="bg-white text-primary-700 hover:bg-primary-50 font-bold px-8 py-4 rounded-2xl text-lg shadow-xl hover:shadow-2xl transition-all text-center" data-i18n="hero.btn1">
+            Задонатити зараз
+          </a>
+          <a href="#about" class="border-2 border-white/40 hover:border-white text-white font-semibold px-8 py-4 rounded-2xl text-lg transition-all text-center hover:bg-white/10" data-i18n="hero.btn2">
+            Дізнатись більше
+          </a>
+        </div>
       </div>
 
-      <h1 class="fade-in font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6" data-i18n-html="hero.title">
-        Дім<br/>
-        <span class="text-green-300">Добрих</span><br/>
-        Справ
-      </h1>
-
-      <p class="fade-in-delay text-xl text-white/80 leading-relaxed mb-10 max-w-xl" data-i18n="hero.desc">
-        Покращуємо якість життя тих, хто опинився в скрутному становищі. Діти, літні люди, захисники України — разом до перемоги.
-      </p>
-
-      <div class="fade-in-delay-2 flex flex-col sm:flex-row gap-4">
-        <a href="#donate" class="bg-white text-primary-700 hover:bg-primary-50 font-bold px-8 py-4 rounded-2xl text-lg shadow-xl hover:shadow-2xl transition-all text-center" data-i18n="hero.btn1">
-          Задонатити зараз
-        </a>
-        <a href="#about" class="border-2 border-white/40 hover:border-white text-white font-semibold px-8 py-4 rounded-2xl text-lg transition-all text-center hover:bg-white/10" data-i18n="hero.btn2">
-          Дізнатись більше
-        </a>
+      <!-- Фото — реальний момент з галереї -->
+      <div class="hidden lg:block relative fade-in-delay w-[380px] xl:w-[420px] justify-self-end mr-2">
+        <div class="absolute -top-5 -left-5 w-full h-full rounded-[2rem] border-2 border-white/15"></div>
+        <div class="absolute -bottom-5 -right-5 w-full h-full rounded-[2rem] bg-white/5"></div>
+        <div class="relative rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-white/20" style="transform: rotate(1.5deg);">
+          <img src="media/hero-photo.webp" alt="Щаслива дитина — підопічна фонду «Дім Добрих Справ»"
+               width="903" height="1200" fetchpriority="high"
+               class="w-full h-[480px] xl:h-[520px] object-cover block"/>
+          <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-6 pt-14 pb-5">
+            <p class="text-white/95 font-semibold text-sm flex items-center gap-2">
+              <svg class="w-4 h-4 text-green-300 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+              <span data-i18n="hero.photo.caption">Реальний момент з нашої роботи</span>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -446,20 +443,20 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6" id="stats-grid">
       <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover scroll-reveal">
-        <div class="font-serif text-4xl font-bold text-primary-600 mb-1 stat-number" data-target="∞">∞</div>
-        <div class="text-gray-500 text-sm font-medium" data-i18n="stats.s1">Допомоги без меж</div>
-      </div>
-      <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover scroll-reveal">
-        <div class="font-serif text-4xl font-bold text-primary-600 mb-1 stat-number" data-target="100">100%</div>
-        <div class="text-gray-500 text-sm font-medium" data-i18n="stats.s2">Прозорість</div>
-      </div>
-      <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover scroll-reveal">
-        <div class="font-serif text-4xl font-bold text-primary-600 mb-1 stat-number" data-target="0">0</div>
-        <div class="text-gray-500 text-sm font-medium" data-i18n="stats.s3">Прихованих витрат</div>
+        <div class="font-serif text-4xl font-bold text-primary-600 mb-1 stat-number">2023</div>
+        <div class="text-gray-500 text-sm font-medium" data-i18n="stats.s1">Допомагаємо з 2023 року</div>
       </div>
       <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover scroll-reveal">
         <div class="font-serif text-4xl font-bold text-primary-600 mb-1 stat-number" data-target="4">4</div>
-        <div class="text-gray-500 text-sm font-medium" data-i18n="stats.s4">Напрямки допомоги</div>
+        <div class="text-gray-500 text-sm font-medium" data-i18n="stats.s2">Напрямки допомоги</div>
+      </div>
+      <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover scroll-reveal">
+        <div class="font-serif text-4xl font-bold text-primary-600 mb-1 stat-number" data-target="160" data-suffix="+">160+</div>
+        <div class="text-gray-500 text-sm font-medium" data-i18n="stats.s3">Фото у публічних звітах</div>
+      </div>
+      <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover scroll-reveal">
+        <div class="font-serif text-4xl font-bold text-primary-600 mb-1 stat-number" data-target="100" data-suffix="%">100%</div>
+        <div class="text-gray-500 text-sm font-medium" data-i18n="stats.s4">Прозорість</div>
       </div>
     </div>
   </div>
@@ -520,7 +517,12 @@
       <!-- Visual card -->
       <div class="relative">
         <div class="bg-gradient-to-br from-primary-600 to-primary-800 rounded-3xl p-8 text-white shadow-2xl">
-          <div class="text-6xl mb-4">🏠</div>
+          <div class="w-16 h-16 bg-white/15 rounded-2xl flex items-center justify-center mb-5">
+            <svg class="w-9 h-9 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 10.5L12 3l9 7.5M5 9.5V20a1 1 0 001 1h12a1 1 0 001-1V9.5"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 17.2l-.72-.66c-2.06-1.87-3.42-3.1-3.42-4.62 0-1.23.97-2.2 2.2-2.2.7 0 1.37.32 1.94.9.57-.58 1.24-.9 1.94-.9 1.23 0 2.2.97 2.2 2.2 0 1.52-1.36 2.75-3.42 4.62l-.72.66z" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
           <h3 class="text-2xl font-bold mb-3" data-i18n="about.mission.title">Наша місія</h3>
           <p class="text-white/85 leading-relaxed text-lg" data-i18n="about.mission.text">
             Покращення якості життя незахищених верств населення, які опинились у скрутному становищі.
@@ -543,7 +545,8 @@
     <div class="video-reveal-container">
       <video
         src="media/358565357_1214281875913463_1163352374473208281_n.mp4"
-        autoplay muted loop playsinline
+        muted loop playsinline preload="none"
+        poster="media/video-poster.jpg"
         class="video-el"
       ></video>
       <!-- Overlay -->
@@ -571,7 +574,13 @@
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
       <!-- Card 1 -->
       <div class="bg-white rounded-2xl p-7 shadow-sm card-hover border border-gray-100 scroll-reveal">
-        <div class="w-14 h-14 bg-primary-100 rounded-2xl flex items-center justify-center mb-5 text-2xl">👶</div>
+        <div class="w-14 h-14 bg-primary-100 rounded-2xl flex items-center justify-center mb-5">
+          <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.998 11.5v3.75"/>
+          </svg>
+        </div>
         <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="services.c1.title">Діти</h3>
         <p class="text-gray-500 leading-relaxed text-sm" data-i18n="services.c1.text">
           Розвивальні заняття для дітей з інвалідністю, сиріт та дітей з багатодітних родин. Педагоги з досвідом роботи з особливими потребами.
@@ -579,7 +588,11 @@
       </div>
       <!-- Card 2 -->
       <div class="bg-white rounded-2xl p-7 shadow-sm card-hover border border-gray-100 scroll-reveal">
-        <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center mb-5 text-2xl">👴</div>
+        <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center mb-5">
+          <svg class="w-7 h-7 text-amber-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+          </svg>
+        </div>
         <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="services.c2.title">Літні люди</h3>
         <p class="text-gray-500 leading-relaxed text-sm" data-i18n="services.c2.text">
           Піклування та підтримка людей похилого віку. Опікуни з нашої команди надають як практичну, так і емоційну підтримку.
@@ -587,7 +600,11 @@
       </div>
       <!-- Card 3 -->
       <div class="bg-white rounded-2xl p-7 shadow-sm card-hover border border-gray-100 scroll-reveal">
-        <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-5 text-2xl">🛡️</div>
+        <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-5">
+          <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
         <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="services.c3.title">Захисники</h3>
         <p class="text-gray-500 leading-relaxed text-sm" data-i18n="services.c3.text">
           Підтримка військовослужбовців та їхніх сімей. Продуктова допомога, медикаменти та організаційна підтримка.
@@ -595,7 +612,11 @@
       </div>
       <!-- Card 4 -->
       <div class="bg-white rounded-2xl p-7 shadow-sm card-hover border border-gray-100 scroll-reveal">
-        <div class="w-14 h-14 bg-rose-100 rounded-2xl flex items-center justify-center mb-5 text-2xl">❤️</div>
+        <div class="w-14 h-14 bg-rose-100 rounded-2xl flex items-center justify-center mb-5">
+          <svg class="w-7 h-7 text-rose-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+        </div>
         <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="services.c4.title">Сім'ї</h3>
         <p class="text-gray-500 leading-relaxed text-sm" data-i18n="services.c4.text">
           Організація сімейних заходів та дозвілля. Продуктові набори, одяг та ліки для сімей у скрутному становищі.
@@ -614,19 +635,28 @@
         </div>
         <div class="grid grid-cols-2 gap-4">
           <div class="bg-white/10 rounded-2xl p-5 text-center">
-            <div class="text-3xl mb-2">📋</div>
+            <svg class="w-8 h-8 mx-auto mb-2 text-white/90" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+            </svg>
             <div class="font-semibold text-sm" data-i18n="transp.b1">Щомісячні звіти</div>
           </div>
           <div class="bg-white/10 rounded-2xl p-5 text-center">
-            <div class="text-3xl mb-2">📸</div>
+            <svg class="w-8 h-8 mx-auto mb-2 text-white/90" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
             <div class="font-semibold text-sm" data-i18n="transp.b2">Фотозвітність</div>
           </div>
           <div class="bg-white/10 rounded-2xl p-5 text-center">
-            <div class="text-3xl mb-2">🤝</div>
+            <svg class="w-8 h-8 mx-auto mb-2 text-white/90" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+            </svg>
             <div class="font-semibold text-sm" data-i18n="transp.b3">Особиста участь</div>
           </div>
           <div class="bg-white/10 rounded-2xl p-5 text-center">
-            <div class="text-3xl mb-2">✅</div>
+            <svg class="w-8 h-8 mx-auto mb-2 text-white/90" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+            </svg>
             <div class="font-semibold text-sm" data-i18n="transp.b4">Офіційна реєстрація</div>
           </div>
         </div>
@@ -653,7 +683,7 @@
         <!-- Header -->
         <div class="flex items-center gap-4 mb-7">
           <div class="w-14 h-14 rounded-2xl overflow-hidden shadow-md flex-shrink-0">
-            <img src="media/oschadbank-logo.png" alt="Ощадбанк" class="w-full h-full object-cover">
+            <img src="media/oschadbank-logo.png" alt="Ощадбанк" loading="lazy" decoding="async" class="w-full h-full object-cover">
           </div>
           <div>
             <div class="font-bold text-gray-900 text-xl">Ощадбанк</div>
@@ -685,7 +715,7 @@
           <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2" data-i18n="donate.qr.label">QR-код для переказу</div>
           <button onclick="openOschadQR()" class="w-full flex items-center gap-4 bg-gray-50 rounded-2xl px-4 py-3 border border-gray-100 hover:border-green-300 hover:bg-green-50 transition-all group cursor-zoom-in">
             <div class="bg-white rounded-xl p-1.5 shadow-sm flex-shrink-0">
-              <img src="docs/oschadbank-qr.png?v=2" alt="QR-код Ощадбанк" class="w-16 h-16 object-contain block">
+              <img src="docs/oschadbank-qr.png?v=2" alt="QR-код Ощадбанк" loading="lazy" decoding="async" class="w-16 h-16 object-contain block">
             </div>
             <div class="text-left">
               <div class="text-gray-700 text-sm font-medium group-hover:text-green-700 transition-colors" data-i18n="donate.qr.scan">Відскануйте камерою</div>
@@ -748,7 +778,7 @@
         <!-- Header -->
         <div class="flex items-center gap-4 mb-7">
           <div class="w-14 h-14 rounded-2xl overflow-hidden shadow-md flex-shrink-0">
-            <img src="media/monobank-logo.png" alt="Монобанк" class="w-full h-full object-cover">
+            <img src="media/monobank-logo.png" alt="Монобанк" loading="lazy" decoding="async" class="w-full h-full object-cover">
           </div>
           <div>
             <div class="font-bold text-white text-xl">Монобанк</div>
@@ -759,7 +789,7 @@
         <!-- QR code -->
         <div class="flex-1 flex flex-col items-center justify-center">
           <button onclick="openQR()" class="bg-white rounded-2xl p-4 shadow-inner mb-5 inline-block cursor-zoom-in hover:shadow-lg transition-shadow group relative">
-            <img src="docs/monobank-qr.jpg" alt="QR-код для переказу на Монобанк"
+            <img src="docs/monobank-qr.jpg" alt="QR-код для переказу на Монобанк" loading="lazy" decoding="async"
               class="w-52 h-52 object-contain block">
             <div class="absolute inset-0 rounded-2xl bg-black/0 group-hover:bg-black/10 transition-all flex items-center justify-center">
               <div class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 rounded-full p-2">
@@ -795,7 +825,12 @@
 
     <!-- Partners CTA -->
     <div class="mt-16 bg-gray-50 rounded-3xl p-8 lg:p-12 text-center">
-      <div class="text-4xl mb-4">🤝</div>
+      <div class="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
+        <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.636v5.114m-2.5-2.5h5"/>
+        </svg>
+      </div>
       <h3 class="text-2xl font-bold text-gray-900 mb-3" data-i18n="partners.title">Станьте нашим партнером</h3>
       <p class="text-gray-600 max-w-xl mx-auto mb-6" data-i18n="partners.desc">
         Шукаємо партнерів для фінансової та організаційної підтримки дітей, постраждалих під час війни. Разом ми зможемо зробити більше.
@@ -819,10 +854,10 @@
     <!-- Grid -->
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" id="gallery-grid">
       <!-- Велике фото — займає 2 колонки -->
-      <div class="col-span-2 row-span-2 gallery-item overflow-hidden rounded-2xl cursor-pointer relative group"
-           onclick="openLightbox('media/gallery/photo_2023-07-13_15-52-37.jpg')">
-        <img src="media/gallery/photo_2023-07-13_15-52-37.jpg"
-             alt="Дім Добрих Справ" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" style="min-height:300px"/>
+      <div class="col-span-2 row-span-2 aspect-square gallery-item overflow-hidden rounded-2xl cursor-pointer relative group"
+           onclick="openLightbox('media/gallery/347592855_584783540423436_9049356103939879611_n.jpg')">
+        <img src="media/gallery/thumbs/_big_347592855.webp" loading="lazy" decoding="async"
+             alt="Діти у мотузковому парку — активності від фонду" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
           <svg class="w-10 h-10 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
@@ -833,7 +868,7 @@
       <!-- Фото 2 -->
       <div class="gallery-item overflow-hidden rounded-2xl cursor-pointer relative group aspect-square"
            onclick="openLightbox('media/gallery/351504221_196037950074373_6618243503005526610_n.jpg')">
-        <img src="media/gallery/351504221_196037950074373_6618243503005526610_n.jpg"
+        <img src="media/gallery/thumbs/351504221_196037950074373_6618243503005526610_n.webp" loading="lazy" decoding="async"
              alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
           <svg class="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -845,7 +880,7 @@
       <!-- Фото 3 -->
       <div class="gallery-item overflow-hidden rounded-2xl cursor-pointer relative group aspect-square"
            onclick="openLightbox('media/gallery/351537149_192853390392829_3710335561566961680_n.jpg')">
-        <img src="media/gallery/351537149_192853390392829_3710335561566961680_n.jpg"
+        <img src="media/gallery/thumbs/351537149_192853390392829_3710335561566961680_n.webp" loading="lazy" decoding="async"
              alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
           <svg class="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -857,7 +892,7 @@
       <!-- Фото 4 -->
       <div class="gallery-item overflow-hidden rounded-2xl cursor-pointer relative group aspect-square"
            onclick="openLightbox('media/gallery/352093425_196037896741045_4538652577295449496_n.jpg')">
-        <img src="media/gallery/352093425_196037896741045_4538652577295449496_n.jpg"
+        <img src="media/gallery/thumbs/352093425_196037896741045_4538652577295449496_n.webp" loading="lazy" decoding="async"
              alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
           <svg class="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -869,7 +904,7 @@
       <!-- Фото 5 -->
       <div class="gallery-item overflow-hidden rounded-2xl cursor-pointer relative group aspect-square"
            onclick="openLightbox('media/gallery/352682786_192864070391761_7916648548456386436_n.jpg')">
-        <img src="media/gallery/352682786_192864070391761_7916648548456386436_n.jpg"
+        <img src="media/gallery/thumbs/352682786_192864070391761_7916648548456386436_n.webp" loading="lazy" decoding="async"
              alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
           <svg class="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -881,7 +916,7 @@
       <!-- Фото 6 -->
       <div class="gallery-item overflow-hidden rounded-2xl cursor-pointer relative group aspect-square"
            onclick="openLightbox('media/gallery/352690044_192863360391832_4720255488610132407_n.jpg')">
-        <img src="media/gallery/352690044_192863360391832_4720255488610132407_n.jpg"
+        <img src="media/gallery/thumbs/352690044_192863360391832_4720255488610132407_n.webp" loading="lazy" decoding="async"
              alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
           <svg class="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -893,7 +928,7 @@
       <!-- Фото 7 -->
       <div class="gallery-item overflow-hidden rounded-2xl cursor-pointer relative group aspect-square"
            onclick="openLightbox('media/gallery/353849623_196038030074365_2698936529247807963_n.jpg')">
-        <img src="media/gallery/353849623_196038030074365_2698936529247807963_n.jpg"
+        <img src="media/gallery/thumbs/353849623_196038030074365_2698936529247807963_n.webp" loading="lazy" decoding="async"
              alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
           <svg class="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -905,7 +940,7 @@
       <!-- Фото 8 -->
       <div class="gallery-item overflow-hidden rounded-2xl cursor-pointer relative group aspect-square"
            onclick="openLightbox('media/gallery/354210934_198232066521628_6127241452408256161_n.jpg')">
-        <img src="media/gallery/354210934_198232066521628_6127241452408256161_n.jpg"
+        <img src="media/gallery/thumbs/354210934_198232066521628_6127241452408256161_n.webp" loading="lazy" decoding="async"
              alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
           <svg class="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -917,7 +952,7 @@
       <!-- Фото 9 -->
       <div class="gallery-item overflow-hidden rounded-2xl cursor-pointer relative group aspect-square"
            onclick="openLightbox('media/gallery/354262338_198242353187266_1108444128404986259_n.jpg')">
-        <img src="media/gallery/354262338_198242353187266_1108444128404986259_n.jpg"
+        <img src="media/gallery/thumbs/354262338_198242353187266_1108444128404986259_n.webp" loading="lazy" decoding="async"
              alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
           <svg class="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -929,7 +964,7 @@
       <!-- Фото 10 -->
       <div class="gallery-item overflow-hidden rounded-2xl cursor-pointer relative group aspect-square"
            onclick="openLightbox('media/gallery/354652830_198253586519476_5824370469187053897_n.jpg')">
-        <img src="media/gallery/354652830_198253586519476_5824370469187053897_n.jpg"
+        <img src="media/gallery/thumbs/354652830_198253586519476_5824370469187053897_n.webp" loading="lazy" decoding="async"
              alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
           <svg class="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -941,7 +976,7 @@
       <!-- Фото 11 -->
       <div class="gallery-item overflow-hidden rounded-2xl cursor-pointer relative group aspect-square"
            onclick="openLightbox('media/gallery/358409016_214319411579560_4318920271489602448_n.jpg')">
-        <img src="media/gallery/358409016_214319411579560_4318920271489602448_n.jpg"
+        <img src="media/gallery/thumbs/358409016_214319411579560_4318920271489602448_n.webp" loading="lazy" decoding="async"
              alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
           <svg class="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -953,7 +988,7 @@
       <!-- Фото 12 — займає 2 колонки -->
       <div class="col-span-2 gallery-item overflow-hidden rounded-2xl cursor-pointer relative group"
            onclick="openLightbox('media/gallery/358467263_214319291579572_8613533900586299362_n.jpg')" style="min-height:200px">
-        <img src="media/gallery/358467263_214319291579572_8613533900586299362_n.jpg"
+        <img src="media/gallery/thumbs/358467263_214319291579572_8613533900586299362_n.webp" loading="lazy" decoding="async"
              alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
           <svg class="w-10 h-10 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -970,7 +1005,7 @@
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
         </svg>
-        <span id="gallery-toggle-text" data-i18n="gallery.showAll">Ще 150 фотографій</span>
+        <span id="gallery-toggle-text" data-i18n="gallery.showAll">Показати всі фотографії</span>
       </button>
     </div>
 
@@ -1254,9 +1289,8 @@
 </footer>
 
 <script>
-  // Lightbox — all 162 photos for navigation
+  // Lightbox — all photos for navigation
   const galleryPhotos = [
-    'media/gallery/photo_2023-07-13_15-52-37.jpg',
     'media/gallery/333563987_484135883765580_403843703642133389_n.jpg',
     'media/gallery/333572058_720415806193456_4610843417327524527_n.jpg',
     'media/gallery/333915440_740057644244033_6180319652026306114_n.jpg',
@@ -1417,8 +1451,8 @@
     'media/gallery/358409016_214319411579560_4318920271489602448_n.jpg',
     'media/gallery/358467263_214319291579572_8613533900586299362_n.jpg',
     'media/gallery/358603290_214319361579565_7016806239886907031_n.jpg',
-    'media/gallery/cropped-photo_2023-07-13_15-52-37.jpg',
   ];
+  const thumbOf = src => src.replace('media/gallery/', 'media/gallery/thumbs/').replace(/\.jpg$/, '.webp');
   let currentIndex = 0;
 
   function openOschadQR() {
@@ -1523,7 +1557,7 @@
 
   // Expandable gallery
   const _shownInGrid = new Set([
-    'media/gallery/photo_2023-07-13_15-52-37.jpg',
+    'media/gallery/347592855_584783540423436_9049356103939879611_n.jpg',
     'media/gallery/351504221_196037950074373_6618243503005526610_n.jpg',
     'media/gallery/351537149_192853390392829_3710335561566961680_n.jpg',
     'media/gallery/352093425_196037896741045_4538652577295449496_n.jpg',
@@ -1554,9 +1588,10 @@
         const div = document.createElement('div');
         div.className = 'gallery-all-item scroll-reveal';
         const img = document.createElement('img');
-        img.src = src;
+        img.src = thumbOf(src);
         img.alt = '';
         img.loading = 'lazy';
+        img.decoding = 'async';
         div.style.cursor = 'pointer';
         div.addEventListener('click', () => openLightbox(src));
         div.appendChild(img);
@@ -1567,9 +1602,8 @@
     }
 
     const lang = localStorage.getItem('lang') || 'uk';
-    txt.textContent = isOpen
-      ? (lang === 'en' ? 'Collapse' : 'Сховати')
-      : (lang === 'en' ? `Show all ${_extraPhotos.length} photos` : `Ще ${_extraPhotos.length} фотографій`);
+    txt.dataset.i18n = isOpen ? 'gallery.hide' : 'gallery.showAll';
+    txt.textContent = translations[lang][txt.dataset.i18n];
   }
 
   // Scroll-reveal observer
@@ -1589,7 +1623,7 @@
     const raw = el.dataset.target;
     if (!raw || raw === '∞') return;
     const end = parseFloat(raw);
-    const isSuffix = el.textContent.includes('%');
+    const suffix = el.dataset.suffix || '';
     let current = 0;
     const duration = 1400;
     const fps = 60;
@@ -1600,10 +1634,10 @@
       const progress = step / steps;
       const eased = 1 - Math.pow(1 - progress, 3);
       current = Math.round(eased * end);
-      el.textContent = current + (isSuffix ? '%' : '');
+      el.textContent = current + suffix;
       if (step >= steps) {
         clearInterval(timer);
-        el.textContent = end + (isSuffix ? '%' : '');
+        el.textContent = end + suffix;
         el.closest('.card-hover').classList.add('stat-done');
       }
     }, 1000 / fps);
@@ -1621,9 +1655,20 @@
   const statsGrid = document.getElementById('stats-grid');
   if (statsGrid) statsObserver.observe(statsGrid);
 
-  // Video scroll reveal
+  // Video scroll reveal — відео завантажується лише коли секція наближається до екрана
   const videoContainer = document.querySelector('.video-reveal-container');
   if (videoContainer) {
+    const videoEl = videoContainer.querySelector('video');
+    const videoLoader = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          videoEl.play().catch(() => {});
+          videoLoader.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '600px 0px' });
+    videoLoader.observe(videoContainer);
+
     const videoObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1645,7 +1690,8 @@
       'hero.title': 'Дім<br/><span class="text-green-300">Добрих</span><br/>Справ',
       'hero.desc': 'Покращуємо якість життя тих, хто опинився в скрутному становищі. Діти, літні люди, захисники України — разом до перемоги.',
       'hero.btn1': 'Задонатити зараз', 'hero.btn2': 'Дізнатись більше',
-      'stats.s1': 'Допомоги без меж', 'stats.s2': 'Прозорість', 'stats.s3': 'Прихованих витрат', 'stats.s4': 'Напрямки допомоги',
+      'hero.photo.caption': 'Реальний момент з нашої роботи',
+      'stats.s1': 'Допомагаємо з 2023 року', 'stats.s2': 'Напрямки допомоги', 'stats.s3': 'Фото у публічних звітах', 'stats.s4': 'Прозорість',
       'about.label': 'Про організацію',
       'about.title': 'Ми — волонтери,<br/>яким не байдуже',
       'about.p1': 'БО «МБФ «Дім Добрих Справ» — офіційно зареєстрований неприбутковий благодійний фонд. Наша команда складається з волонтерів різних фахів: педагогів, опікунів, соціальних працівників.',
@@ -1678,7 +1724,7 @@
       'partners.title': 'Станьте нашим партнером',
       'partners.desc': 'Шукаємо партнерів для фінансової та організаційної підтримки дітей, постраждалих під час війни. Разом ми зможемо зробити більше.',
       'partners.btn': 'Обговорити партнерство',
-      'gallery.showAll': 'Ще 150 фотографій',
+      'gallery.showAll': 'Показати всі фотографії', 'gallery.hide': 'Сховати',
       'video.badge': 'Наша робота у дії',
       'video.text': 'Кожен день — нова історія турботи',
       'gallery.label': 'Наша діяльність', 'gallery.title': 'Фотогалерея',
@@ -1713,7 +1759,8 @@
       'hero.title': 'House<br/><span class="text-green-300">of Good</span><br/>Deeds',
       'hero.desc': 'We improve the quality of life for those in difficult situations. Children, the elderly, defenders of Ukraine — together to victory.',
       'hero.btn1': 'Donate now', 'hero.btn2': 'Learn more',
-      'stats.s1': 'Unlimited help', 'stats.s2': 'Transparency', 'stats.s3': 'Hidden costs', 'stats.s4': 'Areas of help',
+      'hero.photo.caption': 'A real moment from our work',
+      'stats.s1': 'Helping since 2023', 'stats.s2': 'Areas of help', 'stats.s3': 'Photos in public reports', 'stats.s4': 'Transparency',
       'about.label': 'About us',
       'about.title': 'We are volunteers,<br/>who care',
       'about.p1': 'CO "MBF House of Good Deeds" is an officially registered non-profit charitable foundation. Our team consists of volunteers from various fields: teachers, caregivers, social workers.',
@@ -1746,7 +1793,7 @@
       'partners.title': 'Become our partner',
       'partners.desc': 'We are looking for partners for financial and organizational support of children affected by the war. Together we can do more.',
       'partners.btn': 'Discuss partnership',
-      'gallery.showAll': 'Show all 150 photos',
+      'gallery.showAll': 'Show all photos', 'gallery.hide': 'Collapse',
       'video.badge': 'Our work in action',
       'video.text': 'Every day — a new story of care',
       'gallery.label': 'Our activities', 'gallery.title': 'Photo Gallery',
