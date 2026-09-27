@@ -298,6 +298,7 @@
       .scroll-reveal { opacity: 1; transform: none; }
       .video-reveal-container { transform: none; opacity: 1; }
     }
+    .flag-ua { width: 18px; height: 12px; flex-shrink: 0; border-radius: 2px; box-shadow: 0 0 0 1px rgba(255,255,255,.15); }
     :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 8px; }
   </style>
 </head>
@@ -334,6 +335,7 @@
     <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-pdf" viewBox="0 0 24 24"><path fill="currentColor" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 17.5v-1h7v1h-7zm0-2.5v-1h7v1h-7zm0-2.5v-1h7v1h-7z"/></symbol>
     <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-flag-ua" viewBox="0 0 24 16"><rect width="24" height="16" rx="2.5" fill="#FFD500"/><path d="M2.5 0h19A2.5 2.5 0 0 1 24 2.5V8H0V2.5A2.5 2.5 0 0 1 2.5 0z" fill="#005BBB"/></symbol>
     <symbol id="i-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></g></symbol>
   </defs>
 </svg>
@@ -469,7 +471,7 @@
         <div class="mission-card">
           <div class="hand mb-1" data-i18n="about.mission.title">Наша місія</div>
           <p class="text-white/90 leading-relaxed" data-i18n="about.mission.text">Покращення якості життя незахищених верств населення, які опинились у скрутному становищі.</p>
-          <p class="text-white/60 text-sm mt-3" data-i18n="about.mission.footer">Разом до Перемоги 🇺🇦</p>
+          <p class="text-white/60 text-sm mt-3 flex items-center gap-2"><span data-i18n="about.mission.footer">Разом до Перемоги</span><svg class="flag-ua" aria-label="🇺🇦" role="img"><use href="#i-flag-ua"/></svg></p>
         </div>
       </div>
     </div>
@@ -938,7 +940,7 @@
           </div>
         </div>
         <p class="text-sm leading-relaxed max-w-xs" data-i18n="footer.desc">Незалежний волонтерський фонд, поза політикою та бізнес-групами.</p>
-        <div class="mt-4 inline-block bg-white/10 text-[color:var(--gold)] text-xs font-bold px-3 py-1.5 rounded-full" data-i18n="footer.victory">Разом до Перемоги 🇺🇦</div>
+        <div class="mt-4 inline-flex items-center gap-2 bg-white/10 text-[color:var(--gold)] text-xs font-bold px-3 py-1.5 rounded-full"><span data-i18n="footer.victory">Разом до Перемоги</span><svg class="flag-ua" aria-label="🇺🇦" role="img"><use href="#i-flag-ua"/></svg></div>
       </div>
 
       <div>
@@ -1459,7 +1461,7 @@
       'about.more': 'Кому ми допомагаємо',
       'about.mission.title': 'Наша місія',
       'about.mission.text': 'Покращення якості життя незахищених верств населення, які опинились у скрутному становищі.',
-      'about.mission.footer': 'Разом до Перемоги 🇺🇦',
+      'about.mission.footer': 'Разом до Перемоги',
       'services.label': 'Кому ми допомагаємо', 'services.title': 'Чотири напрямки підтримки',
       'services.desc': 'Чотири ключові напрямки, де наша команда щодня робить різницю',
       'services.c1.title': 'Діти', 'services.c1.text': 'Розвивальні заняття для дітей з інвалідністю, сиріт та дітей з багатодітних родин. Педагоги з досвідом роботи з особливими потребами.',
@@ -1502,7 +1504,7 @@
       'cta.title': 'Разом<br/>ми можемо більше',
       'cta.text': 'Кожен внесок — це продуктовий набір, ліки чи усмішка дитини.',
       'footer.desc': 'Незалежний волонтерський фонд, поза політикою та бізнес-групами.',
-      'footer.victory': 'Разом до Перемоги 🇺🇦', 'footer.nav': 'Навігація', 'footer.contacts': 'Контакти',
+      'footer.victory': 'Разом до Перемоги', 'footer.nav': 'Навігація', 'footer.contacts': 'Контакти',
       'footer.copy': '© 2026 БО «МБФ «Дім Добрих Справ». Всі права захищені.',
       'footer.sub': 'Неприбуткова організація · Офіційно зареєстрована в Україні',
     },
@@ -1526,7 +1528,7 @@
       'about.more': 'Who we help',
       'about.mission.title': 'Our mission',
       'about.mission.text': 'Improving the quality of life for vulnerable populations who find themselves in difficult situations.',
-      'about.mission.footer': 'Together to Victory 🇺🇦',
+      'about.mission.footer': 'Together to Victory',
       'services.label': 'Who we help', 'services.title': 'Four areas of support',
       'services.desc': 'Four key areas where our team makes a difference every day',
       'services.c1.title': 'Children', 'services.c1.text': 'Developmental programs for children with disabilities, orphans, and children from large families. Teachers with experience working with special needs.',
@@ -1569,7 +1571,7 @@
       'cta.title': 'Together<br/>we can do more',
       'cta.text': "Every donation is a food package, medicine or a child's smile.",
       'footer.desc': 'Independent volunteer fund, outside politics and business groups.',
-      'footer.victory': 'Together to Victory 🇺🇦', 'footer.nav': 'Navigation', 'footer.contacts': 'Contacts',
+      'footer.victory': 'Together to Victory', 'footer.nav': 'Navigation', 'footer.contacts': 'Contacts',
       'footer.copy': '© 2026 CO "MBF House of Good Deeds". All rights reserved.',
       'footer.sub': 'Non-profit organization · Officially registered in Ukraine',
     }
