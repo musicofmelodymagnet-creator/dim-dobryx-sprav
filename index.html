@@ -19,7 +19,8 @@
     object-src 'none';
   " />
   <link rel="canonical" href="https://dimdsprav.pp.ua/" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2316a34a'/><path d='M7 17l9-9 9 9M10 14v9h4v-5h4v5h4v-9' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='%231d4a36'/><path d='M7 15.5 16 8l9 7.5M9.5 14v10h13V14' stroke='%23fbf7ef' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='M16 22s-3.6-2.2-4.3-4.4c-.5-1.6.6-3.1 2.1-3.1 1 0 1.7.5 2.2 1.2.5-.7 1.2-1.2 2.2-1.2 1.5 0 2.6 1.5 2.1 3.1C19.6 19.8 16 22 16 22z' fill='%23f2c744'/></svg>" />
+  <meta name="theme-color" content="#1d4a36" />
   <!-- Open Graph (для соцмереж) -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dimdsprav.pp.ua/" />
@@ -72,298 +73,319 @@
   <link rel="stylesheet" href="assets/tailwind.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700;800&family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --green-dark:   #14532d;
-      --green-mid:    #166534;
-      --green-main:   #16a34a;
-      --green-light:  #4ade80;
-      --gold:         #c8a84b;
-      --gold-light:   #f0d98b;
+      --forest:     #1d4a36;
+      --forest-2:   #2a6348;
+      --forest-ink: #143427;
+      --leaf:       #3f8a5f;
+      --sage:       #a9c5a1;
+      --sage-soft:  #e7efe2;
+      --gold:       #f2c744;
+      --gold-deep:  #dcaa22;
+      --gold-soft:  #fbefc4;
+      --cream:      #faf6ee;
+      --paper:      #fffdf8;
+      --ink:        #1f2d26;
+      --muted:      #5c6b63;
+      --line:       #e8e1d2;
+      --coral:      #d6483e;
+      --shadow-soft: 0 1px 2px rgba(29,74,54,.04), 0 12px 32px -12px rgba(29,74,54,.16);
+      --shadow-lift: 0 2px 4px rgba(29,74,54,.05), 0 24px 48px -16px rgba(29,74,54,.24);
+      --ease-out: cubic-bezier(.22,1,.36,1);
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body { background: var(--cream); color: var(--ink); font-family: 'Manrope', system-ui, sans-serif; }
+    .font-serif, h1, h2, h3.serif { font-family: 'Lora', Georgia, serif; }
+    .hand { font-family: 'Caveat', cursive; font-weight: 600; line-height: 1.05; }
+    ::selection { background: var(--gold-soft); color: var(--forest-ink); }
 
-    .hero-gradient {
-      background: linear-gradient(145deg, #0f3d20 0%, #14532d 35%, #1a6b3c 65%, #16a34a 100%);
-      position: relative;
-    }
-    .hero-gradient::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(circle at 20% 30%, rgba(200,168,75,0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(74,222,128,0.07) 0%, transparent 50%);
-      pointer-events: none;
-    }
-    .hero-gradient::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      pointer-events: none;
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    @media (min-width: 1024px) { .wrap { padding: 0 32px; } }
+
+    /* Eyebrow + headings */
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; color: var(--leaf); }
+    .eyebrow::before { content: ''; width: 22px; height: 2px; border-radius: 2px; background: var(--gold); }
+    .h-section { font-family: 'Lora', serif; font-weight: 700; color: var(--forest-ink); font-size: clamp(2rem, 3.6vw, 2.75rem); line-height: 1.12; letter-spacing: -.01em; text-wrap: balance; }
+    .lead { color: var(--muted); font-size: 1.075rem; line-height: 1.7; text-wrap: pretty; }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; border-radius: 999px; padding: 14px 26px; transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out), background-color .2s, color .2s, border-color .2s; white-space: nowrap; }
+    .btn:active { transform: scale(.97); }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .btn-gold { background: var(--gold); color: var(--forest-ink); box-shadow: 0 8px 20px -8px rgba(220,170,34,.7); }
+    .btn-gold:hover { background: #f6d25e; box-shadow: 0 12px 26px -8px rgba(220,170,34,.8); transform: translateY(-1px); }
+    .btn-forest { background: var(--forest); color: #fff; }
+    .btn-forest:hover { background: var(--forest-2); transform: translateY(-1px); }
+    .btn-outline { border: 1.5px solid currentColor; color: var(--forest); background: transparent; }
+    .btn-outline:hover { background: var(--forest); border-color: var(--forest); color: #fff; }
+    .btn-sm { padding: 10px 20px; font-size: 14px; }
+    .link-arrow { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--forest); }
+    .link-arrow svg { width: 18px; height: 18px; transition: transform .25s var(--ease-out); }
+    .link-arrow:hover svg { transform: translateX(4px); }
+
+    /* Header */
+    #header { background: rgba(250,246,238,.82); backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px); border-bottom: 1px solid transparent; transition: border-color .3s, box-shadow .3s; }
+    #header.scrolled { border-color: var(--line); box-shadow: 0 6px 24px -18px rgba(29,74,54,.5); }
+    .nav-link { position: relative; color: var(--ink); font-weight: 600; font-size: 15px; transition: color .2s; }
+    .nav-link::after { content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; border-radius: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease-out); }
+    .nav-link:hover { color: var(--forest); }
+    .nav-link:hover::after { transform: scaleX(1); }
+    .brand-name { font-family: 'Lora', serif; font-weight: 700; color: var(--forest-ink); font-size: 17px; line-height: 1.1; }
+    .brand-sub { font-size: 11.5px; color: var(--muted); font-weight: 600; letter-spacing: .02em; }
+
+    .mobile-menu { max-height: 0; overflow: hidden; transition: max-height .4s var(--ease-out); }
+    .mobile-menu.open { max-height: 460px; }
+
+    .lang-switcher { display: flex; gap: 2px; align-items: center; background: #efe8d9; border-radius: 999px; padding: 3px; }
+    .lang-btn { padding: 4px 11px; border-radius: 999px; font-size: 12px; font-weight: 800; cursor: pointer; border: none; background: transparent; color: var(--muted); transition: background-color .2s, color .2s; line-height: 1.6; }
+    .lang-btn.active { background: var(--forest); color: #fff; }
+
+    /* Hero */
+    .hero { position: relative; overflow: hidden; background: var(--forest-ink); color: #fff; }
+    .hero-media { position: absolute; inset: 0; }
+    .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 72% center; }
+    .hero-shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,52,39,.96) 0%, rgba(20,52,39,.8) 50%, rgba(20,52,39,.35) 100%); }
+    .hero-inner { position: relative; z-index: 2; padding-top: 130px; padding-bottom: 130px; }
+    .hero h1 { font-weight: 700; font-size: clamp(2.8rem, 6.4vw, 4.6rem); line-height: 1.02; letter-spacing: -.015em; }
+    .hero h1 .accent { color: var(--gold); }
+    .hero .eyebrow { color: var(--gold); }
+    .hero-sub { font-family: 'Lora', serif; font-weight: 600; font-size: clamp(1.25rem, 2vw, 1.6rem); }
+    .hero-desc { color: rgba(255,255,255,.82); font-size: 1.075rem; line-height: 1.7; max-width: 27rem; }
+    .hero .btn-outline { color: #fff; }
+    .hero .btn-outline:hover { background: #fff; color: var(--forest); border-color: #fff; }
+    .hero-brush { position: absolute; left: -70px; bottom: 40px; width: 360px; opacity: .9; pointer-events: none; z-index: 1; transform: rotate(-8deg); display: none; }
+    .hero-branch { position: absolute; right: 6%; bottom: 128px; width: 150px; z-index: 3; opacity: .95; pointer-events: none; display: none; }
+    .hero-note { position: absolute; z-index: 3; right: 5%; bottom: 150px; color: var(--forest-ink); font-size: 30px; transform: rotate(-4deg); display: none; background: rgba(255,253,248,.92); padding: 10px 18px 12px; border-radius: 14px; box-shadow: var(--shadow-soft); }
+    .hero-note svg { width: 20px; height: 20px; color: var(--coral); display: inline-block; vertical-align: -2px; }
+
+    @media (min-width: 1024px) {
+      .hero { background: var(--cream); color: var(--ink); }
+      .hero-media { left: 42%; border-bottom-left-radius: 56px; overflow: hidden; }
+      .hero-media img { object-position: center; }
+      .hero-shade { left: 42%; background: linear-gradient(to right, var(--cream) 0%, rgba(250,246,238,.7) 8%, rgba(250,246,238,.25) 20%, rgba(250,246,238,0) 34%); }
+      .hero-inner { padding-top: 170px; padding-bottom: 190px; }
+      .hero h1 { color: var(--forest-ink); }
+      .hero h1 .accent { color: var(--leaf); }
+      .hero .eyebrow { color: var(--leaf); }
+      .hero-sub { color: var(--forest); }
+      .hero-desc { color: var(--muted); }
+      .hero .btn-outline { color: var(--forest); }
+      .hero .btn-outline:hover { background: var(--forest); color: #fff; border-color: var(--forest); }
+      .hero-brush { display: block; }
+      .hero-note { display: block; }
     }
 
-    .card-hover {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card-hover:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 24px 48px rgba(21,128,61,0.13);
-    }
+    /* Stats */
+    .stats-card { background: var(--paper); border-radius: 28px; box-shadow: var(--shadow-lift); border: 1px solid rgba(232,225,210,.7); }
+    .stat-item { display: flex; align-items: center; gap: 14px; padding: 22px 20px; }
+    .stat-icon { width: 48px; height: 48px; border-radius: 16px; background: var(--sage-soft); color: var(--forest); display: grid; place-items: center; flex-shrink: 0; }
+    .stat-icon svg { width: 24px; height: 24px; }
+    .stat-number { display: inline-block; font-family: 'Lora', serif; font-weight: 700; font-size: 1.9rem; color: var(--forest-ink); line-height: 1; font-variant-numeric: tabular-nums; }
+    .stat-label { font-size: 13.5px; color: var(--muted); font-weight: 600; line-height: 1.35; margin-top: 4px; }
+    @media (min-width: 768px) { .stat-item + .stat-item { border-left: 1px solid var(--line); } }
+    @media (max-width: 767px) { .stat-item:nth-child(n+3) { border-top: 1px solid var(--line); } .stat-item:nth-child(even) { border-left: 1px solid var(--line); } .stat-item { flex-direction: column; align-items: flex-start; gap: 10px; padding: 18px; } }
+    .stat-done .stat-number { animation: statPop .45s cubic-bezier(.175,.885,.32,1.275); }
+    @keyframes statPop { 0% { transform: scale(.9); } 60% { transform: scale(1.06); } 100% { transform: scale(1); } }
 
-    .nav-link { position: relative; }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--green-main);
-      transition: width 0.3s ease;
-    }
-    .nav-link:hover::after { width: 100%; }
+    /* About */
+    .check-dot { width: 26px; height: 26px; border-radius: 999px; background: var(--gold-soft); color: var(--forest); display: grid; place-items: center; flex-shrink: 0; }
+    .check-dot svg { width: 14px; height: 14px; }
+    .about-visual { position: relative; }
+    .about-photo { position: relative; border-radius: 32px; overflow: hidden; box-shadow: var(--shadow-lift); aspect-ratio: 5 / 4.4; }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .about-brush { position: absolute; width: 230px; right: -40px; top: -38px; transform: rotate(12deg); z-index: 0; pointer-events: none; }
+    .about-blob { position: absolute; width: 240px; left: -70px; bottom: -60px; z-index: 0; opacity: .8; pointer-events: none; }
+    .mission-card { position: relative; z-index: 2; background: var(--forest); color: #fff; border-radius: 24px; padding: 24px 26px; box-shadow: var(--shadow-lift); margin: -64px 18px 0; }
+    @media (min-width: 640px) { .mission-card { position: absolute; left: -28px; bottom: -36px; margin: 0; max-width: 330px; } }
+    .mission-card .hand { color: var(--gold); font-size: 26px; }
 
-    /* Mobile menu — slide animation */
-    .mobile-menu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .mobile-menu.open { max-height: 420px; }
+    /* Service cards */
+    .svc-card { background: var(--paper); border-radius: 24px; overflow: hidden; border: 1px solid rgba(232,225,210,.8); box-shadow: var(--shadow-soft); transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out); display: flex; flex-direction: column; }
+    .svc-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
+    .svc-img { aspect-ratio: 4 / 3; overflow: hidden; background: var(--sage-soft); }
+    .svc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease-out); }
+    .svc-card:hover .svc-img img { transform: scale(1.05); }
+    .svc-icon { width: 38px; height: 38px; border-radius: 12px; background: var(--gold-soft); color: var(--forest); display: grid; place-items: center; flex-shrink: 0; }
+    .svc-icon svg { width: 20px; height: 20px; }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(32px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .fade-in { animation: fadeInUp 0.9s ease forwards; }
-    .fade-in-delay  { animation: fadeInUp 0.9s ease 0.2s forwards; opacity: 0; }
-    .fade-in-delay-2{ animation: fadeInUp 0.9s ease 0.4s forwards; opacity: 0; }
+    /* Transparency */
+    .transp { position: relative; background: var(--sage-soft); border-radius: 36px; overflow: hidden; }
+    .transp-photo { border-radius: 26px; overflow: hidden; aspect-ratio: 4 / 3.4; box-shadow: var(--shadow-soft); }
+    .transp-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .transp-badge { display: flex; align-items: center; gap: 10px; background: rgba(255,253,248,.8); border-radius: 14px; padding: 11px 14px; font-weight: 700; font-size: 14px; color: var(--forest-ink); }
+    .transp-badge svg { width: 20px; height: 20px; color: var(--leaf); flex-shrink: 0; }
+    .trust-note { position: relative; display: grid; place-items: center; text-align: center; min-height: 190px; }
+    .trust-note img { position: absolute; width: 270px; max-width: 100%; transform: rotate(-10deg); opacity: .85; }
+    .trust-note p { position: relative; font-size: 34px; color: var(--forest-ink); transform: rotate(-5deg); }
+    .trust-note svg { width: 22px; height: 22px; color: var(--coral); margin: 4px auto 0; display: block; }
 
-    /* Scroll-reveal */
-    .scroll-reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
-    .scroll-reveal:nth-child(2) { transition-delay: 0.1s; }
-    .scroll-reveal:nth-child(3) { transition-delay: 0.2s; }
-    .scroll-reveal:nth-child(4) { transition-delay: 0.3s; }
+    /* Video */
+    .video-reveal-wrap { max-width: 1200px; margin: 0 auto; }
+    .video-reveal-container { position: relative; border-radius: 40px; overflow: hidden; transform: scale(.92); opacity: .7; transition: transform 1.3s var(--ease-out), border-radius 1.3s var(--ease-out), opacity .9s ease; will-change: transform; aspect-ratio: 16 / 9; background: var(--forest-ink); box-shadow: var(--shadow-lift); }
+    .video-reveal-container.revealed { transform: scale(1); border-radius: 32px; opacity: 1; }
+    .video-el { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .video-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,52,39,.8) 0%, rgba(20,52,39,.15) 55%, transparent 100%); display: flex; align-items: flex-end; padding: 2.5rem 3rem; }
+    .video-overlay-content { transform: translateY(16px); opacity: 0; transition: transform .8s var(--ease-out) .5s, opacity .8s ease .5s; }
+    .video-reveal-container.revealed .video-overlay-content { transform: translateY(0); opacity: 1; }
+    .video-badge { display: inline-block; background: var(--gold); color: var(--forest-ink); font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; padding: 6px 14px; border-radius: 999px; margin-bottom: 12px; }
+    .video-overlay-text { font-family: 'Lora', serif; font-size: clamp(1.4rem, 3.2vw, 2.4rem); font-weight: 600; color: #fff; line-height: 1.2; margin: 0; }
+    @media (max-width: 640px) { .video-overlay { padding: 1.25rem 1.4rem; } .video-reveal-container { border-radius: 22px; } .video-reveal-container.revealed { border-radius: 20px; } }
 
-    /* Stat counters glow on animate */
-    .stat-number { display: inline-block; }
-    .stat-done .stat-number {
-      animation: statPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    }
-    @keyframes statPop {
-      0%   { transform: scale(0.85); }
-      60%  { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
+    /* Donate */
+    .bank-card { border-radius: 28px; padding: 28px; display: flex; flex-direction: column; transition: box-shadow .3s var(--ease-out), transform .3s var(--ease-out); }
+    .bank-card:hover { transform: translateY(-3px); }
+    .bank-light { background: var(--paper); border: 1px solid var(--line); box-shadow: var(--shadow-soft); }
+    .bank-light:hover { box-shadow: var(--shadow-lift); }
+    .bank-dark { background: var(--forest); color: #fff; box-shadow: var(--shadow-lift); }
+    .field-label { font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: #9aa59f; margin-bottom: 8px; }
+    .field { background: var(--cream); border: 1px solid var(--line); border-radius: 16px; }
+    .row-link { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line); transition: background-color .2s, border-color .2s; }
+    .row-link:hover { background: var(--sage-soft); border-color: var(--sage); }
+    .row-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .donate-photo { position: relative; border-radius: 28px; overflow: hidden; min-height: 320px; box-shadow: var(--shadow-soft); }
+    .donate-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .donate-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,52,39,.92) 0%, rgba(20,52,39,.35) 55%, rgba(20,52,39,0) 100%); }
 
-    .lang-switcher { display: flex; gap: 3px; align-items: center; background: #f3f4f6; border-radius: 8px; padding: 3px; }
-    .lang-btn { padding: 3px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; background: transparent; color: #6b7280; transition: all 0.2s; line-height: 1.6; }
-    .lang-btn.active { background: var(--green-main); color: white; }
-
-    /* Gold accent divider under section headings */
-    .section-heading { position: relative; }
-    .section-heading::after {
-      content: '';
-      display: block;
-      width: 48px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--gold), var(--gold-light));
-      border-radius: 2px;
-      margin: 10px 0 0;
-    }
-    .section-heading-center::after { margin-left: auto; margin-right: auto; }
-
-    /* Gallery item label */
-    .gallery-item::after { display: none; }
-
-    /* ── Expandable gallery ── */
-    .gallery-expand-wrap {
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 1s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+    /* Gallery */
+    .gallery-item { border-radius: 20px !important; }
+    #gallery-grid > .gallery-item:last-child { aspect-ratio: 2 / 1; min-height: 0 !important; }
+    #gallery-grid > .gallery-item:last-child img { position: absolute; inset: 0; }
+    .gallery-expand-wrap { overflow: hidden; max-height: 0; transition: max-height 1s var(--ease-out); }
     .gallery-expand-wrap.open { max-height: 99999px; }
-
-    .gallery-all-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 6px;
-      padding-top: 6px;
-    }
+    .gallery-all-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding-top: 8px; }
     @media (min-width: 640px)  { .gallery-all-grid { grid-template-columns: repeat(4, 1fr); } }
     @media (min-width: 1024px) { .gallery-all-grid { grid-template-columns: repeat(5, 1fr); } }
-
-    .gallery-all-item {
-      aspect-ratio: 1;
-      overflow: hidden;
-      border-radius: 10px;
-      cursor: pointer;
-      position: relative;
-    }
-    .gallery-all-item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-      display: block;
-    }
-    .gallery-all-item:hover img { transform: scale(1.07); }
-    .gallery-all-item::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,0);
-      transition: background 0.3s;
-    }
-    .gallery-all-item:hover::after { background: rgba(0,0,0,0.15); }
-
-    #gallery-toggle-btn svg {
-      transition: transform 0.35s ease;
-    }
+    .gallery-all-item { aspect-ratio: 1; overflow: hidden; border-radius: 14px; cursor: pointer; position: relative; background: var(--sage-soft); }
+    .gallery-all-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease-out); display: block; }
+    .gallery-all-item:hover img { transform: scale(1.06); }
+    #gallery-toggle-btn svg { transition: transform .35s ease; }
     #gallery-toggle-btn.open svg { transform: rotate(180deg); }
 
-    /* ── Video Scroll Reveal ── */
-    .video-reveal-wrap {
-      max-width: 1400px;
-      margin: 0 auto;
+    /* Docs & contact */
+    .doc-card { background: var(--paper); border: 1px solid var(--line); border-radius: 22px; padding: 22px; display: flex; gap: 16px; align-items: flex-start; transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out), border-color .2s; box-shadow: var(--shadow-soft); }
+    .doc-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); border-color: var(--sage); }
+    .doc-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--sage-soft); color: var(--forest); display: grid; place-items: center; flex-shrink: 0; transition: background-color .2s; }
+    .doc-card:hover .doc-icon { background: var(--gold-soft); }
+    .doc-icon svg { width: 24px; height: 24px; }
+    .contact-row { display: flex; align-items: center; gap: 16px; padding: 14px; border-radius: 18px; transition: background-color .2s; }
+    .contact-row:hover { background: var(--paper); }
+    .contact-icon { width: 50px; height: 50px; border-radius: 16px; background: var(--paper); border: 1px solid var(--line); color: var(--forest); display: grid; place-items: center; flex-shrink: 0; }
+    .contact-icon svg { width: 22px; height: 22px; }
+    .cta-card { position: relative; overflow: hidden; background: var(--forest); color: #fff; border-radius: 32px; padding: 40px 36px; }
+    .cta-card .branch { position: absolute; right: -24px; bottom: -14px; width: 210px; opacity: .22; filter: brightness(0) invert(1); pointer-events: none; }
+
+    /* Footer */
+    footer { background: var(--forest-ink); color: rgba(255,255,255,.72); }
+    footer a:hover { color: var(--gold); }
+
+    /* Motion */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in { animation: fadeInUp .9s var(--ease-out) both; }
+    .fade-in-delay { animation: fadeInUp .9s var(--ease-out) .15s both; }
+    .fade-in-delay-2 { animation: fadeInUp .9s var(--ease-out) .3s both; }
+    .scroll-reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); }
+    .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+    .scroll-reveal:nth-child(2) { transition-delay: .08s; }
+    .scroll-reveal:nth-child(3) { transition-delay: .16s; }
+    .scroll-reveal:nth-child(4) { transition-delay: .24s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .scroll-reveal { opacity: 1; transform: none; }
+      .video-reveal-container { transform: none; opacity: 1; }
     }
-    .video-reveal-container {
-      position: relative;
-      border-radius: 28px;
-      overflow: hidden;
-      transform: scale(0.88);
-      opacity: 0.7;
-      transition: transform 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  border-radius 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  opacity 0.9s ease;
-      will-change: transform;
-      aspect-ratio: 16 / 9;
-      background: #0f3d20;
-      box-shadow: 0 40px 100px rgba(21,128,61,0.18);
-    }
-    .video-reveal-container.revealed {
-      transform: scale(1);
-      border-radius: 16px;
-      opacity: 1;
-    }
-    .video-el {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .video-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(10, 40, 20, 0.72) 0%,
-        rgba(10, 40, 20, 0.15) 50%,
-        transparent 100%
-      );
-      display: flex;
-      align-items: flex-end;
-      padding: 2.5rem 3rem;
-    }
-    .video-overlay-content {
-      transform: translateY(16px);
-      opacity: 0;
-      transition: transform 0.8s ease 0.5s, opacity 0.8s ease 0.5s;
-    }
-    .video-reveal-container.revealed .video-overlay-content {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    .video-badge {
-      display: inline-block;
-      background: rgba(200,168,75,0.22);
-      border: 1px solid rgba(200,168,75,0.5);
-      color: #f0d98b;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 100px;
-      margin-bottom: 10px;
-    }
-    .video-overlay-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.5rem, 3.5vw, 2.6rem);
-      font-weight: 600;
-      color: #fff;
-      line-height: 1.25;
-      margin: 0;
-    }
-    @media (max-width: 640px) {
-      .video-overlay { padding: 1.5rem; }
-      .video-reveal-container { border-radius: 16px; }
-      .video-reveal-container.revealed { border-radius: 10px; }
-    }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 8px; }
   </style>
 </head>
-<body class="font-sans text-gray-800 antialiased">
+<body class="antialiased">
+
+<!-- ─── ICON SPRITE ─── -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <defs>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path fill="currentColor" d="M12 20.6s-7.6-4.7-9.3-9.6C1.5 7.6 3.9 4.4 7.3 4.4c2 0 3.5 1.1 4.7 2.7 1.2-1.6 2.7-2.7 4.7-2.7 3.4 0 5.8 3.2 4.6 6.6-1.7 4.9-9.3 9.6-9.3 9.6z"/></symbol>
+    <symbol id="i-heart-o" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M12 20.6s-7.6-4.7-9.3-9.6C1.5 7.6 3.9 4.4 7.3 4.4c2 0 3.5 1.1 4.7 2.7 1.2-1.6 2.7-2.7 4.7-2.7 3.4 0 5.8 3.2 4.6 6.6-1.7 4.9-9.3 9.6-9.3 9.6z"/></symbol>
+    <symbol id="i-logo" viewBox="0 0 48 48"><path d="M5 22.5 24 6l19 16.5" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 18.6V41h28V18.6" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 35.5s-7-4.3-8.5-8.7c-1-3 1.1-5.9 4.2-5.9 1.9 0 3.2 1 4.3 2.4 1.1-1.4 2.4-2.4 4.3-2.4 3.1 0 5.2 2.9 4.2 5.9C31 31.2 24 35.5 24 35.5z" fill="var(--coral)"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 17h.01M12 17h.01"/></g></symbol>
+    <symbol id="i-people" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 19.5c.6-3.3 3-5.3 6-5.3s5.4 2 6 5.3"/><circle cx="17" cy="9" r="2.5"/><path d="M16.5 14.3c2.3.2 4 1.8 4.5 4.6"/></g></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="3"/><circle cx="9" cy="10" r="1.7"/><path d="m4 17 4.5-4.2 3.5 3 3-2.6L20 17.5"/></g></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2 19.5 6v5.6c0 4.5-3.1 8-7.5 9.2-4.4-1.2-7.5-4.7-7.5-9.2V6L12 3.2z"/><path d="m8.8 12 2.2 2.2 4.2-4.3"/></g></symbol>
+    <symbol id="i-child" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M8.7 14.2c.8 1.2 1.9 1.8 3.3 1.8s2.5-.6 3.3-1.8M9 10h.01M15 10h.01"/><path d="M10 3.8c.4 1.3 1.1 2 2 2s1.4-.6 1.6-1.5"/></g></symbol>
+    <symbol id="i-care" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 11.5s-3.8-2.3-4.6-4.7C6.8 5.2 8 3.6 9.6 3.6c1 0 1.8.6 2.4 1.4.6-.8 1.4-1.4 2.4-1.4 1.6 0 2.8 1.6 2.2 3.2-.8 2.4-4.6 4.7-4.6 4.7z"/><path d="M3 15.5h3.2l3.6 1.3h3.4a1.6 1.6 0 0 1 0 3.2H9.5M13.5 18.4l4.9-2.3a1.7 1.7 0 0 1 2 2.6L17 21H6.2L3 20"/></g></symbol>
+    <symbol id="i-home-heart" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11 12 3.8l8.5 7.2"/><path d="M5.8 9.2V20h12.4V9.2"/><path d="M12 17.2s-3.1-1.9-3.8-3.9c-.5-1.4.5-2.8 1.9-2.8.9 0 1.5.5 1.9 1.1.4-.6 1-1.1 1.9-1.1 1.4 0 2.4 1.4 1.9 2.8-.7 2-3.8 3.9-3.8 3.9z"/></g></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.3 4.3L19 7.2" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4.5 12h15m-5.5-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3.5H7.5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V8L14 3.5z"/><path d="M14 3.5V8h4.5M9 12.5h6M9 16h6"/></g></symbol>
+    <symbol id="i-registry" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3.5" width="16" height="17" rx="2.5"/><path d="M8 8h8M8 11.5h8M8 15h4.5"/><circle cx="16.5" cy="16.5" r="2.2"/></g></symbol>
+    <symbol id="i-badge" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9.5" r="5.5"/><path d="m9.7 9.6 1.6 1.6 3-3.1M8.8 14.3 7.5 21l4.5-2.4 4.5 2.4-1.3-6.7"/></g></symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4.5H7a2 2 0 0 0-2 2V19a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6.5a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="3.2" rx="1.2"/><path d="m9 13.5 2 2 4-4"/></g></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5a2 2 0 0 1 2-2h1.8L9.5 4h5l1.7 2.5H18a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8.5z"/><circle cx="12" cy="13" r="3.4"/></g></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7.5" r="3.5"/><path d="M3 20c.5-3.6 2.9-6 6-6 1.3 0 2.5.4 3.4 1.1M16.5 14v6M13.5 17h6"/></g></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.3l1.6 4.2-2.1 1.3a11 11 0 0 0 6.7 6.7l1.3-2.1L20 15.7V19a1.5 1.5 0 0 1-1.6 1.5C10.6 20 4 13.4 3.5 5.6A1.5 1.5 0 0 1 5 4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7.5 8 5.5 8-5.5"/></g></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></g></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M24 12.07C24 5.44 18.63.07 12 .07S0 5.44 0 12.07c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08v-3.47h3.05V9.43c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.51c-1.49 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.47h-2.8v8.38C19.61 23.03 24 18.06 24 12.07z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4.5A1.5 1.5 0 0 1 3 13.5v-9A1.5 1.5 0 0 1 4.5 3h9A1.5 1.5 0 0 1 15 4.5V5"/></g></symbol>
+    <symbol id="i-zoom" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8M10.5 8v5M8 10.5h5"/></g></symbol>
+    <symbol id="i-mobile" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 18h2"/></g></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pdf" viewBox="0 0 24 24"><path fill="currentColor" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 17.5v-1h7v1h-7zm0-2.5v-1h7v1h-7zm0-2.5v-1h7v1h-7z"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></g></symbol>
+  </defs>
+</svg>
 
 <!-- ─── NAVBAR ─── -->
-<header id="header" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16 lg:h-20">
-      <!-- Logo -->
-      <a href="#home" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 bg-primary-600 rounded-xl flex items-center justify-center shadow-lg group-hover:bg-primary-700 transition-colors">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-          </svg>
-        </div>
-        <div class="hidden sm:block">
-          <div class="text-sm text-primary-800 leading-tight font-bold">Дім Добрих Справ</div>
-          <div class="text-xs text-gray-500">БО МБФ</div>
+<header id="header" class="fixed top-0 left-0 right-0 z-50">
+  <div class="wrap">
+    <div class="flex items-center justify-between h-[72px]">
+      <a href="#home" class="flex items-center gap-3" aria-label="Дім Добрих Справ">
+        <svg class="w-11 h-11 text-[color:var(--forest)]"><use href="#i-logo"/></svg>
+        <div>
+          <div class="brand-name">Дім Добрих Справ</div>
+          <div class="brand-sub" data-i18n="brand.sub">Благодійний фонд</div>
         </div>
       </a>
 
-      <!-- Desktop Nav -->
       <nav class="hidden lg:flex items-center gap-8">
-        <a href="#about"     class="nav-link text-gray-600 hover:text-primary-700 font-medium transition-colors" data-i18n="nav.about">Про нас</a>
-        <a href="#services"  class="nav-link text-gray-600 hover:text-primary-700 font-medium transition-colors" data-i18n="nav.services">Допомога</a>
-        <a href="#gallery"   class="nav-link text-gray-600 hover:text-primary-700 font-medium transition-colors" data-i18n="nav.gallery">Галерея</a>
-        <a href="#documents" class="nav-link text-gray-600 hover:text-primary-700 font-medium transition-colors" data-i18n="nav.documents">Документи</a>
-        <a href="#contact"   class="nav-link text-gray-600 hover:text-primary-700 font-medium transition-colors" data-i18n="nav.contact">Зв'язок</a>
+        <a href="#about"     class="nav-link" data-i18n="nav.about">Про нас</a>
+        <a href="#services"  class="nav-link" data-i18n="nav.services">Допомога</a>
+        <a href="#gallery"   class="nav-link" data-i18n="nav.gallery">Галерея</a>
+        <a href="#documents" class="nav-link" data-i18n="nav.documents">Документи</a>
+        <a href="#contact"   class="nav-link" data-i18n="nav.contact">Зв'язок</a>
+      </nav>
+
+      <div class="hidden lg:flex items-center gap-4">
         <div class="lang-switcher">
           <button class="lang-btn active" data-lang="uk" onclick="switchLang('uk')">UA</button>
           <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
         </div>
-        <a href="#donate" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold px-5 py-2.5 rounded-xl transition-all shadow-md hover:shadow-lg" data-i18n="nav.support">
-          Підтримати
+        <a href="#donate" class="btn btn-gold btn-sm">
+          <svg><use href="#i-heart-o"/></svg>
+          <span data-i18n="nav.support">Підтримати</span>
         </a>
-      </nav>
+      </div>
 
-      <!-- Mobile burger -->
-      <button id="burger" class="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors" onclick="toggleMenu()">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
+      <button id="burger" class="lg:hidden p-2 -mr-2 rounded-xl text-[color:var(--forest)]" onclick="toggleMenu()" aria-label="Меню" aria-expanded="false">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
       </button>
     </div>
   </div>
 
-  <!-- Mobile Nav -->
-  <div id="mobile-menu" class="mobile-menu lg:hidden bg-white border-t border-gray-100">
-    <div class="px-4 py-4 flex flex-col gap-3">
-      <a href="#about"     onclick="toggleMenu()" class="text-gray-700 font-medium py-2 hover:text-primary-600 transition-colors" data-i18n="nav.about">Про нас</a>
-      <a href="#services"  onclick="toggleMenu()" class="text-gray-700 font-medium py-2 hover:text-primary-600 transition-colors" data-i18n="nav.services">Допомога</a>
-      <a href="#gallery"   onclick="toggleMenu()" class="text-gray-700 font-medium py-2 hover:text-primary-600 transition-colors" data-i18n="nav.gallery">Галерея</a>
-      <a href="#documents" onclick="toggleMenu()" class="text-gray-700 font-medium py-2 hover:text-primary-600 transition-colors" data-i18n="nav.documents">Документи</a>
-      <a href="#contact"   onclick="toggleMenu()" class="text-gray-700 font-medium py-2 hover:text-primary-600 transition-colors" data-i18n="nav.contact">Зв'язок</a>
-      <div class="flex items-center gap-3">
-        <a href="#donate" onclick="toggleMenu()" class="bg-primary-600 text-white font-semibold px-5 py-3 rounded-xl text-center flex-1" data-i18n="nav.support">Підтримати</a>
+  <div id="mobile-menu" class="mobile-menu lg:hidden">
+    <div class="wrap pb-5 pt-1 flex flex-col gap-1 border-t border-[color:var(--line)]">
+      <a href="#about"     onclick="toggleMenu()" class="py-3 font-semibold" data-i18n="nav.about">Про нас</a>
+      <a href="#services"  onclick="toggleMenu()" class="py-3 font-semibold" data-i18n="nav.services">Допомога</a>
+      <a href="#gallery"   onclick="toggleMenu()" class="py-3 font-semibold" data-i18n="nav.gallery">Галерея</a>
+      <a href="#documents" onclick="toggleMenu()" class="py-3 font-semibold" data-i18n="nav.documents">Документи</a>
+      <a href="#contact"   onclick="toggleMenu()" class="py-3 font-semibold" data-i18n="nav.contact">Зв'язок</a>
+      <div class="flex items-center gap-3 pt-3">
+        <a href="#donate" onclick="toggleMenu()" class="btn btn-gold flex-1">
+          <svg><use href="#i-heart-o"/></svg><span data-i18n="nav.support">Підтримати</span>
+        </a>
         <div class="lang-switcher">
           <button class="lang-btn active" data-lang="uk" onclick="switchLang('uk')">UA</button>
           <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
@@ -374,182 +396,91 @@
 </header>
 
 <!-- ─── HERO ─── -->
-<section id="home" class="hero-gradient min-h-screen flex items-center relative overflow-hidden pt-16">
-  <!-- Декоративні кола -->
-  <div class="absolute top-20 right-10 w-72 h-72 bg-white/5 rounded-full blur-3xl"></div>
-  <div class="absolute bottom-10 left-0 w-96 h-96 bg-black/10 rounded-full blur-3xl"></div>
-  <div class="absolute top-1/2 left-1/3 w-48 h-48 bg-primary-400/20 rounded-full blur-2xl"></div>
+<section id="home" class="hero">
+  <div class="hero-media">
+    <img src="media/new/volunteer-family.webp" alt="" width="892" height="626" fetchpriority="high" />
+  </div>
+  <div class="hero-shade"></div>
+  <img class="hero-brush" src="media/new/brush-gold.webp" alt="" aria-hidden="true" />
+  <p class="hero-note hand"><span data-i18n="hero.note">Добро починається з людей</span> <svg><use href="#i-heart"/></svg></p>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
-    <div class="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-16 items-center">
-      <div class="max-w-3xl">
-        <!-- Бейдж -->
-        <div class="fade-in inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium px-4 py-2 rounded-full mb-6">
-          <span class="w-2 h-2 bg-green-300 rounded-full animate-pulse"></span>
-          <span data-i18n="hero.badge">Незалежний волонтерський фонд</span>
-        </div>
-
-        <h1 class="fade-in font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6" data-i18n-html="hero.title">
-          Дім<br/>
-          <span class="text-green-300">Добрих</span><br/>
-          Справ
-        </h1>
-
-        <p class="fade-in-delay text-xl text-white/80 leading-relaxed mb-10 max-w-xl" data-i18n="hero.desc">
-          Покращуємо якість життя тих, хто опинився в скрутному становищі. Діти, літні люди, захисники України — разом до перемоги.
-        </p>
-
-        <div class="fade-in-delay-2 flex flex-col sm:flex-row gap-4">
-          <a href="#donate" class="bg-white text-primary-700 hover:bg-primary-50 font-bold px-8 py-4 rounded-2xl text-lg shadow-xl hover:shadow-2xl transition-all text-center" data-i18n="hero.btn1">
-            Задонатити зараз
-          </a>
-          <a href="#about" class="border-2 border-white/40 hover:border-white text-white font-semibold px-8 py-4 rounded-2xl text-lg transition-all text-center hover:bg-white/10" data-i18n="hero.btn2">
-            Дізнатись більше
-          </a>
-        </div>
-      </div>
-
-      <!-- Фото — реальний момент з галереї -->
-      <div class="hidden lg:block relative fade-in-delay w-[380px] xl:w-[420px] justify-self-end mr-2">
-        <div class="absolute -top-5 -left-5 w-full h-full rounded-[2rem] border-2 border-white/15"></div>
-        <div class="absolute -bottom-5 -right-5 w-full h-full rounded-[2rem] bg-white/5"></div>
-        <div class="relative rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-white/20" style="transform: rotate(1.5deg);">
-          <img src="media/hero-photo.webp" alt="Щаслива дитина — підопічна фонду «Дім Добрих Справ»"
-               width="903" height="1200" fetchpriority="high"
-               class="w-full h-[480px] xl:h-[520px] object-cover block"/>
-          <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-6 pt-14 pb-5">
-            <p class="text-white/95 font-semibold text-sm flex items-center gap-2">
-              <svg class="w-4 h-4 text-green-300 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-              </svg>
-              <span data-i18n="hero.photo.caption">Реальний момент з нашої роботи</span>
-            </p>
-          </div>
-        </div>
+  <div class="wrap hero-inner">
+    <div class="max-w-xl">
+      <div class="eyebrow fade-in mb-5" data-i18n="hero.eyebrow">Благодійний фонд</div>
+      <h1 class="fade-in mb-4" data-i18n-html="hero.title">Дім <span class="accent">Добрих</span> Справ</h1>
+      <p class="hero-sub fade-in-delay mb-5" data-i18n="hero.sub">Разом робимо більше</p>
+      <p class="hero-desc fade-in-delay mb-9" data-i18n="hero.desc">Підтримуємо тих, хто цього найбільше потребує. Допомагаємо дітям, літнім людям, захисникам та родинам у складних життєвих обставинах.</p>
+      <div class="fade-in-delay-2 flex flex-col sm:flex-row gap-3">
+        <a href="#donate" class="btn btn-gold"><svg><use href="#i-heart-o"/></svg><span data-i18n="hero.btn1">Підтримати</span></a>
+        <a href="#about" class="btn btn-outline"><span data-i18n="hero.btn2">Дізнатись більше</span></a>
       </div>
     </div>
-  </div>
-
-  <!-- Хвиля -->
-  <div class="absolute bottom-0 left-0 right-0">
-    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 80L1440 80L1440 30C1200 70 960 10 720 40C480 70 240 10 0 50L0 80Z" fill="#f9fafb"/>
-    </svg>
   </div>
 </section>
 
 <!-- ─── STATS ─── -->
-<section class="bg-gray-50 py-16">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6" id="stats-grid">
-      <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover scroll-reveal">
-        <div class="font-serif text-4xl font-bold text-primary-600 mb-1 stat-number">2023</div>
-        <div class="text-gray-500 text-sm font-medium" data-i18n="stats.s1">Допомагаємо з 2023 року</div>
+<section class="relative z-10 -mt-20 lg:-mt-24">
+  <div class="wrap">
+    <div class="stats-card grid grid-cols-2 md:grid-cols-4" id="stats-grid">
+      <div class="stat-item scroll-reveal">
+        <div class="stat-icon"><svg><use href="#i-calendar"/></svg></div>
+        <div><div class="stat-number">2023</div><div class="stat-label" data-i18n="stats.s1">Допомагаємо з 2023 року</div></div>
       </div>
-      <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover scroll-reveal">
-        <div class="font-serif text-4xl font-bold text-primary-600 mb-1 stat-number" data-target="4">4</div>
-        <div class="text-gray-500 text-sm font-medium" data-i18n="stats.s2">Напрямки допомоги</div>
+      <div class="stat-item scroll-reveal">
+        <div class="stat-icon"><svg><use href="#i-people"/></svg></div>
+        <div><div class="stat-number" data-target="4">4</div><div class="stat-label" data-i18n="stats.s2">Напрямки допомоги</div></div>
       </div>
-      <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover scroll-reveal">
-        <div class="font-serif text-4xl font-bold text-primary-600 mb-1 stat-number" data-target="160" data-suffix="+">160+</div>
-        <div class="text-gray-500 text-sm font-medium" data-i18n="stats.s3">Фото у публічних звітах</div>
+      <div class="stat-item scroll-reveal">
+        <div class="stat-icon"><svg><use href="#i-image"/></svg></div>
+        <div><div class="stat-number" data-target="160" data-suffix="+">160+</div><div class="stat-label" data-i18n="stats.s3">Фото у публічних звітах</div></div>
       </div>
-      <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover scroll-reveal">
-        <div class="font-serif text-4xl font-bold text-primary-600 mb-1 stat-number" data-target="100" data-suffix="%">100%</div>
-        <div class="text-gray-500 text-sm font-medium" data-i18n="stats.s4">Прозорість</div>
+      <div class="stat-item scroll-reveal">
+        <div class="stat-icon"><svg><use href="#i-shield"/></svg></div>
+        <div><div class="stat-number" data-target="100" data-suffix="%">100%</div><div class="stat-label" data-i18n="stats.s4">Прозорість</div></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ─── ABOUT ─── -->
-<section id="about" class="py-24 bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
-      <!-- Text -->
+<section id="about" class="py-24 lg:py-32 overflow-x-clip">
+  <div class="wrap">
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
       <div>
-        <span class="inline-block text-primary-600 font-semibold text-sm uppercase tracking-wider mb-3" data-i18n="about.label">Про організацію</span>
-        <h2 class="font-serif section-heading text-4xl font-bold text-gray-900 mb-6 leading-tight" data-i18n-html="about.title">
-          Ми — волонтери,<br/>яким не байдуже
-        </h2>
-        <p class="text-gray-600 text-lg leading-relaxed mb-6" data-i18n="about.p1">
-          БО «МБФ «Дім Добрих Справ» — офіційно зареєстрований неприбутковий благодійний фонд. Наша команда складається з волонтерів різних фахів: педагогів, опікунів, соціальних працівників.
-        </p>
-        <p class="text-gray-600 text-lg leading-relaxed mb-8" data-i18n="about.p2">
-          Ми повністю незалежні від будь-яких політичних сил та бізнес-груп. Вся наша діяльність документується, а щомісячні звіти публікуються для доступу кожного.
-        </p>
-        <div class="flex flex-col gap-3">
-          <div class="flex items-center gap-3">
-            <div class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
-              <svg class="w-3.5 h-3.5 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-              </svg>
-            </div>
-            <span class="text-gray-700 font-medium" data-i18n="about.check1">Офіційно зареєстрована організація</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <div class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
-              <svg class="w-3.5 h-3.5 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-              </svg>
-            </div>
-            <span class="text-gray-700 font-medium" data-i18n="about.check2">Неприбутковий статус підтверджено</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <div class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
-              <svg class="w-3.5 h-3.5 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-              </svg>
-            </div>
-            <span class="text-gray-700 font-medium" data-i18n="about.check3">Щомісячні публічні звіти</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <div class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
-              <svg class="w-3.5 h-3.5 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-              </svg>
-            </div>
-            <span class="text-gray-700 font-medium" data-i18n="about.check4">Поза політикою та бізнес-групами</span>
-          </div>
+        <div class="eyebrow mb-4" data-i18n="about.label">Про нас</div>
+        <h2 class="h-section mb-6" data-i18n-html="about.title">Ми — волонтери,<br/>яким не байдуже</h2>
+        <p class="lead mb-5" data-i18n="about.p1">БО «МБФ «Дім Добрих Справ» — офіційно зареєстрований неприбутковий благодійний фонд. Наша команда складається з волонтерів різних фахів: педагогів, опікунів, соціальних працівників.</p>
+        <p class="lead mb-8" data-i18n="about.p2">Ми повністю незалежні від будь-яких політичних сил та бізнес-груп. Вся наша діяльність документується, а щомісячні звіти публікуються для доступу кожного.</p>
+        <div class="grid sm:grid-cols-2 gap-x-6 gap-y-4 mb-9">
+          <div class="flex items-center gap-3"><span class="check-dot"><svg><use href="#i-check"/></svg></span><span class="font-semibold" data-i18n="about.check1">Офіційно зареєстрована організація</span></div>
+          <div class="flex items-center gap-3"><span class="check-dot"><svg><use href="#i-check"/></svg></span><span class="font-semibold" data-i18n="about.check2">Неприбутковий статус підтверджено</span></div>
+          <div class="flex items-center gap-3"><span class="check-dot"><svg><use href="#i-check"/></svg></span><span class="font-semibold" data-i18n="about.check3">Щомісячні публічні звіти</span></div>
+          <div class="flex items-center gap-3"><span class="check-dot"><svg><use href="#i-check"/></svg></span><span class="font-semibold" data-i18n="about.check4">Поза політикою та бізнес-групами</span></div>
         </div>
+        <a href="#services" class="link-arrow"><span data-i18n="about.more">Кому ми допомагаємо</span><svg><use href="#i-arrow"/></svg></a>
       </div>
 
-      <!-- Visual card -->
-      <div class="relative">
-        <div class="bg-gradient-to-br from-primary-600 to-primary-800 rounded-3xl p-8 text-white shadow-2xl">
-          <div class="w-16 h-16 bg-white/15 rounded-2xl flex items-center justify-center mb-5">
-            <svg class="w-9 h-9 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 10.5L12 3l9 7.5M5 9.5V20a1 1 0 001 1h12a1 1 0 001-1V9.5"/>
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 17.2l-.72-.66c-2.06-1.87-3.42-3.1-3.42-4.62 0-1.23.97-2.2 2.2-2.2.7 0 1.37.32 1.94.9.57-.58 1.24-.9 1.94-.9 1.23 0 2.2.97 2.2 2.2 0 1.52-1.36 2.75-3.42 4.62l-.72.66z" fill="currentColor" stroke="none"/>
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold mb-3" data-i18n="about.mission.title">Наша місія</h3>
-          <p class="text-white/85 leading-relaxed text-lg" data-i18n="about.mission.text">
-            Покращення якості життя незахищених верств населення, які опинились у скрутному становищі.
-          </p>
-          <div class="mt-6 pt-6 border-t border-white/20">
-            <p class="text-white/70 text-sm" data-i18n="about.mission.footer">Разом до Перемоги 🇺🇦</p>
-          </div>
+      <div class="about-visual">
+        <img class="about-brush" src="media/new/brush-gold.webp" alt="" aria-hidden="true" loading="lazy" />
+        <img class="about-blob" src="media/new/blob-sage.webp" alt="" aria-hidden="true" loading="lazy" />
+        <div class="about-photo">
+          <img src="media/new/volunteers.webp" alt="" width="636" height="634" loading="lazy" decoding="async" />
         </div>
-        <!-- Декоративний елемент -->
-        <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-primary-200 rounded-2xl -z-10"></div>
-        <div class="absolute -top-4 -left-4 w-16 h-16 bg-primary-100 rounded-xl -z-10"></div>
+        <div class="mission-card">
+          <div class="hand mb-1" data-i18n="about.mission.title">Наша місія</div>
+          <p class="text-white/90 leading-relaxed" data-i18n="about.mission.text">Покращення якості життя незахищених верств населення, які опинились у скрутному становищі.</p>
+          <p class="text-white/60 text-sm mt-3" data-i18n="about.mission.footer">Разом до Перемоги 🇺🇦</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ─── VIDEO REVEAL ─── -->
-<section class="video-section py-10 sm:py-16 bg-white overflow-hidden">
-  <div class="video-reveal-wrap px-4 sm:px-8 lg:px-16">
+<section class="video-section pb-24 lg:pb-32 overflow-hidden">
+  <div class="video-reveal-wrap px-5 lg:px-8">
     <div class="video-reveal-container">
-      <video
-        src="media/358565357_1214281875913463_1163352374473208281_n.mp4"
-        muted loop playsinline preload="none"
-        poster="media/video-poster.jpg"
-        class="video-el"
-      ></video>
-      <!-- Overlay -->
+      <video src="media/358565357_1214281875913463_1163352374473208281_n.mp4" muted loop playsinline preload="none" poster="media/video-poster.jpg" class="video-el"></video>
       <div class="video-overlay">
         <div class="video-overlay-content">
           <div class="video-badge" data-i18n="video.badge">Наша робота у дії</div>
@@ -561,104 +492,66 @@
 </section>
 
 <!-- ─── SERVICES ─── -->
-<section id="services" class="py-24 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <span class="inline-block text-primary-600 font-semibold text-sm uppercase tracking-wider mb-3" data-i18n="services.label">Наша діяльність</span>
-      <h2 class="font-serif section-heading section-heading-center text-4xl font-bold text-gray-900 mb-4" data-i18n="services.title">Кому ми допомагаємо</h2>
-      <p class="text-gray-500 text-lg max-w-2xl mx-auto" data-i18n="services.desc">
-        Чотири ключові напрямки, де наша команда щодня робить різницю
-      </p>
+<section id="services" class="py-24 lg:py-28 bg-[color:var(--paper)] border-y border-[color:var(--line)]">
+  <div class="wrap">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+      <div>
+        <div class="eyebrow mb-4" data-i18n="services.label">Кому ми допомагаємо</div>
+        <h2 class="h-section" data-i18n="services.title">Чотири напрямки підтримки</h2>
+      </div>
+      <p class="lead max-w-md" data-i18n="services.desc">Чотири ключові напрямки, де наша команда щодня робить різницю</p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <!-- Card 1 -->
-      <div class="bg-white rounded-2xl p-7 shadow-sm card-hover border border-gray-100 scroll-reveal">
-        <div class="w-14 h-14 bg-primary-100 rounded-2xl flex items-center justify-center mb-5">
-          <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/>
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4.998 11.5v3.75"/>
-          </svg>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <article class="svc-card scroll-reveal">
+        <div class="svc-img"><img src="media/new/kids.webp" alt="" loading="lazy" decoding="async" /></div>
+        <div class="p-6 flex-1">
+          <div class="flex items-center gap-3 mb-3"><span class="svc-icon"><svg><use href="#i-child"/></svg></span><h3 class="font-serif text-xl font-bold text-[color:var(--forest-ink)]" data-i18n="services.c1.title">Діти</h3></div>
+          <p class="text-[color:var(--muted)] text-[15px] leading-relaxed" data-i18n="services.c1.text">Розвивальні заняття для дітей з інвалідністю, сиріт та дітей з багатодітних родин. Педагоги з досвідом роботи з особливими потребами.</p>
         </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="services.c1.title">Діти</h3>
-        <p class="text-gray-500 leading-relaxed text-sm" data-i18n="services.c1.text">
-          Розвивальні заняття для дітей з інвалідністю, сиріт та дітей з багатодітних родин. Педагоги з досвідом роботи з особливими потребами.
-        </p>
-      </div>
-      <!-- Card 2 -->
-      <div class="bg-white rounded-2xl p-7 shadow-sm card-hover border border-gray-100 scroll-reveal">
-        <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center mb-5">
-          <svg class="w-7 h-7 text-amber-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-          </svg>
+      </article>
+      <article class="svc-card scroll-reveal">
+        <div class="svc-img"><img src="media/new/elderly.webp" alt="" loading="lazy" decoding="async" /></div>
+        <div class="p-6 flex-1">
+          <div class="flex items-center gap-3 mb-3"><span class="svc-icon"><svg><use href="#i-care"/></svg></span><h3 class="font-serif text-xl font-bold text-[color:var(--forest-ink)]" data-i18n="services.c2.title">Літні люди</h3></div>
+          <p class="text-[color:var(--muted)] text-[15px] leading-relaxed" data-i18n="services.c2.text">Піклування та підтримка людей похилого віку. Опікуни з нашої команди надають як практичну, так і емоційну підтримку.</p>
         </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="services.c2.title">Літні люди</h3>
-        <p class="text-gray-500 leading-relaxed text-sm" data-i18n="services.c2.text">
-          Піклування та підтримка людей похилого віку. Опікуни з нашої команди надають як практичну, так і емоційну підтримку.
-        </p>
-      </div>
-      <!-- Card 3 -->
-      <div class="bg-white rounded-2xl p-7 shadow-sm card-hover border border-gray-100 scroll-reveal">
-        <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-5">
-          <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-          </svg>
+      </article>
+      <article class="svc-card scroll-reveal">
+        <div class="svc-img"><img src="media/new/defender.webp" alt="" loading="lazy" decoding="async" /></div>
+        <div class="p-6 flex-1">
+          <div class="flex items-center gap-3 mb-3"><span class="svc-icon"><svg><use href="#i-shield"/></svg></span><h3 class="font-serif text-xl font-bold text-[color:var(--forest-ink)]" data-i18n="services.c3.title">Захисники</h3></div>
+          <p class="text-[color:var(--muted)] text-[15px] leading-relaxed" data-i18n="services.c3.text">Підтримка військовослужбовців та їхніх сімей. Продуктова допомога, медикаменти та організаційна підтримка.</p>
         </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="services.c3.title">Захисники</h3>
-        <p class="text-gray-500 leading-relaxed text-sm" data-i18n="services.c3.text">
-          Підтримка військовослужбовців та їхніх сімей. Продуктова допомога, медикаменти та організаційна підтримка.
-        </p>
-      </div>
-      <!-- Card 4 -->
-      <div class="bg-white rounded-2xl p-7 shadow-sm card-hover border border-gray-100 scroll-reveal">
-        <div class="w-14 h-14 bg-rose-100 rounded-2xl flex items-center justify-center mb-5">
-          <svg class="w-7 h-7 text-rose-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-          </svg>
+      </article>
+      <article class="svc-card scroll-reveal">
+        <div class="svc-img"><img src="media/new/family.webp" alt="" loading="lazy" decoding="async" /></div>
+        <div class="p-6 flex-1">
+          <div class="flex items-center gap-3 mb-3"><span class="svc-icon"><svg><use href="#i-home-heart"/></svg></span><h3 class="font-serif text-xl font-bold text-[color:var(--forest-ink)]" data-i18n="services.c4.title">Сім'ї</h3></div>
+          <p class="text-[color:var(--muted)] text-[15px] leading-relaxed" data-i18n="services.c4.text">Організація сімейних заходів та дозвілля. Продуктові набори, одяг та ліки для сімей у скрутному становищі.</p>
         </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="services.c4.title">Сім'ї</h3>
-        <p class="text-gray-500 leading-relaxed text-sm" data-i18n="services.c4.text">
-          Організація сімейних заходів та дозвілля. Продуктові набори, одяг та ліки для сімей у скрутному становищі.
-        </p>
-      </div>
+      </article>
     </div>
 
-    <!-- Transparency block -->
-    <div class="mt-12 bg-primary-600 rounded-3xl p-8 lg:p-12 text-white">
-      <div class="grid lg:grid-cols-2 gap-8 items-center">
+    <!-- Transparency -->
+    <div class="transp mt-16 p-6 sm:p-10 lg:p-12">
+      <div class="grid lg:grid-cols-[1.1fr_1fr_.8fr] gap-10 items-center">
         <div>
-          <h3 class="text-2xl lg:text-3xl font-extrabold mb-4" data-i18n="transp.title">Повна прозорість</h3>
-          <p class="text-white/85 text-lg leading-relaxed" data-i18n="transp.text">
-            Ми документально фіксуємо кожну передачу допомоги безпосередньо підопічним. Ви можете особисто брати участь у розподілі продуктових наборів та доставці родинам.
-          </p>
+          <div class="eyebrow mb-4" data-i18n="transp.label">Прозорість</div>
+          <h3 class="h-section !text-3xl lg:!text-[2.2rem] mb-4" data-i18n="transp.title">Ми відкриті для кожного</h3>
+          <p class="lead !text-base mb-6" data-i18n="transp.text">Ми документально фіксуємо кожну передачу допомоги безпосередньо підопічним. Ви можете особисто брати участь у розподілі продуктових наборів та доставці родинам.</p>
+          <div class="grid grid-cols-2 gap-2.5 mb-7">
+            <div class="transp-badge"><svg><use href="#i-clipboard"/></svg><span data-i18n="transp.b1">Щомісячні звіти</span></div>
+            <div class="transp-badge"><svg><use href="#i-camera"/></svg><span data-i18n="transp.b2">Фотозвітність</span></div>
+            <div class="transp-badge"><svg><use href="#i-hand"/></svg><span data-i18n="transp.b3">Особиста участь</span></div>
+            <div class="transp-badge"><svg><use href="#i-badge"/></svg><span data-i18n="transp.b4">Офіційна реєстрація</span></div>
+          </div>
+          <a href="#gallery" class="link-arrow"><span data-i18n="transp.link">Переглянути фотозвіти</span><svg><use href="#i-arrow"/></svg></a>
         </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="bg-white/10 rounded-2xl p-5 text-center">
-            <svg class="w-8 h-8 mx-auto mb-2 text-white/90" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
-            </svg>
-            <div class="font-semibold text-sm" data-i18n="transp.b1">Щомісячні звіти</div>
-          </div>
-          <div class="bg-white/10 rounded-2xl p-5 text-center">
-            <svg class="w-8 h-8 mx-auto mb-2 text-white/90" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
-            </svg>
-            <div class="font-semibold text-sm" data-i18n="transp.b2">Фотозвітність</div>
-          </div>
-          <div class="bg-white/10 rounded-2xl p-5 text-center">
-            <svg class="w-8 h-8 mx-auto mb-2 text-white/90" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-            </svg>
-            <div class="font-semibold text-sm" data-i18n="transp.b3">Особиста участь</div>
-          </div>
-          <div class="bg-white/10 rounded-2xl p-5 text-center">
-            <svg class="w-8 h-8 mx-auto mb-2 text-white/90" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-            </svg>
-            <div class="font-semibold text-sm" data-i18n="transp.b4">Офіційна реєстрація</div>
-          </div>
+        <div class="transp-photo"><img src="media/new/handover.webp" alt="" loading="lazy" decoding="async" /></div>
+        <div class="trust-note hidden lg:grid">
+          <img src="media/new/brush-gold.webp" alt="" aria-hidden="true" loading="lazy" />
+          <p class="hand"><span data-i18n-html="transp.note">Довіра —<br/>це основа<br/>нашої роботи</span><svg><use href="#i-heart-o"/></svg></p>
         </div>
       </div>
     </div>
@@ -666,189 +559,133 @@
 </section>
 
 <!-- ─── DONATE ─── -->
-<section id="donate" class="py-24 bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <span class="inline-block text-primary-600 font-semibold text-sm uppercase tracking-wider mb-3" data-i18n="donate.label">Підтримайте нас</span>
-      <h2 class="font-serif section-heading section-heading-center text-4xl font-bold text-gray-900 mb-4" data-i18n="donate.title">Кожна гривня рятує</h2>
-      <p class="text-gray-500 text-lg max-w-2xl mx-auto" data-i18n="donate.desc">
-        Малий щоденний внесок дозволяє нам забезпечувати програми допомоги для сотень людей
-      </p>
+<section id="donate" class="py-24 lg:py-32">
+  <div class="wrap">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <div class="eyebrow mb-4" data-i18n="donate.label">Підтримайте нас</div>
+      <h2 class="h-section mb-4" data-i18n="donate.title">Кожна гривня рятує</h2>
+      <p class="lead" data-i18n="donate.desc">Малий щоденний внесок дозволяє нам забезпечувати програми допомоги для сотень людей</p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
       <!-- Ощадбанк -->
-      <div class="relative rounded-3xl border-2 border-gray-100 bg-white shadow-lg hover:shadow-xl transition-all duration-300 p-8 flex flex-col">
-        <!-- Header -->
+      <div class="bank-card bank-light">
         <div class="flex items-center gap-4 mb-7">
-          <div class="w-14 h-14 rounded-2xl overflow-hidden shadow-md flex-shrink-0">
+          <div class="w-14 h-14 rounded-2xl overflow-hidden shadow-sm flex-shrink-0">
             <img src="media/oschadbank-logo.png" alt="Ощадбанк" loading="lazy" decoding="async" class="w-full h-full object-cover">
           </div>
           <div>
-            <div class="font-bold text-gray-900 text-xl">Ощадбанк</div>
-            <div class="text-gray-400 text-sm" data-i18n="donate.oschadbank.sub">Банківський переказ</div>
+            <div class="font-serif font-bold text-xl text-[color:var(--forest-ink)]">Ощадбанк</div>
+            <div class="text-[color:var(--muted)] text-sm" data-i18n="donate.oschadbank.sub">Банківський переказ</div>
           </div>
         </div>
 
-        <!-- IBAN -->
-        <div class="mb-6">
-          <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">IBAN</div>
-          <div class="flex items-center gap-2 bg-gray-50 rounded-2xl px-4 py-3 border border-gray-100">
-            <code id="iban-text" class="text-gray-800 font-mono text-sm flex-1 select-all leading-relaxed">UA28 3226 6900 0002 6003 3008 4391 2</code>
-            <button onclick="copyIBAN()" id="copy-btn" data-i18n-title="donate.copy.title" title="Скопіювати IBAN"
-              class="flex-shrink-0 w-9 h-9 rounded-xl bg-white border border-gray-200 hover:border-green-400 hover:bg-green-50 flex items-center justify-center transition-all group">
-              <svg id="copy-icon" class="w-4 h-4 text-gray-400 group-hover:text-green-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-              </svg>
-              <svg id="check-icon" class="w-4 h-4 text-green-600 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
+        <div class="mb-5">
+          <div class="field-label">IBAN</div>
+          <div class="field flex items-center gap-2 px-4 py-3">
+            <code id="iban-text" class="font-mono text-[13.5px] flex-1 select-all leading-relaxed text-[color:var(--ink)]">UA28 3226 6900 0002 6003 3008 4391 2</code>
+            <button onclick="copyIBAN()" id="copy-btn" data-i18n-title="donate.copy.title" title="Скопіювати IBAN" class="flex-shrink-0 w-9 h-9 rounded-xl bg-white border border-[color:var(--line)] hover:border-[color:var(--sage)] flex items-center justify-center transition-colors">
+              <svg id="copy-icon" class="w-4 h-4 text-[color:var(--muted)]"><use href="#i-copy"/></svg>
+              <svg id="check-icon" class="w-4 h-4 text-[color:var(--leaf)] hidden"><use href="#i-check"/></svg>
             </button>
           </div>
-          <p id="copy-toast" class="text-green-600 text-xs mt-1.5 ml-1 h-4 transition-opacity opacity-0" data-i18n="donate.copied">Скопійовано!</p>
+          <p id="copy-toast" class="text-[color:var(--leaf)] text-xs font-semibold mt-1.5 ml-1 h-4 transition-opacity opacity-0" data-i18n="donate.copied">Скопійовано!</p>
         </div>
 
-        <!-- QR code -->
-        <div class="mb-6">
-          <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2" data-i18n="donate.qr.label">QR-код для переказу</div>
-          <button onclick="openOschadQR()" class="w-full flex items-center gap-4 bg-gray-50 rounded-2xl px-4 py-3 border border-gray-100 hover:border-green-300 hover:bg-green-50 transition-all group cursor-zoom-in">
+        <div class="mb-5">
+          <div class="field-label" data-i18n="donate.qr.label">QR-код для переказу</div>
+          <button onclick="openOschadQR()" class="field w-full flex items-center gap-4 px-4 py-3 hover:border-[color:var(--sage)] transition-colors cursor-zoom-in group">
             <div class="bg-white rounded-xl p-1.5 shadow-sm flex-shrink-0">
-              <img src="docs/oschadbank-qr.png?v=2" alt="QR-код Ощадбанк" loading="lazy" decoding="async" class="w-16 h-16 object-contain block">
+              <img src="docs/oschadbank-qr.png?v=2" alt="QR-код Ощадбанк" loading="lazy" decoding="async" class="w-14 h-14 object-contain block">
             </div>
             <div class="text-left">
-              <div class="text-gray-700 text-sm font-medium group-hover:text-green-700 transition-colors" data-i18n="donate.qr.scan">Відскануйте камерою</div>
-              <div class="text-gray-400 text-xs mt-0.5" data-i18n="donate.qr.zoom">Натисніть щоб збільшити</div>
+              <div class="text-sm font-semibold" data-i18n="donate.qr.scan">Відскануйте камерою</div>
+              <div class="text-[color:var(--muted)] text-xs mt-0.5" data-i18n="donate.qr.zoom">Натисніть щоб збільшити</div>
             </div>
-            <svg class="w-5 h-5 text-gray-300 group-hover:text-green-400 ml-auto transition-colors flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
-            </svg>
+            <svg class="w-5 h-5 text-[color:var(--sage)] ml-auto flex-shrink-0"><use href="#i-zoom"/></svg>
           </button>
         </div>
 
-        <!-- Documents -->
         <div class="mt-auto">
-          <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3" data-i18n="donate.docs.label">Документи</div>
+          <div class="field-label" data-i18n="donate.docs.label">Документи</div>
           <div class="space-y-2">
-            <a href="docs/oschadbank-rekv.pdf" target="_blank" rel="noopener noreferrer"
-              class="flex items-center gap-3 px-4 py-3 rounded-xl border border-gray-100 hover:border-green-300 hover:bg-green-50 transition-all group">
-              <svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM9.5 17.5v-1h5v1h-5zm0-2.5v-1h5v1h-5zm0-2.5v-1h5v1h-5z"/>
-              </svg>
-              <span class="text-gray-700 text-sm group-hover:text-green-700 font-medium transition-colors" data-i18n="donate.docs.rekv">Реквізити рахунку</span>
-              <svg class="w-4 h-4 text-gray-300 group-hover:text-green-400 ml-auto transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-              </svg>
+            <a href="docs/oschadbank-rekv.pdf" target="_blank" rel="noopener noreferrer" class="row-link">
+              <svg class="text-[color:var(--coral)]"><use href="#i-pdf"/></svg>
+              <span class="text-sm font-semibold" data-i18n="donate.docs.rekv">Реквізити рахунку</span>
+              <svg class="!w-4 !h-4 text-[color:var(--muted)] ml-auto"><use href="#i-external"/></svg>
             </a>
-            <a href="docs/oschadbank-doc1.pdf" target="_blank" rel="noopener noreferrer"
-              class="flex items-center gap-3 px-4 py-3 rounded-xl border border-gray-100 hover:border-green-300 hover:bg-green-50 transition-all group">
-              <svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM9.5 17.5v-1h5v1h-5zm0-2.5v-1h5v1h-5zm0-2.5v-1h5v1h-5z"/>
-              </svg>
-              <span class="text-gray-700 text-sm group-hover:text-green-700 font-medium transition-colors" data-i18n="donate.docs.cert">Довідка про рахунок</span>
-              <svg class="w-4 h-4 text-gray-300 group-hover:text-green-400 ml-auto transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-              </svg>
+            <a href="docs/oschadbank-doc1.pdf" target="_blank" rel="noopener noreferrer" class="row-link">
+              <svg class="text-[color:var(--coral)]"><use href="#i-pdf"/></svg>
+              <span class="text-sm font-semibold" data-i18n="donate.docs.cert">Довідка про рахунок</span>
+              <svg class="!w-4 !h-4 text-[color:var(--muted)] ml-auto"><use href="#i-external"/></svg>
             </a>
-            <a href="docs/oschadbank-doc2.pdf" target="_blank" rel="noopener noreferrer"
-              class="flex items-center gap-3 px-4 py-3 rounded-xl border border-gray-100 hover:border-green-300 hover:bg-green-50 transition-all group">
-              <svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM9.5 17.5v-1h5v1h-5zm0-2.5v-1h5v1h-5zm0-2.5v-1h5v1h-5z"/>
-              </svg>
-              <span class="text-gray-700 text-sm group-hover:text-green-700 font-medium transition-colors" data-i18n="donate.docs.other">Додаткові документи</span>
-              <svg class="w-4 h-4 text-gray-300 group-hover:text-green-400 ml-auto transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-              </svg>
+            <a href="docs/oschadbank-doc2.pdf" target="_blank" rel="noopener noreferrer" class="row-link">
+              <svg class="text-[color:var(--coral)]"><use href="#i-pdf"/></svg>
+              <span class="text-sm font-semibold" data-i18n="donate.docs.other">Додаткові документи</span>
+              <svg class="!w-4 !h-4 text-[color:var(--muted)] ml-auto"><use href="#i-external"/></svg>
             </a>
           </div>
-          <a href="https://bank.gov.ua/qr/QkNECjAwMgoyClVDVAoKwc4gIszB1CAixLLMIMTOwdDI1SDRz9DAwiIKVUEyODMyMjY2OTAwMDAwMjYwMDMzMDA4NDM5MTIKCjQ1MDI1MTU2CgoKCg"
-            target="_blank" rel="noopener noreferrer"
-            class="mt-4 flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-2xl transition-all shadow-lg hover:shadow-xl">
-            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-            </svg>
-            <span data-i18n="donate.open_app">Відкрити в додатку</span>
+          <a href="https://bank.gov.ua/qr/QkNECjAwMgoyClVDVAoKwc4gIszB1CAixLLMIMTOwdDI1SDRz9DAwiIKVUEyODMyMjY2OTAwMDAwMjYwMDMzMDA4NDM5MTIKCjQ1MDI1MTU2CgoKCg" target="_blank" rel="noopener noreferrer" class="btn btn-forest w-full mt-5">
+            <svg><use href="#i-mobile"/></svg><span data-i18n="donate.open_app">Відкрити в додатку</span>
           </a>
         </div>
       </div>
 
       <!-- Монобанк -->
-      <div class="relative rounded-3xl bg-gray-900 shadow-lg hover:shadow-xl transition-all duration-300 p-8 flex flex-col">
-        <!-- Header -->
+      <div class="bank-card bank-dark">
         <div class="flex items-center gap-4 mb-7">
-          <div class="w-14 h-14 rounded-2xl overflow-hidden shadow-md flex-shrink-0">
+          <div class="w-14 h-14 rounded-2xl overflow-hidden shadow-sm flex-shrink-0">
             <img src="media/monobank-logo.png" alt="Монобанк" loading="lazy" decoding="async" class="w-full h-full object-cover">
           </div>
           <div>
-            <div class="font-bold text-white text-xl">Монобанк</div>
-            <div class="text-gray-400 text-sm" data-i18n="donate.mono.sub">Швидкий переказ за QR</div>
+            <div class="font-serif font-bold text-xl">Монобанк</div>
+            <div class="text-white/60 text-sm" data-i18n="donate.mono.sub">Швидкий переказ за QR</div>
           </div>
         </div>
 
-        <!-- QR code -->
         <div class="flex-1 flex flex-col items-center justify-center">
-          <button onclick="openQR()" class="bg-white rounded-2xl p-4 shadow-inner mb-5 inline-block cursor-zoom-in hover:shadow-lg transition-shadow group relative">
-            <img src="docs/monobank-qr.jpg" alt="QR-код для переказу на Монобанк" loading="lazy" decoding="async"
-              class="w-52 h-52 object-contain block">
-            <div class="absolute inset-0 rounded-2xl bg-black/0 group-hover:bg-black/10 transition-all flex items-center justify-center">
-              <div class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 rounded-full p-2">
-                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
-                </svg>
-              </div>
-            </div>
+          <button onclick="openQR()" class="bg-white rounded-3xl p-4 mb-5 inline-block cursor-zoom-in group relative shadow-lg">
+            <img src="docs/monobank-qr.jpg" alt="QR-код для переказу на Монобанк" loading="lazy" decoding="async" class="w-48 h-48 object-contain block">
+            <span class="absolute inset-0 rounded-3xl bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 rounded-full p-2"><svg class="w-6 h-6 text-white"><use href="#i-zoom"/></svg></span>
+            </span>
           </button>
-          <p class="text-gray-400 text-sm text-center leading-relaxed max-w-xs">
-            <span data-i18n="donate.mono.tip">Натисніть на QR-код або наведіть камеру телефону для швидкого переказу</span>
-          </p>
+          <p class="text-white/65 text-sm text-center leading-relaxed max-w-xs" data-i18n="donate.mono.tip">Натисніть на QR-код або наведіть камеру телефону для швидкого переказу</p>
         </div>
 
-        <!-- Open in app button -->
-        <a href="https://bank.gov.ua/qr/QkNECjAwMgoxClVDVAoK0JHQniAi0JzQkdCkICLQlNCG0Jwg0JTQntCR0KDQmNClINCh0J_QoNCQ0JIiClVBNTIzMjIwMDEwMDAwMDI2MDAwNzAwMDE3MDE5Cgo0NTAyNTE1NgoKCgoK"
-          target="_blank" rel="noopener noreferrer"
-          class="mt-4 flex items-center justify-center gap-2 w-full bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-bold py-3 rounded-2xl transition-all shadow-lg hover:shadow-xl">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-          </svg>
-          <span data-i18n="donate.open_app">Відкрити в додатку</span>
+        <a href="https://bank.gov.ua/qr/QkNECjAwMgoxClVDVAoK0JHQniAi0JzQkdCkICLQlNCG0Jwg0JTQntCR0KDQmNClINCh0J_QoNCQ0JIiClVBNTIzMjIwMDEwMDAwMDI2MDAwNzAwMDE3MDE5Cgo0NTAyNTE1NgoKCgoK" target="_blank" rel="noopener noreferrer" class="btn btn-gold w-full mt-6">
+          <svg><use href="#i-mobile"/></svg><span data-i18n="donate.open_app">Відкрити в додатку</span>
         </a>
-        <div class="mt-3 flex items-center gap-2 bg-white/5 rounded-2xl px-4 py-2.5">
-          <svg class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
-          </svg>
-          <span class="text-gray-400 text-xs" data-i18n="donate.mono.works">Працює з Монобанком, Приват24 та іншими</span>
+        <div class="mt-3 flex items-center gap-2 bg-white/10 rounded-2xl px-4 py-2.5">
+          <svg class="w-4 h-4 text-[color:var(--gold)] flex-shrink-0"><use href="#i-info"/></svg>
+          <span class="text-white/70 text-xs" data-i18n="donate.mono.works">Працює з Монобанком, Приват24 та іншими</span>
         </div>
       </div>
 
-    </div>
-
-    <!-- Partners CTA -->
-    <div class="mt-16 bg-gray-50 rounded-3xl p-8 lg:p-12 text-center">
-      <div class="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
-        <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.636v5.114m-2.5-2.5h5"/>
-        </svg>
+      <!-- Partners -->
+      <div class="donate-photo md:col-span-2 lg:col-span-1 flex">
+        <img src="media/new/aid-center.webp" alt="" loading="lazy" decoding="async" />
+        <div class="relative z-10 mt-auto p-7 text-white">
+          <div class="hand text-[color:var(--gold)] text-3xl mb-2" data-i18n="partners.hand">Разом ми можемо більше</div>
+          <h3 class="font-serif text-2xl font-bold mb-2" data-i18n="partners.title">Станьте нашим партнером</h3>
+          <p class="text-white/80 text-[15px] leading-relaxed mb-5" data-i18n="partners.desc">Шукаємо партнерів для фінансової та організаційної підтримки дітей, постраждалих під час війни. Разом ми зможемо зробити більше.</p>
+          <a href="#contact" class="btn btn-gold btn-sm"><span data-i18n="partners.btn">Обговорити партнерство</span><svg><use href="#i-arrow"/></svg></a>
+        </div>
       </div>
-      <h3 class="text-2xl font-bold text-gray-900 mb-3" data-i18n="partners.title">Станьте нашим партнером</h3>
-      <p class="text-gray-600 max-w-xl mx-auto mb-6" data-i18n="partners.desc">
-        Шукаємо партнерів для фінансової та організаційної підтримки дітей, постраждалих під час війни. Разом ми зможемо зробити більше.
-      </p>
-      <a href="#contact" class="inline-block bg-primary-600 hover:bg-primary-700 text-white font-bold px-8 py-3.5 rounded-2xl transition-all shadow-lg hover:shadow-xl" data-i18n="partners.btn">
-        Обговорити партнерство
-      </a>
     </div>
   </div>
 </section>
 
 <!-- ─── GALLERY ─── -->
-<section id="gallery" class="py-24 bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <span class="inline-block text-primary-600 font-semibold text-sm uppercase tracking-wider mb-3" data-i18n="gallery.label">Наша діяльність</span>
-      <h2 class="font-serif section-heading section-heading-center text-4xl font-bold text-gray-900 mb-4" data-i18n="gallery.title">Фотогалерея</h2>
-      <p class="text-gray-500 text-lg max-w-2xl mx-auto" data-i18n="gallery.desc">Реальні моменти нашої роботи — допомога, турбота та щира підтримка</p>
+<section id="gallery" class="py-24 lg:py-28 bg-[color:var(--paper)] border-y border-[color:var(--line)]">
+  <div class="wrap">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+      <div>
+        <div class="eyebrow mb-4" data-i18n="gallery.label">Наша діяльність</div>
+        <h2 class="h-section" data-i18n="gallery.title">Фотогалерея</h2>
+      </div>
+      <p class="lead max-w-md" data-i18n="gallery.desc">Реальні моменти нашої роботи — допомога, турбота та щира підтримка</p>
     </div>
 
     <!-- Grid -->
@@ -998,13 +835,9 @@
       </div>
     </div>
 
-    <!-- Expand all photos -->
-    <div class="mt-8 text-center">
-      <button id="gallery-toggle-btn" onclick="toggleGallery()"
-        class="inline-flex items-center gap-2.5 bg-primary-50 hover:bg-primary-100 text-primary-700 font-semibold px-7 py-3.5 rounded-2xl transition-all border border-primary-200 hover:border-primary-400 hover:shadow-md">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-        </svg>
+    <div class="mt-10 text-center">
+      <button id="gallery-toggle-btn" onclick="toggleGallery()" class="btn btn-outline">
+        <svg><use href="#i-chevron"/></svg>
         <span id="gallery-toggle-text" data-i18n="gallery.showAll">Показати всі фотографії</span>
       </button>
     </div>
@@ -1014,6 +847,127 @@
     </div>
   </div>
 </section>
+
+<!-- ─── DOCUMENTS ─── -->
+<section id="documents" class="py-24 lg:py-28">
+  <div class="wrap">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+      <div>
+        <div class="eyebrow mb-4" data-i18n="docs.label">Юридичний статус</div>
+        <h2 class="h-section" data-i18n="docs.title">Документи</h2>
+      </div>
+      <p class="lead max-w-md" data-i18n="docs.desc">Ми офіційно зареєстровані та діємо відповідно до законодавства України</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <a href="https://dimdsprav.pp.ua/docs/Statut.pdf" target="_blank" rel="noopener noreferrer" class="doc-card scroll-reveal">
+        <span class="doc-icon"><svg><use href="#i-doc"/></svg></span>
+        <span class="flex-1">
+          <span class="block font-serif font-bold text-lg text-[color:var(--forest-ink)]" data-i18n="doc1.title">Статут</span>
+          <span class="block text-[color:var(--muted)] text-sm mb-3" data-i18n="doc1.desc">Основний документ організації</span>
+          <span class="link-arrow text-sm"><span data-i18n="doc.link">Відкрити PDF</span><svg><use href="#i-arrow"/></svg></span>
+        </span>
+      </a>
+      <a href="https://dimdsprav.pp.ua/docs/Vipiska.pdf" target="_blank" rel="noopener noreferrer" class="doc-card scroll-reveal">
+        <span class="doc-icon"><svg><use href="#i-registry"/></svg></span>
+        <span class="flex-1">
+          <span class="block font-serif font-bold text-lg text-[color:var(--forest-ink)]" data-i18n="doc2.title">Виписка з реєстру</span>
+          <span class="block text-[color:var(--muted)] text-sm mb-3" data-i18n="doc2.desc">Підтвердження реєстрації</span>
+          <span class="link-arrow text-sm"><span data-i18n="doc.link">Відкрити PDF</span><svg><use href="#i-arrow"/></svg></span>
+        </span>
+      </a>
+      <a href="https://dimdsprav.pp.ua/docs/Vityag.pdf" target="_blank" rel="noopener noreferrer" class="doc-card scroll-reveal">
+        <span class="doc-icon"><svg><use href="#i-badge"/></svg></span>
+        <span class="flex-1">
+          <span class="block font-serif font-bold text-lg text-[color:var(--forest-ink)]" data-i18n="doc3.title">Статус неприбутковості</span>
+          <span class="block text-[color:var(--muted)] text-sm mb-3" data-i18n="doc3.desc">Витяг про неприбутковість</span>
+          <span class="link-arrow text-sm"><span data-i18n="doc.link">Відкрити PDF</span><svg><use href="#i-arrow"/></svg></span>
+        </span>
+      </a>
+    </div>
+
+    <p class="text-[color:var(--muted)] mt-8" data-i18n-html="docs.contact">Для отримання документів зверніться до нас — <a href="#contact" class="text-primary-700 font-bold hover:underline">Зв'язатись</a></p>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact" class="pb-24 lg:pb-32">
+  <div class="wrap">
+    <div class="grid lg:grid-cols-[1.2fr_1fr] gap-8 items-stretch">
+      <div class="bg-[color:var(--sage-soft)] rounded-[32px] p-7 sm:p-10">
+        <div class="eyebrow mb-4" data-i18n="contact.label">Зв'яжіться з нами</div>
+        <h2 class="h-section !text-[2rem] sm:!text-[2.3rem] mb-4" data-i18n-html="contact.title">Маєте питання<br/>або хочете допомогти?</h2>
+        <p class="lead !text-base mb-7 max-w-lg" data-i18n="contact.desc">Ми завжди раді новим партнерам, волонтерам та донаторам. Напишіть або зателефонуйте — разом зробимо більше.</p>
+        <div class="grid sm:grid-cols-2 gap-1">
+          <a data-obf="phone" href="#" class="contact-row">
+            <span class="contact-icon"><svg><use href="#i-phone"/></svg></span>
+            <span><span class="block text-xs font-bold uppercase tracking-wider text-[color:var(--muted)]" data-i18n="contact.phone">Телефон</span><span class="block font-bold text-[color:var(--forest-ink)] obf-text"></span></span>
+          </a>
+          <a data-obf="email" href="#" class="contact-row sm:col-span-2 sm:order-first">
+            <span class="contact-icon"><svg><use href="#i-mail"/></svg></span>
+            <span class="min-w-0"><span class="block text-xs font-bold uppercase tracking-wider text-[color:var(--muted)]" data-i18n="contact.email">Email</span><span class="block font-bold text-[color:var(--forest-ink)] obf-text break-all"></span></span>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100090045076590" target="_blank" rel="noopener noreferrer" class="contact-row">
+            <span class="contact-icon"><svg class="text-[#1877f2]"><use href="#i-fb"/></svg></span>
+            <span><span class="block text-xs font-bold uppercase tracking-wider text-[color:var(--muted)]" data-i18n="contact.fb.label">Facebook</span><span class="block font-bold text-[color:var(--forest-ink)]" data-i18n="contact.fb.text">Ми в Facebook</span></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="cta-card flex flex-col justify-end min-h-[320px]">
+        <img class="branch" src="media/new/branch.webp" alt="" aria-hidden="true" loading="lazy" />
+        <svg class="relative w-11 h-11 text-[color:var(--gold)] mb-5"><use href="#i-heart"/></svg>
+        <h3 class="relative font-serif text-3xl sm:text-4xl font-bold leading-tight mb-3" data-i18n-html="cta.title">Разом<br/>ми можемо більше</h3>
+        <p class="relative text-white/75 mb-7 max-w-sm" data-i18n="cta.text">Кожен внесок — це продуктовий набір, ліки чи усмішка дитини.</p>
+        <a href="#donate" class="relative btn btn-gold self-start"><svg><use href="#i-heart-o"/></svg><span data-i18n="nav.support">Підтримати</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="pt-16 pb-10">
+  <div class="wrap">
+    <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <svg class="w-11 h-11 text-white"><use href="#i-logo"/></svg>
+          <div>
+            <div class="font-serif font-bold text-white text-lg leading-tight">Дім Добрих Справ</div>
+            <div class="text-xs text-white/50" data-i18n="brand.sub">Благодійний фонд</div>
+          </div>
+        </div>
+        <p class="text-sm leading-relaxed max-w-xs" data-i18n="footer.desc">Незалежний волонтерський фонд, поза політикою та бізнес-групами.</p>
+        <div class="mt-4 inline-block bg-white/10 text-[color:var(--gold)] text-xs font-bold px-3 py-1.5 rounded-full" data-i18n="footer.victory">Разом до Перемоги 🇺🇦</div>
+      </div>
+
+      <div>
+        <h4 class="font-bold mb-4 text-white" data-i18n="footer.nav">Навігація</h4>
+        <div class="flex flex-col gap-2.5 text-sm">
+          <a href="#about"     class="transition-colors" data-i18n="nav.about">Про нас</a>
+          <a href="#services"  class="transition-colors" data-i18n="nav.services">Допомога</a>
+          <a href="#donate"    class="transition-colors" data-i18n="nav.support">Підтримати</a>
+          <a href="#documents" class="transition-colors" data-i18n="nav.documents">Документи</a>
+          <a href="#contact"   class="transition-colors" data-i18n="nav.contact">Зв'язок</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-bold mb-4 text-white" data-i18n="footer.contacts">Контакти</h4>
+        <div class="flex flex-col gap-3 text-sm">
+          <a data-obf="phone" href="#" class="flex items-center gap-2 transition-colors"><svg class="w-4 h-4"><use href="#i-phone"/></svg><span class="obf-text"></span></a>
+          <a data-obf="email" href="#" class="flex items-center gap-2 transition-colors"><svg class="w-4 h-4"><use href="#i-mail"/></svg><span class="obf-text"></span></a>
+          <a href="https://www.facebook.com/profile.php?id=100090045076590" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 transition-colors"><svg class="w-4 h-4"><use href="#i-fb"/></svg><span>Facebook</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-center">
+      <p class="text-white/50 text-sm" data-i18n="footer.copy">© 2026 БО «МБФ «Дім Добрих Справ». Всі права захищені.</p>
+      <p class="text-white/40 text-xs" data-i18n="footer.sub">Неприбуткова організація · Офіційно зареєстрована в Україні</p>
+    </div>
+  </div>
+</footer>
 
 <!-- ─── QR MODAL ОЩАДБАНК ─── -->
 <div id="oschadqr-modal" class="fixed inset-0 z-[999] bg-black/80 hidden items-center justify-center p-6" onclick="closeOschadQR()">
@@ -1092,201 +1046,6 @@
   <!-- Лічильник -->
   <div id="lightbox-counter" class="absolute bottom-5 left-1/2 -translate-x-1/2 text-white/60 text-sm font-medium bg-black/30 px-3 py-1 rounded-full"></div>
 </div>
-
-<!-- ─── DOCUMENTS ─── -->
-<section id="documents" class="py-24 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <span class="inline-block text-primary-600 font-semibold text-sm uppercase tracking-wider mb-3" data-i18n="docs.label">Юридичний статус</span>
-      <h2 class="font-serif section-heading section-heading-center text-4xl font-bold text-gray-900 mb-4" data-i18n="docs.title">Документи</h2>
-      <p class="text-gray-500 text-lg max-w-2xl mx-auto" data-i18n="docs.desc">
-        Ми офіційно зареєстровані та діємо відповідно до законодавства України
-      </p>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-      <a href="https://dimdsprav.pp.ua/docs/Statut.pdf" target="_blank" rel="noopener noreferrer"
-         class="bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100 text-center block group scroll-reveal">
-        <div class="w-14 h-14 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-200 transition-colors">
-          <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-          </svg>
-        </div>
-        <h3 class="font-bold text-gray-900 mb-1 group-hover:text-primary-600 transition-colors" data-i18n="doc1.title">Статут</h3>
-        <p class="text-gray-500 text-sm mb-3" data-i18n="doc1.desc">Основний документ організації</p>
-        <span class="inline-flex items-center gap-1.5 text-primary-600 text-sm font-medium">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-          </svg>
-          <span data-i18n="doc.link">Відкрити PDF</span>
-        </span>
-      </a>
-
-      <a href="https://dimdsprav.pp.ua/docs/Vipiska.pdf" target="_blank" rel="noopener noreferrer"
-         class="bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100 text-center block group scroll-reveal">
-        <div class="w-14 h-14 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-200 transition-colors">
-          <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-          </svg>
-        </div>
-        <h3 class="font-bold text-gray-900 mb-1 group-hover:text-primary-600 transition-colors" data-i18n="doc2.title">Виписка з реєстру</h3>
-        <p class="text-gray-500 text-sm mb-3" data-i18n="doc2.desc">Підтвердження реєстрації</p>
-        <span class="inline-flex items-center gap-1.5 text-primary-600 text-sm font-medium">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-          </svg>
-          <span data-i18n="doc.link">Відкрити PDF</span>
-        </span>
-      </a>
-
-      <a href="https://dimdsprav.pp.ua/docs/Vityag.pdf" target="_blank" rel="noopener noreferrer"
-         class="bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100 text-center block group scroll-reveal">
-        <div class="w-14 h-14 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-200 transition-colors">
-          <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-          </svg>
-        </div>
-        <h3 class="font-bold text-gray-900 mb-1 group-hover:text-primary-600 transition-colors" data-i18n="doc3.title">Статус неприбутковості</h3>
-        <p class="text-gray-500 text-sm mb-3" data-i18n="doc3.desc">Витяг про неприбутковість</p>
-        <span class="inline-flex items-center gap-1.5 text-primary-600 text-sm font-medium">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-          </svg>
-          <span data-i18n="doc.link">Відкрити PDF</span>
-        </span>
-      </a>
-    </div>
-
-    <p class="text-center text-gray-500 mt-8" data-i18n-html="docs.contact">
-      Для отримання документів зверніться до нас —
-      <a href="#contact" class="text-primary-600 font-semibold hover:underline">Зв'язатись</a>
-    </p>
-  </div>
-</section>
-
-<!-- ─── CONTACT ─── -->
-<section id="contact" class="py-24 bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="max-w-2xl">
-      <!-- Info -->
-        <span class="inline-block text-primary-600 font-semibold text-sm uppercase tracking-wider mb-3" data-i18n="contact.label">Зв'яжіться з нами</span>
-        <h2 class="font-serif section-heading text-4xl font-bold text-gray-900 mb-6 leading-tight" data-i18n-html="contact.title">
-          Маєте питання<br/>або хочете допомогти?
-        </h2>
-        <p class="text-gray-600 text-lg mb-10" data-i18n="contact.desc">
-          Ми завжди раді новим партнерам, волонтерам та донаторам. Напишіть або зателефонуйте — разом зробимо більше.
-        </p>
-
-        <div class="flex flex-col gap-5">
-          <!-- Phone -->
-          <a data-obf="phone" href="#" class="flex items-center gap-4 group">
-            <div class="w-12 h-12 bg-primary-100 rounded-2xl flex items-center justify-center group-hover:bg-primary-200 transition-colors">
-              <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-              </svg>
-            </div>
-            <div>
-              <div class="text-xs text-gray-400 font-medium" data-i18n="contact.phone">Телефон</div>
-              <div class="text-gray-800 font-semibold text-lg group-hover:text-primary-600 transition-colors obf-text"></div>
-            </div>
-          </a>
-
-          <!-- Email -->
-          <a data-obf="email" href="#" class="flex items-center gap-4 group">
-            <div class="w-12 h-12 bg-primary-100 rounded-2xl flex items-center justify-center group-hover:bg-primary-200 transition-colors">
-              <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-              </svg>
-            </div>
-            <div>
-              <div class="text-xs text-gray-400 font-medium" data-i18n="contact.email">Email</div>
-              <div class="text-gray-800 font-semibold text-lg group-hover:text-primary-600 transition-colors obf-text"></div>
-            </div>
-          </a>
-
-          <!-- Facebook -->
-          <a href="https://www.facebook.com/profile.php?id=100090045076590" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 group">
-            <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-              <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-              </svg>
-            </div>
-            <div>
-              <div class="text-xs text-gray-400 font-medium" data-i18n="contact.fb.label">Facebook</div>
-              <div class="text-gray-800 font-semibold text-lg group-hover:text-blue-600 transition-colors" data-i18n="contact.fb.text">Ми в Facebook</div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ─── FOOTER ─── -->
-<footer class="bg-gray-900 text-white py-16">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid md:grid-cols-3 gap-10 mb-12">
-      <!-- Brand -->
-      <div>
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 bg-primary-600 rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-            </svg>
-          </div>
-          <div>
-            <div class="font-bold">Дім Добрих Справ</div>
-            <div class="text-xs text-gray-500">БО МБФ</div>
-          </div>
-        </div>
-        <p class="text-gray-400 text-sm leading-relaxed" data-i18n="footer.desc">
-          Незалежний волонтерський фонд, поза політикою та бізнес-групами.
-        </p>
-        <div class="mt-4 inline-block bg-primary-900 text-primary-400 text-xs font-medium px-3 py-1.5 rounded-lg" data-i18n="footer.victory">
-          Разом до Перемоги 🇺🇦
-        </div>
-      </div>
-
-      <!-- Navigation -->
-      <div>
-        <h4 class="font-bold mb-4 text-white" data-i18n="footer.nav">Навігація</h4>
-        <div class="flex flex-col gap-2.5">
-          <a href="#about"     class="text-gray-400 hover:text-primary-400 transition-colors text-sm" data-i18n="nav.about">Про нас</a>
-          <a href="#services"  class="text-gray-400 hover:text-primary-400 transition-colors text-sm" data-i18n="nav.services">Допомога</a>
-          <a href="#donate"    class="text-gray-400 hover:text-primary-400 transition-colors text-sm" data-i18n="nav.support">Підтримати</a>
-          <a href="#documents" class="text-gray-400 hover:text-primary-400 transition-colors text-sm" data-i18n="nav.documents">Документи</a>
-          <a href="#contact"   class="text-gray-400 hover:text-primary-400 transition-colors text-sm" data-i18n="nav.contact">Зв'язок</a>
-        </div>
-      </div>
-
-      <!-- Contact -->
-      <div>
-        <h4 class="font-bold mb-4 text-white" data-i18n="footer.contacts">Контакти</h4>
-        <div class="flex flex-col gap-3">
-          <a data-obf="phone" href="#" class="flex items-center gap-2 text-gray-400 hover:text-primary-400 transition-colors text-sm">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-            </svg>
-            <span class="obf-text"></span>
-          </a>
-          <a data-obf="email" href="#" class="flex items-center gap-2 text-gray-400 hover:text-primary-400 transition-colors text-sm">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-            </svg>
-            <span class="obf-text"></span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-      <p class="text-gray-500 text-sm" data-i18n="footer.copy">© 2026 БО «МБФ «Дім Добрих Справ». Всі права захищені.</p>
-      <p class="text-gray-600 text-xs" data-i18n="footer.sub">Неприбуткова організація · Офіційно зареєстрована в Україні</p>
-    </div>
-  </div>
-</footer>
 
 <script>
   // Lightbox — all photos for navigation
@@ -1548,11 +1307,7 @@
   // Navbar scroll effect
   window.addEventListener('scroll', () => {
     const header = document.getElementById('header');
-    if (window.scrollY > 50) {
-      header.classList.add('shadow-md');
-    } else {
-      header.classList.remove('shadow-md');
-    }
+    header.classList.toggle('scrolled', window.scrollY > 20);
   });
 
   // Expandable gallery
@@ -1638,7 +1393,7 @@
       if (step >= steps) {
         clearInterval(timer);
         el.textContent = end + suffix;
-        el.closest('.card-hover').classList.add('stat-done');
+        el.closest('.stat-item').classList.add('stat-done');
       }
     }, 1000 / fps);
   }
@@ -1681,35 +1436,41 @@
   }
 
 
+
   // ─── TRANSLATIONS ───
   const translations = {
     uk: {
+      'brand.sub': 'Благодійний фонд',
       'nav.about': 'Про нас', 'nav.services': 'Допомога', 'nav.gallery': 'Галерея',
       'nav.documents': 'Документи', 'nav.contact': "Зв'язок", 'nav.support': 'Підтримати',
-      'hero.badge': 'Незалежний волонтерський фонд',
-      'hero.title': 'Дім<br/><span class="text-green-300">Добрих</span><br/>Справ',
-      'hero.desc': 'Покращуємо якість життя тих, хто опинився в скрутному становищі. Діти, літні люди, захисники України — разом до перемоги.',
-      'hero.btn1': 'Задонатити зараз', 'hero.btn2': 'Дізнатись більше',
-      'hero.photo.caption': 'Реальний момент з нашої роботи',
+      'hero.eyebrow': 'Благодійний фонд',
+      'hero.title': 'Дім <span class="accent">Добрих</span> Справ',
+      'hero.sub': 'Разом робимо більше',
+      'hero.desc': 'Підтримуємо тих, хто цього найбільше потребує. Допомагаємо дітям, літнім людям, захисникам та родинам у складних життєвих обставинах.',
+      'hero.btn1': 'Підтримати', 'hero.btn2': 'Дізнатись більше',
+      'hero.note': 'Добро починається з людей',
       'stats.s1': 'Допомагаємо з 2023 року', 'stats.s2': 'Напрямки допомоги', 'stats.s3': 'Фото у публічних звітах', 'stats.s4': 'Прозорість',
-      'about.label': 'Про організацію',
+      'about.label': 'Про нас',
       'about.title': 'Ми — волонтери,<br/>яким не байдуже',
       'about.p1': 'БО «МБФ «Дім Добрих Справ» — офіційно зареєстрований неприбутковий благодійний фонд. Наша команда складається з волонтерів різних фахів: педагогів, опікунів, соціальних працівників.',
       'about.p2': 'Ми повністю незалежні від будь-яких політичних сил та бізнес-груп. Вся наша діяльність документується, а щомісячні звіти публікуються для доступу кожного.',
       'about.check1': 'Офіційно зареєстрована організація', 'about.check2': 'Неприбутковий статус підтверджено',
       'about.check3': 'Щомісячні публічні звіти', 'about.check4': 'Поза політикою та бізнес-групами',
+      'about.more': 'Кому ми допомагаємо',
       'about.mission.title': 'Наша місія',
       'about.mission.text': 'Покращення якості життя незахищених верств населення, які опинились у скрутному становищі.',
       'about.mission.footer': 'Разом до Перемоги 🇺🇦',
-      'services.label': 'Наша діяльність', 'services.title': 'Кому ми допомагаємо',
+      'services.label': 'Кому ми допомагаємо', 'services.title': 'Чотири напрямки підтримки',
       'services.desc': 'Чотири ключові напрямки, де наша команда щодня робить різницю',
       'services.c1.title': 'Діти', 'services.c1.text': 'Розвивальні заняття для дітей з інвалідністю, сиріт та дітей з багатодітних родин. Педагоги з досвідом роботи з особливими потребами.',
       'services.c2.title': 'Літні люди', 'services.c2.text': 'Піклування та підтримка людей похилого віку. Опікуни з нашої команди надають як практичну, так і емоційну підтримку.',
       'services.c3.title': 'Захисники', 'services.c3.text': 'Підтримка військовослужбовців та їхніх сімей. Продуктова допомога, медикаменти та організаційна підтримка.',
       'services.c4.title': "Сім'ї", 'services.c4.text': 'Організація сімейних заходів та дозвілля. Продуктові набори, одяг та ліки для сімей у скрутному становищі.',
-      'transp.title': 'Повна прозорість',
+      'transp.label': 'Прозорість', 'transp.title': 'Ми відкриті для кожного',
       'transp.text': 'Ми документально фіксуємо кожну передачу допомоги безпосередньо підопічним. Ви можете особисто брати участь у розподілі продуктових наборів та доставці родинам.',
       'transp.b1': 'Щомісячні звіти', 'transp.b2': 'Фотозвітність', 'transp.b3': 'Особиста участь', 'transp.b4': 'Офіційна реєстрація',
+      'transp.link': 'Переглянути фотозвіти',
+      'transp.note': 'Довіра —<br/>це основа<br/>нашої роботи',
       'donate.label': 'Підтримайте нас', 'donate.title': 'Кожна гривня рятує',
       'donate.desc': 'Малий щоденний внесок дозволяє нам забезпечувати програми допомоги для сотень людей',
       'donate.oschadbank.sub': 'Банківський переказ', 'donate.mono.sub': 'Швидкий переказ за QR',
@@ -1718,9 +1479,7 @@
       'donate.open_app': 'Відкрити в додатку', 'donate.copy.title': 'Скопіювати IBAN', 'donate.copied': 'Скопійовано!',
       'donate.mono.tip': 'Натисніть на QR-код або наведіть камеру телефону для швидкого переказу',
       'donate.mono.works': 'Працює з Монобанком, Приват24 та іншими', 'donate.modal.camera': 'Наведіть камеру на QR-код',
-      'donate.o1.period': 'разова допомога', 'donate.o1.text': 'Продуктовий набір для однієї людини на тиждень', 'donate.o1.btn': 'Підтримати',
-      'donate.o2.badge': 'Популярне', 'donate.o2.period': 'щомісячно', 'donate.o2.text': 'Стабільна підтримка програм розвитку для дітей', 'donate.o2.btn': 'Підтримати',
-      'donate.o3.amount': 'Своя', 'donate.o3.period': 'сума', 'donate.o3.text': 'Будь-який розмір внеску є важливим і цінним для нас', 'donate.o3.btn': 'Написати нам',
+      'partners.hand': 'Разом ми можемо більше',
       'partners.title': 'Станьте нашим партнером',
       'partners.desc': 'Шукаємо партнерів для фінансової та організаційної підтримки дітей, постраждалих під час війни. Разом ми зможемо зробити більше.',
       'partners.btn': 'Обговорити партнерство',
@@ -1735,50 +1494,50 @@
       'doc2.title': 'Виписка з реєстру', 'doc2.desc': 'Підтвердження реєстрації',
       'doc3.title': 'Статус неприбутковості', 'doc3.desc': 'Витяг про неприбутковість',
       'doc.link': 'Відкрити PDF',
-      'docs.contact': 'Для отримання документів зверніться до нас — <a href="#contact" class="text-primary-600 font-semibold hover:underline">Зв\'язатись</a>',
+      'docs.contact': 'Для отримання документів зверніться до нас — <a href="#contact" class="text-primary-700 font-bold hover:underline">Зв\'язатись</a>',
       'contact.label': "Зв'яжіться з нами",
       'contact.title': 'Маєте питання<br/>або хочете допомогти?',
       'contact.desc': 'Ми завжди раді новим партнерам, волонтерам та донаторам. Напишіть або зателефонуйте — разом зробимо більше.',
       'contact.phone': 'Телефон', 'contact.email': 'Email', 'contact.fb.label': 'Facebook', 'contact.fb.text': 'Ми в Facebook',
-      'contact.form.title': 'Напишіть нам',
-      'contact.form.name': "Ім'я", 'contact.form.name.ph': "Ваше ім'я",
-      'contact.form.email': 'Email', 'contact.form.email.ph': 'your@email.com',
-      'contact.form.subject': 'Тема', 'contact.form.subj.ph': 'Тема повідомлення',
-      'contact.form.message': 'Повідомлення', 'contact.form.msg.ph': 'Ваше повідомлення...',
-      'contact.form.submit': 'Надіслати повідомлення',
-      'contact.success': "Дякуємо! Ми зв'яжемось з вами незабаром.",
+      'cta.title': 'Разом<br/>ми можемо більше',
+      'cta.text': 'Кожен внесок — це продуктовий набір, ліки чи усмішка дитини.',
       'footer.desc': 'Незалежний волонтерський фонд, поза політикою та бізнес-групами.',
       'footer.victory': 'Разом до Перемоги 🇺🇦', 'footer.nav': 'Навігація', 'footer.contacts': 'Контакти',
       'footer.copy': '© 2026 БО «МБФ «Дім Добрих Справ». Всі права захищені.',
       'footer.sub': 'Неприбуткова організація · Офіційно зареєстрована в Україні',
     },
     en: {
+      'brand.sub': 'Charitable foundation',
       'nav.about': 'About', 'nav.services': 'Services', 'nav.gallery': 'Gallery',
       'nav.documents': 'Documents', 'nav.contact': 'Contact', 'nav.support': 'Support',
-      'hero.badge': 'Independent volunteer fund',
-      'hero.title': 'House<br/><span class="text-green-300">of Good</span><br/>Deeds',
-      'hero.desc': 'We improve the quality of life for those in difficult situations. Children, the elderly, defenders of Ukraine — together to victory.',
-      'hero.btn1': 'Donate now', 'hero.btn2': 'Learn more',
-      'hero.photo.caption': 'A real moment from our work',
+      'hero.eyebrow': 'Charitable foundation',
+      'hero.title': 'House <span class="accent">of Good</span> Deeds',
+      'hero.sub': 'Together we do more',
+      'hero.desc': 'We support those who need it most. We help children, the elderly, defenders and families facing difficult circumstances.',
+      'hero.btn1': 'Support', 'hero.btn2': 'Learn more',
+      'hero.note': 'Kindness starts with people',
       'stats.s1': 'Helping since 2023', 'stats.s2': 'Areas of help', 'stats.s3': 'Photos in public reports', 'stats.s4': 'Transparency',
       'about.label': 'About us',
-      'about.title': 'We are volunteers,<br/>who care',
+      'about.title': 'We are volunteers<br/>who care',
       'about.p1': 'CO "MBF House of Good Deeds" is an officially registered non-profit charitable foundation. Our team consists of volunteers from various fields: teachers, caregivers, social workers.',
       'about.p2': 'We are completely independent of any political forces or business groups. All our activities are documented, and monthly reports are published for public access.',
       'about.check1': 'Officially registered organization', 'about.check2': 'Non-profit status confirmed',
       'about.check3': 'Monthly public reports', 'about.check4': 'Outside politics and business groups',
-      'about.mission.title': 'Our Mission',
+      'about.more': 'Who we help',
+      'about.mission.title': 'Our mission',
       'about.mission.text': 'Improving the quality of life for vulnerable populations who find themselves in difficult situations.',
       'about.mission.footer': 'Together to Victory 🇺🇦',
-      'services.label': 'Our activities', 'services.title': 'Who we help',
+      'services.label': 'Who we help', 'services.title': 'Four areas of support',
       'services.desc': 'Four key areas where our team makes a difference every day',
       'services.c1.title': 'Children', 'services.c1.text': 'Developmental programs for children with disabilities, orphans, and children from large families. Teachers with experience working with special needs.',
       'services.c2.title': 'Elderly', 'services.c2.text': 'Care and support for elderly people. Caregivers from our team provide both practical and emotional support.',
       'services.c3.title': 'Defenders', 'services.c3.text': 'Support for military personnel and their families. Food aid, medications and organizational support.',
       'services.c4.title': 'Families', 'services.c4.text': 'Organization of family events and leisure. Food packages, clothing and medicine for families in need.',
-      'transp.title': 'Full Transparency',
+      'transp.label': 'Transparency', 'transp.title': 'We are open to everyone',
       'transp.text': 'We document every transfer of assistance directly to beneficiaries. You can personally participate in distributing food packages and delivering to families.',
       'transp.b1': 'Monthly reports', 'transp.b2': 'Photo reporting', 'transp.b3': 'Personal participation', 'transp.b4': 'Official registration',
+      'transp.link': 'See photo reports',
+      'transp.note': 'Trust is<br/>the foundation<br/>of our work',
       'donate.label': 'Support us', 'donate.title': 'Every hryvnia saves',
       'donate.desc': 'A small daily contribution allows us to provide assistance programs for hundreds of people',
       'donate.oschadbank.sub': 'Bank transfer', 'donate.mono.sub': 'Quick transfer by QR',
@@ -1787,9 +1546,7 @@
       'donate.open_app': 'Open in app', 'donate.copy.title': 'Copy IBAN', 'donate.copied': 'Copied!',
       'donate.mono.tip': 'Tap the QR code or point your phone camera for a quick transfer',
       'donate.mono.works': 'Works with Monobank, Privat24 and others', 'donate.modal.camera': 'Point your camera at the QR code',
-      'donate.o1.period': 'one-time help', 'donate.o1.text': 'A food package for one person for a week', 'donate.o1.btn': 'Support',
-      'donate.o2.badge': 'Popular', 'donate.o2.period': 'monthly', 'donate.o2.text': "Stable support for children's development programs", 'donate.o2.btn': 'Support',
-      'donate.o3.amount': 'Custom', 'donate.o3.period': 'amount', 'donate.o3.text': 'Any size contribution is important and valuable to us', 'donate.o3.btn': 'Contact us',
+      'partners.hand': 'Together we can do more',
       'partners.title': 'Become our partner',
       'partners.desc': 'We are looking for partners for financial and organizational support of children affected by the war. Together we can do more.',
       'partners.btn': 'Discuss partnership',
@@ -1804,18 +1561,13 @@
       'doc2.title': 'Registry extract', 'doc2.desc': 'Registration confirmation',
       'doc3.title': 'Non-profit status', 'doc3.desc': 'Non-profit extract',
       'doc.link': 'Open PDF',
-      'docs.contact': 'To obtain documents, contact us — <a href="#contact" class="text-primary-600 font-semibold hover:underline">Contact us</a>',
+      'docs.contact': 'To obtain documents, contact us — <a href="#contact" class="text-primary-700 font-bold hover:underline">Contact us</a>',
       'contact.label': 'Contact us',
       'contact.title': 'Have questions<br/>or want to help?',
       'contact.desc': 'We are always happy to meet new partners, volunteers and donors. Write or call — together we will do more.',
       'contact.phone': 'Phone', 'contact.email': 'Email', 'contact.fb.label': 'Facebook', 'contact.fb.text': 'Find us on Facebook',
-      'contact.form.title': 'Write to us',
-      'contact.form.name': 'Name', 'contact.form.name.ph': 'Your name',
-      'contact.form.email': 'Email', 'contact.form.email.ph': 'your@email.com',
-      'contact.form.subject': 'Subject', 'contact.form.subj.ph': 'Message subject',
-      'contact.form.message': 'Message', 'contact.form.msg.ph': 'Your message...',
-      'contact.form.submit': 'Send message',
-      'contact.success': 'Thank you! We will contact you soon.',
+      'cta.title': 'Together<br/>we can do more',
+      'cta.text': "Every donation is a food package, medicine or a child's smile.",
       'footer.desc': 'Independent volunteer fund, outside politics and business groups.',
       'footer.victory': 'Together to Victory 🇺🇦', 'footer.nav': 'Navigation', 'footer.contacts': 'Contacts',
       'footer.copy': '© 2026 CO "MBF House of Good Deeds". All rights reserved.',
@@ -1900,4 +1652,3 @@
 
 </body>
 </html>
-

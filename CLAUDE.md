@@ -25,11 +25,11 @@ npx tailwindcss@3.4.17 -c tailwind.config.js -i tailwind-input.css -o assets/tai
 
 ## Architecture
 
-**Single-file SPA** — all HTML, CSS, and JavaScript is in `index.html` (~1600 lines). Structure inside:
+**Single-file SPA** — all HTML, CSS, and JavaScript is in `index.html` (~1650 lines). Structure inside:
 
-- `<style>` tag — custom CSS with CSS variables (`--green-dark`, `--green-mid`, `--gold`) and section-specific styles
+- `<style>` tag — custom CSS with design tokens (`--forest`, `--leaf`, `--sage`, `--gold`, `--cream`, …) and section-specific styles. Fonts: Lora (headings), Manrope (body), Caveat (handwritten notes)
 - `assets/tailwind.css` — compiled Tailwind (theme in `tailwind.config.js`: custom `primary` palette + Nunito/Cormorant Garamond fonts)
-- `<body>` sections in order: `#home` → stats → `#about` → video → `#services` → `#donate` → `#gallery` → `#documents` → `#contact` → footer
+- `<body>` starts with an inline SVG icon sprite (`<symbol id="i-…">`, used via `<use href="#i-…"/>`), then sections: `#home` → stats → `#about` → video → `#services` (+ transparency block) → `#donate` → `#gallery` → `#documents` → `#contact` → footer
 - `<script>` tag at bottom — all JS (~400 lines), no imports
 
 ### Key JS Patterns
@@ -50,7 +50,9 @@ Defined in a `<meta>` tag. When adding new external resources (fonts, scripts, C
 
 - `media/gallery/` — 162 numbered JPG files used in the gallery section (two `photo_2023-07-13*` files are the fund's logo and are excluded from the gallery)
 - `media/gallery/thumbs/` — 480px WebP thumbnails, one per gallery JPG. Regenerate with PIL if photos are added (quality 72, longest side 480)
-- `media/hero-photo.webp`, `media/og-image.jpg`, `media/video-poster.jpg` — generated hero/social/poster assets
+- `media/new/` — 2026 redesign assets (WebP): illustrative photos (hero, service cards, about, transparency, donate) cut from the AI moodboard in `MATERIALS/`, plus transparent decor (`brush-gold`, `brush-green`, `blob-sage`, `branch`)
+- `media/hero-photo.webp`, `media/og-image.jpg`, `media/video-poster.jpg` — older generated hero/social/poster assets
+- Old design is preserved in git: tag `v1-old-design` and branch `old-design`
 - `media/*.mp4` — hero video (lazy-loaded: `preload="none"` + poster, played via IntersectionObserver)
 - `docs/` — PDF organization documents (Statut, Vipiska, Vityag) and `schet.jpg` (bank account for donations)
 
