@@ -156,16 +156,17 @@
     .hero-desc { color: rgba(255,255,255,.82); font-size: 1.075rem; line-height: 1.7; max-width: 27rem; }
     .hero .btn-outline { color: #fff; }
     .hero .btn-outline:hover { background: #fff; color: var(--forest); border-color: #fff; }
-    .hero-brush { position: absolute; left: -70px; bottom: 40px; width: 360px; opacity: .9; pointer-events: none; z-index: 1; transform: rotate(-8deg); display: none; }
+    .hero-brush { position: absolute; left: -70px; bottom: 36px; width: 320px; opacity: .9; pointer-events: none; z-index: 1; transform: rotate(-8deg); display: none; }
     .hero-branch { position: absolute; right: 6%; bottom: 128px; width: 150px; z-index: 3; opacity: .95; pointer-events: none; display: none; }
     .hero-note { position: absolute; z-index: 3; right: 5%; bottom: 150px; color: var(--forest-ink); font-size: 30px; transform: rotate(-4deg); display: none; background: rgba(255,253,248,.92); padding: 10px 18px 12px; border-radius: 14px; box-shadow: var(--shadow-soft); }
     .hero-note svg { width: 20px; height: 20px; color: var(--coral); display: inline-block; vertical-align: -2px; }
 
     @media (min-width: 1024px) {
       .hero { background: var(--cream); color: var(--ink); }
-      .hero-media { left: 42%; border-bottom-left-radius: 56px; overflow: hidden; }
+      .hero { --split: max(42%, calc(50% - 60px)); --edge: max(0px, calc(50% - 600px)); }
+      .hero-media { left: var(--split); border-bottom-left-radius: 56px; overflow: hidden; }
       .hero-media img { object-position: center; }
-      .hero-shade { left: 42%; background: linear-gradient(to right, var(--cream) 0%, rgba(250,246,238,.7) 8%, rgba(250,246,238,.25) 20%, rgba(250,246,238,0) 34%); }
+      .hero-shade { left: var(--split); background: linear-gradient(to right, var(--cream) 0%, rgba(250,246,238,.7) 8%, rgba(250,246,238,.25) 20%, rgba(250,246,238,0) 34%); }
       .hero-inner { padding-top: 170px; padding-bottom: 190px; }
       .hero h1 { color: var(--forest-ink); }
       .hero h1 .accent { color: var(--leaf); }
@@ -174,8 +175,8 @@
       .hero-desc { color: var(--muted); }
       .hero .btn-outline { color: var(--forest); }
       .hero .btn-outline:hover { background: var(--forest); color: #fff; border-color: var(--forest); }
-      .hero-brush { display: block; }
-      .hero-note { display: block; }
+      .hero-brush { display: block; left: calc(var(--edge) - 120px); }
+      .hero-note { display: block; right: calc(var(--edge) + 24px); }
     }
 
     /* Stats */
@@ -352,7 +353,7 @@
         </div>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-8">
+      <nav class="hidden lg:flex items-center gap-6 xl:gap-8">
         <a href="#about"     class="nav-link" data-i18n="nav.about">Про нас</a>
         <a href="#services"  class="nav-link" data-i18n="nav.services">Допомога</a>
         <a href="#gallery"   class="nav-link" data-i18n="nav.gallery">Галерея</a>
