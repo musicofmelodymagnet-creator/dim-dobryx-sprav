@@ -50,7 +50,7 @@ Defined in a `<meta>` tag. When adding new external resources (fonts, scripts, C
 
 - `media/gallery/` — 162 numbered JPG files used in the gallery section (two `photo_2023-07-13*` files are the fund's logo and are excluded from the gallery)
 - `media/gallery/thumbs/` — 480px WebP thumbnails, one per gallery JPG. Regenerate with PIL if photos are added (quality 72, longest side 480)
-- `media/new/` — 2026 redesign assets (WebP): illustrative photos (hero, service cards, about, transparency, donate) cut from the AI moodboard in `MATERIALS/`, plus transparent decor (`brush-gold`, `brush-green`, `blob-sage`, `branch`)
+- `media/new/` — 2026 redesign assets (WebP): illustrative photos (hero, service cards, about, transparency, donate) cut from the AI moodboard, upscaled 4x in Topaz (sources in local, untracked `MATERIALS/to-upscale/`), plus transparent decor (`brush-gold`, `blob-sage`, `branch`)
 - `media/hero-photo.webp`, `media/og-image.jpg`, `media/video-poster.jpg` — older generated hero/social/poster assets
 - Old design is preserved in git: tag `v1-old-design` and branch `old-design`
 - `media/*.mp4` — hero video (lazy-loaded: `preload="none"` + poster, played via IntersectionObserver)
